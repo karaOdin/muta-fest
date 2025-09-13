@@ -172,6 +172,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
+            position: relative;
         }
 
         .logo {
@@ -544,18 +545,54 @@
         /* Mobile Navigation Toggle */
         .nav-toggle {
             display: none;
-            background: none;
+            background: linear-gradient(135deg, var(--primary-blue), var(--coral));
             border: none;
             font-size: 1.5em;
-            color: var(--dark);
+            color: white;
             cursor: pointer;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            padding: 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+            position: relative;
+            z-index: 1001;
         }
 
         .nav-toggle:hover {
-            background-color: rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
+        }
+
+        .nav-toggle:active {
+            transform: translateY(0);
+        }
+
+        /* Hamburger Animation */
+        .nav-toggle i {
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active {
+            background: linear-gradient(135deg, var(--coral), var(--primary-blue));
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Mobile Responsiveness */
@@ -576,28 +613,49 @@
         @media (max-width: 768px) {
             /* Mobile Navigation */
             .nav-toggle {
-                display: block;
+                display: block !important;
+                position: relative !important;
+                z-index: 1001 !important;
             }
 
             .nav-links {
                 position: fixed;
-                top: 120px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 120px);
-                background: rgba(255,255,255,0.98);
-                backdrop-filter: blur(20px);
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(46, 134, 171, 0.05));
+                backdrop-filter: blur(30px);
                 flex-direction: column;
                 justify-content: flex-start;
-                align-items: center;
-                padding-top: 50px;
-                transition: left 0.3s ease;
-                z-index: 9999;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                align-items: stretch;
+                padding: 120px 0 40px 0;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                border-left: 1px solid rgba(46, 134, 171, 0.1);
+                display: none;
             }
 
             .nav-links.active {
+                display: flex !important;
+                right: 0;
+                transform: translateX(0);
+            }
+
+            /* RTL Support for drawer */
+            [dir="rtl"] .nav-links {
+                right: auto;
+                left: -100%;
+                border-left: none;
+                border-right: 1px solid rgba(46, 134, 171, 0.1);
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+            }
+
+            [dir="rtl"] .nav-links.active {
                 left: 0;
+                right: auto;
             }
 
             /* Ensure nav toggle is always visible on mobile */
@@ -608,21 +666,73 @@
             }
 
             .nav-links li {
-                margin: 20px 0;
+                margin: 0;
+                opacity: 0;
+                transform: translateX(50px);
+                animation: slideInNav 0.5s ease forwards;
+            }
+
+            .nav-links.active li {
+                animation-delay: calc(0.1s * var(--i, 0));
             }
 
             .nav-links a {
-                font-size: 1.2em;
-                padding: 15px 30px;
-                width: 80%;
-                text-align: center;
-                border-radius: 10px;
+                font-size: 1.1em;
+                padding: 18px 30px;
+                margin: 8px 20px;
+                display: block;
+                text-align: left;
+                border-radius: 15px;
                 transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                background: transparent;
+                border-left: 4px solid transparent;
             }
 
-            .nav-links a:hover {
-                background: rgba(46, 134, 171, 0.1);
-                transform: translateY(-2px);
+            .nav-links a::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(241, 143, 1, 0.1));
+                transition: width 0.3s ease;
+                z-index: -1;
+            }
+
+            .nav-links a:hover::before,
+            .nav-links a.active::before {
+                width: 100%;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: var(--coral);
+                border-left-color: var(--coral);
+                transform: translateX(10px);
+            }
+
+            /* RTL adjustments for menu items */
+            [dir="rtl"] .nav-links a {
+                text-align: right;
+                border-left: none;
+                border-right: 4px solid transparent;
+            }
+
+            [dir="rtl"] .nav-links a:hover,
+            [dir="rtl"] .nav-links a.active {
+                border-right-color: var(--coral);
+                transform: translateX(-10px);
+            }
+
+            /* Animation for menu items */
+            @keyframes slideInNav {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
 
             /* Mobile Top Bar */
@@ -821,6 +931,17 @@
 
         @media (max-width: 480px) {
             /* Extra small mobile devices */
+            .nav-toggle {
+                display: block !important;
+                font-size: 1.3em !important;
+                padding: 10px !important;
+            }
+
+            .nav-links {
+                width: 90% !important;
+                max-width: 300px !important;
+            }
+
             .hero h1 {
                 font-size: 2em;
             }
@@ -859,6 +980,40 @@
             .color-banner {
                 font-size: 1em;
                 height: 70px;
+            }
+        }
+
+        /* Ensure navigation toggle is always visible on any small screen */
+        @media (max-width: 1024px) {
+            .nav-toggle {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+            }
+            
+            .nav-links:not(.active) {
+                display: none !important;
+            }
+
+            .nav-content {
+                flex-wrap: nowrap !important;
+            }
+
+            .logo {
+                flex-shrink: 0;
+            }
+        }
+
+        /* Force hamburger visibility on all mobile devices */
+        @media screen and (max-width: 1024px) {
+            .nav-toggle {
+                display: block !important;
+                background: linear-gradient(135deg, var(--coral), var(--primary-blue)) !important;
+                color: white !important;
+                border: none !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
             }
         }
 
@@ -1125,21 +1280,24 @@
     </div>
 
     <!-- Main Navigation -->
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
+
     <nav class="main-nav">
         <div class="nav-content">
             <div class="logo">MutaFest</div>
-            <button class="nav-toggle" onclick="toggleNav()">
+            <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home" class="nav-link active">{{ __('mutafest.nav.home') }}</a></li>
-                <li><a href="#about" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
-                <li><a href="#program" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
-                <li><a href="#guests" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
-                <li><a href="#exhibitions" class="nav-link">{{ __('mutafest.nav.exhibitions') }}</a></li>
-                <li><a href="#press" class="nav-link">{{ __('mutafest.nav.press') }}</a></li>
-                <li><a href="#info" class="nav-link">{{ __('mutafest.nav.info') }}</a></li>
-                <li><a href="#contact" class="nav-link">{{ __('mutafest.nav.contact') }}</a></li>
+                <li style="--i: 1"><a href="#home" class="nav-link active">{{ __('mutafest.nav.home') }}</a></li>
+                <li style="--i: 2"><a href="#about" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
+                <li style="--i: 3"><a href="#program" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
+                <li style="--i: 4"><a href="#guests" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
+                <li style="--i: 5"><a href="#exhibitions" class="nav-link">{{ __('mutafest.nav.exhibitions') }}</a></li>
+                <li style="--i: 6"><a href="#press" class="nav-link">{{ __('mutafest.nav.press') }}</a></li>
+                <li style="--i: 7"><a href="#info" class="nav-link">{{ __('mutafest.nav.info') }}</a></li>
+                <li style="--i: 8"><a href="#contact" class="nav-link">{{ __('mutafest.nav.contact') }}</a></li>
             </ul>
         </div>
     </nav>
@@ -1706,29 +1864,42 @@
         // Mobile navigation toggle
         function toggleNav() {
             const navLinks = document.getElementById('nav-links');
-            const navToggle = document.querySelector('.nav-toggle i');
+            const navToggle = document.querySelector('.nav-toggle');
+            const navToggleIcon = document.querySelector('.nav-toggle i');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const body = document.body;
 
             navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
 
-            // Change hamburger to X and vice versa
+            // Change hamburger to X and vice versa with smooth animation
             if (navLinks.classList.contains('active')) {
-                navToggle.classList.remove('fa-bars');
-                navToggle.classList.add('fa-times');
+                navToggleIcon.classList.remove('fa-bars');
+                navToggleIcon.classList.add('fa-times');
+                body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
             } else {
-                navToggle.classList.remove('fa-times');
-                navToggle.classList.add('fa-bars');
+                navToggleIcon.classList.remove('fa-times');
+                navToggleIcon.classList.add('fa-bars');
+                body.style.overflow = ''; // Restore body scroll
             }
         }
 
         // Close mobile menu when clicking on a link
         function closeMobileNav() {
             const navLinks = document.getElementById('nav-links');
-            const navToggle = document.querySelector('.nav-toggle i');
+            const navToggle = document.querySelector('.nav-toggle');
+            const navToggleIcon = document.querySelector('.nav-toggle i');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const body = document.body;
 
             if (navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-                navToggle.classList.remove('fa-times');
-                navToggle.classList.add('fa-bars');
+                navToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                navToggleIcon.classList.remove('fa-times');
+                navToggleIcon.classList.add('fa-bars');
+                body.style.overflow = ''; // Restore body scroll
             }
         }
 
@@ -1852,10 +2023,11 @@
                 });
             });
 
-            // Close mobile menu when clicking outside
+            // Close mobile menu when clicking outside or on overlay
             document.addEventListener('click', function(event) {
                 const navLinks = document.getElementById('nav-links');
                 const navToggle = document.querySelector('.nav-toggle');
+                const mobileOverlay = document.getElementById('mobile-overlay');
 
                 if (navLinks.classList.contains('active') &&
                     !navLinks.contains(event.target) &&
@@ -1863,6 +2035,38 @@
                     closeMobileNav();
                 }
             });
+
+            // Add swipe gesture support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', function(event) {
+                touchStartX = event.changedTouches[0].screenX;
+            });
+
+            document.addEventListener('touchend', function(event) {
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const navLinks = document.getElementById('nav-links');
+                const swipeThreshold = 100;
+                
+                // Swipe right to left to close menu (for LTR)
+                if (touchStartX - touchEndX > swipeThreshold && navLinks.classList.contains('active')) {
+                    if (document.dir !== 'rtl') {
+                        closeMobileNav();
+                    }
+                }
+                
+                // Swipe left to right to close menu (for RTL)
+                if (touchEndX - touchStartX > swipeThreshold && navLinks.classList.contains('active')) {
+                    if (document.dir === 'rtl') {
+                        closeMobileNav();
+                    }
+                }
+            }
 
             // Initialize with home page
             showPage('home');
