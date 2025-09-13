@@ -6,7 +6,33 @@
     <title>{{ __('mutafest.meta.title') }}</title>
     <meta name="description" content="{{ __('mutafest.meta.description') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Custom Fonts -->
+    <style>
+        /* Diodrum Arabic Font for Titles */
+        @font-face {
+            font-family: 'DiodrumArabic';
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url('https://alfont.com/wp-content/fonts/new-arabic-fonts//alfont_com_AlFont_com_DiodrumArabic-Regular-1.ttf') format('truetype');
+        }
+
+        /* Import Noto Sans Arabic as fallback */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+        /* Bahij TheSansArabic Font for Text */
+        @font-face {
+            font-family: 'Bahij';
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url('https://alfont.com/wp-content/fonts/diwany-arabic-fonts//alfont_com_ArbFONTS-Bahij_TheSansArabic-Plain.ttf') format('truetype');
+        }
+    </style>
+
     <style>
         * {
             margin: 0;
@@ -26,10 +52,31 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Bahij', 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--dark);
             overflow-x: hidden;
+        }
+
+        /* Font Family Classes */
+        .font-title {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: bold;
+        }
+
+        .font-text {
+            font-family: 'Bahij', 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* All headings use Diodrum Arabic Bold */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: bold;
+        }
+
+        /* Ensure text elements use Bahij */
+        p, span, div, li, a {
+            font-family: 'Bahij', 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* Navigation */
@@ -128,6 +175,7 @@
         }
 
         .logo {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
             font-size: 2em;
             font-weight: bold;
             background: linear-gradient(135deg, var(--primary-blue), var(--coral));
@@ -145,7 +193,8 @@
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
+            font-weight: 700;
             position: relative;
             padding: 10px 0;
             transition: color 0.3s ease;
@@ -209,7 +258,9 @@
         }
 
         .hero h1 {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
             font-size: 4em;
+            font-weight: bold;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #FFFFFF, var(--sand));
             -webkit-background-clip: text;
@@ -218,7 +269,9 @@
         }
 
         .hero h2 {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
             font-size: 2em;
+            font-weight: bold;
             margin-bottom: 10px;
             color: var(--sand);
         }
@@ -256,12 +309,12 @@
         /* Color Banner */
         .color-banner {
             height: 100px;
-            background: linear-gradient(45deg, 
-                var(--primary-blue) 0%, 
-                var(--teal) 20%, 
-                var(--coral) 40%, 
-                var(--gold) 60%, 
-                var(--primary-blue) 80%, 
+            background: linear-gradient(45deg,
+                var(--primary-blue) 0%,
+                var(--teal) 20%,
+                var(--coral) 40%,
+                var(--gold) 60%,
+                var(--primary-blue) 80%,
                 var(--teal) 100%);
             background-size: 400% 400%;
             animation: colorShift 8s ease-in-out infinite;
@@ -297,7 +350,9 @@
         }
 
         .section-title {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
             font-size: 2.5em;
+            font-weight: bold;
             text-align: center;
             margin-bottom: 40px;
             background: linear-gradient(135deg, var(--primary-blue), var(--coral));
@@ -331,6 +386,7 @@
             background: linear-gradient(135deg, var(--primary-blue), var(--teal));
             color: white;
             padding: 20px;
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
             font-size: 1.5em;
             font-weight: bold;
         }
@@ -399,6 +455,7 @@
         }
 
         .guest-name {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
             font-size: 1.3em;
             font-weight: bold;
             margin-bottom: 5px;
@@ -435,6 +492,8 @@
         }
 
         .footer-section h3 {
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
+            font-weight: bold;
             margin-bottom: 20px;
             color: var(--sand);
         }
@@ -482,31 +541,324 @@
             color: rgba(255,255,255,0.6);
         }
 
+        /* Mobile Navigation Toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-toggle:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+
         /* Mobile Responsiveness */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .nav-links {
-                display: none;
+                gap: 20px;
             }
 
             .hero h1 {
-                font-size: 2.5em;
+                font-size: 3.5em;
             }
 
-            .hero h2 {
-                font-size: 1.5em;
+            .guests-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .nav-toggle {
+                display: block;
             }
 
+            .nav-links {
+                position: fixed;
+                top: 120px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 120px);
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                z-index: 9999;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            /* Ensure nav toggle is always visible on mobile */
+            .nav-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2em;
+                padding: 15px 30px;
+                width: 80%;
+                text-align: center;
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(46, 134, 171, 0.1);
+                transform: translateY(-2px);
+            }
+
+            /* Mobile Top Bar */
             .top-bar-content {
                 flex-direction: column;
                 gap: 10px;
+                padding: 8px 20px;
             }
 
             .quick-actions {
                 order: 2;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
+            .btn {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+
+            .language-switcher {
+                gap: 8px;
+            }
+
+            .lang-btn {
+                padding: 4px 8px;
+                font-size: 0.9em;
+            }
+
+            /* Mobile Hero */
+            .hero {
+                margin-top: 140px;
+                padding: 40px 20px;
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+                margin-bottom: 15px;
+            }
+
+            .hero h2 {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+                margin-bottom: 20px;
+            }
+
+            .hero .dates {
+                font-size: 1.1em;
+                margin-bottom: 30px;
+            }
+
+            .hero .cta-btn {
+                font-size: 1em;
+                padding: 12px 30px;
+            }
+
+            /* Mobile Color Banner */
+            .color-banner {
+                height: 80px;
+                font-size: 1.2em;
+                padding: 0 20px;
+                text-align: center;
+            }
+
+            /* Mobile Content */
+            .section-title {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .card h3 {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+
+            .card h4 {
+                font-size: 1.1em;
+                margin: 15px 0 10px 0;
+            }
+
+            /* Mobile Program */
+            .program-day {
+                margin-bottom: 30px;
+            }
+
+            .day-header {
+                padding: 15px;
+                font-size: 1.2em;
+            }
+
+            .day-content {
+                padding: 15px;
+            }
+
+            .session {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            .session-time {
+                font-size: 0.9em;
+            }
+
+            .session-title {
+                font-size: 1.1em;
+            }
+
+            /* Mobile Guests */
             .guests-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .guest-image {
+                height: 200px;
+                font-size: 3em;
+            }
+
+            .guest-info {
+                padding: 15px;
+            }
+
+            .guest-name {
+                font-size: 1.2em;
+            }
+
+            /* Mobile Newsletter */
+            .newsletter {
+                padding: 25px 20px;
+                margin: 30px 0;
+            }
+
+            .newsletter h3 {
+                font-size: 1.3em;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                max-width: 100%;
+                gap: 15px;
+            }
+
+            .newsletter input {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .newsletter button {
+                padding: 10px 15px;
+                border-radius: 25px;
+            }
+
+            /* Mobile Footer */
+            .footer {
+                padding: 30px 0 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .footer-section h3 {
+                margin-bottom: 15px;
+            }
+
+            .social-links {
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            /* Mobile Forms */
+            .card form div {
+                margin-bottom: 12px !important;
+            }
+
+            .card form input,
+            .card form textarea {
+                padding: 10px !important;
+                font-size: 16px !important;
+                border-radius: 6px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small mobile devices */
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero h2 {
+                font-size: 1.3em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .hero .dates {
+                font-size: 1em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .language-switcher {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .color-banner {
+                font-size: 1em;
+                height: 70px;
             }
         }
 
@@ -585,7 +937,10 @@
     <nav class="main-nav">
         <div class="nav-content">
             <div class="logo">MutaFest</div>
-            <ul class="nav-links">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home" class="nav-link active">{{ __('mutafest.nav.home') }}</a></li>
                 <li><a href="#about" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
                 <li><a href="#program" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
@@ -622,19 +977,19 @@
             <div class="card">
                 <h3>{{ __('mutafest.about.festival_title') }}</h3>
                 <p>{{ __('mutafest.about.description') }}</p>
-                
+
                 <h4>{{ __('mutafest.about.goal_title') }}</h4>
                 <p>{{ __('mutafest.about.goal_description') }}</p>
-                
+
                 <h4>{{ __('mutafest.about.organizers_title') }}</h4>
                 <ul>
                     <li><strong>{{ __('mutafest.about.organizer1_name') }}:</strong> {{ __('mutafest.about.organizer1_desc') }}</li>
                     <li><strong>{{ __('mutafest.about.organizer2_name') }}:</strong> {{ __('mutafest.about.organizer2_desc') }}</li>
                 </ul>
-                
+
                 <h4>{{ __('mutafest.about.partners_title') }}</h4>
                 <p>{{ __('mutafest.about.partners_description') }}</p>
-                
+
                 <h4>{{ __('mutafest.about.director_title') }}</h4>
                 <p><strong>{{ __('mutafest.about.director_name') }}:</strong> {{ __('mutafest.about.director_description') }}</p>
             </div>
@@ -645,7 +1000,7 @@
     <div class="page-content" id="program">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.program.title') }}</h2>
-            
+
             @foreach($program as $dayKey => $day)
             <div class="program-day">
                 <div class="day-header">
@@ -697,7 +1052,7 @@
     <div class="page-content" id="exhibitions">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.exhibitions.title') }}</h2>
-            
+
             <div class="card">
                 <h3><i class="fas fa-camera"></i> {{ __('mutafest.exhibitions.photo.title') }}</h3>
                 <p>{{ __('mutafest.exhibitions.photo.description') }}</p>
@@ -741,7 +1096,7 @@
     <div class="page-content" id="press">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.press.title') }}</h2>
-            
+
             <div class="card">
                 <h3><i class="fas fa-newspaper"></i> {{ __('mutafest.press.materials.title') }}</h3>
                 <p>{{ __('mutafest.press.materials.description') }}</p>
@@ -794,7 +1149,7 @@
     <div class="page-content" id="info">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.info.title') }}</h2>
-            
+
             <div class="card">
                 <h3><i class="fas fa-map-marker-alt"></i> {{ __('mutafest.info.venue.title') }}</h3>
                 <p><strong>{{ __('mutafest.info.venue.address_label') }}:</strong> {{ __('mutafest.info.venue.address') }}</p>
@@ -849,7 +1204,7 @@
     <div class="page-content" id="contact">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.contact.title') }}</h2>
-            
+
             <div class="card">
                 <h3><i class="fas fa-envelope"></i> {{ __('mutafest.contact.form.title') }}</h3>
                 <form style="margin-top: 20px;" onsubmit="submitContact(event)">
@@ -903,7 +1258,7 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-section">
                 <h3>{{ __('mutafest.footer.quick_links') }}</h3>
                 <a href="#program">{{ __('mutafest.nav.program') }}</a>
@@ -911,7 +1266,7 @@
                 <a href="#exhibitions">{{ __('mutafest.nav.exhibitions') }}</a>
                 <a href="#info">{{ __('mutafest.nav.info') }}</a>
             </div>
-            
+
             <div class="footer-section">
                 <h3>{{ __('mutafest.footer.partners') }}</h3>
                 <a href="#">{{ __('mutafest.footer.partner1') }}</a>
@@ -919,7 +1274,7 @@
                 <a href="#">{{ __('mutafest.footer.partner3') }}</a>
                 <a href="#">{{ __('mutafest.footer.partner4') }}</a>
             </div>
-            
+
             <div class="footer-section">
                 <h3>{{ __('mutafest.footer.contact_us') }}</h3>
                 <a href="mailto:{{ __('mutafest.contact.info.email') }}">{{ __('mutafest.contact.info.email') }}</a>
@@ -927,7 +1282,7 @@
                 <p>{{ __('mutafest.contact.info.address') }}</p>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 MutaFest. {{ __('mutafest.footer.rights') }}</p>
         </div>
@@ -941,34 +1296,63 @@
             pages.forEach(page => {
                 page.classList.remove('active');
             });
-            
+
             // Hide hero section
             const hero = document.getElementById('home');
             const colorBanner = document.querySelector('.color-banner');
-            
+
             if (pageId === 'home') {
                 hero.style.display = 'flex';
                 colorBanner.style.display = 'flex';
             } else {
                 hero.style.display = 'none';
                 colorBanner.style.display = 'none';
-                
+
                 // Show selected page
                 const selectedPage = document.getElementById(pageId);
                 if (selectedPage) {
                     selectedPage.classList.add('active');
                 }
             }
-            
+
             // Update navigation active state
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('active');
             });
-            
+
             const activeLink = document.querySelector(`[href="#${pageId}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
+            }
+        }
+
+        // Mobile navigation toggle
+        function toggleNav() {
+            const navLinks = document.getElementById('nav-links');
+            const navToggle = document.querySelector('.nav-toggle i');
+
+            navLinks.classList.toggle('active');
+
+            // Change hamburger to X and vice versa
+            if (navLinks.classList.contains('active')) {
+                navToggle.classList.remove('fa-bars');
+                navToggle.classList.add('fa-times');
+            } else {
+                navToggle.classList.remove('fa-times');
+                navToggle.classList.add('fa-bars');
+            }
+        }
+
+        // Close mobile menu when clicking on a link
+        function closeMobileNav() {
+            const navLinks = document.getElementById('nav-links');
+            const navToggle = document.querySelector('.nav-toggle i');
+
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('fa-times');
+                navToggle.classList.add('fa-bars');
             }
         }
 
@@ -1088,9 +1472,22 @@
                     e.preventDefault();
                     const pageId = this.getAttribute('href').substring(1);
                     showPage(pageId);
+                    closeMobileNav(); // Close mobile menu when nav link is clicked
                 });
             });
-            
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const navLinks = document.getElementById('nav-links');
+                const navToggle = document.querySelector('.nav-toggle');
+
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(event.target) &&
+                    !navToggle.contains(event.target)) {
+                    closeMobileNav();
+                }
+            });
+
             // Initialize with home page
             showPage('home');
         });
