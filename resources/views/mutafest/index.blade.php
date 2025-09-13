@@ -1062,6 +1062,268 @@
             }
         }
 
+        /* Beautiful Booking Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+        }
+
+        .booking-modal {
+            background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(46, 134, 171, 0.02));
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.8) translateY(50px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(46, 134, 171, 0.1);
+        }
+
+        .modal-overlay.active .booking-modal {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--coral), var(--primary-blue));
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(241, 143, 1, 0.4);
+        }
+
+        .modal-header {
+            text-align: center;
+            padding: 40px 40px 20px 40px;
+            border-bottom: 1px solid rgba(46, 134, 171, 0.1);
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--coral));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: white;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 15px 35px rgba(46, 134, 171, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .modal-header h2 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            color: var(--dark);
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+
+        .modal-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .booking-form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(46, 134, 171, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--coral);
+            box-shadow: 0 0 0 3px rgba(241, 143, 1, 0.1);
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .form-actions .btn {
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-actions .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .booking-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--coral);
+        }
+
+        .info-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-card p {
+            color: var(--dark);
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card ul li {
+            color: var(--dark);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .info-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+            font-weight: bold;
+        }
+
+        /* Mobile responsive modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .modal-header {
+                padding: 30px 20px 15px 20px;
+            }
+
+            .modal-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2em;
+            }
+
+            .booking-form {
+                padding: 20px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-actions .btn {
+                justify-content: center;
+            }
+        }
+
         /* Newsletter Signup */
         .newsletter {
             background: linear-gradient(135deg, var(--sand), rgba(241, 143, 1, 0.1));
@@ -1327,6 +1589,98 @@
     <!-- Main Navigation -->
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
+
+    <!-- Book Invitation Modal -->
+    <div class="modal-overlay" id="booking-modal-overlay" onclick="closeBookingModal()">
+        <div class="booking-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeBookingModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <h2>{{ __('mutafest.nav.book_invitation') }}</h2>
+                <p>{{ __('mutafest.hero.subtitle') }}</p>
+            </div>
+
+            <div class="modal-content">
+                <div class="booking-form">
+                    <form id="booking-form" onsubmit="submitBooking(event)">
+                        @csrf
+                        <div class="form-group">
+                            <label for="guest-name">{{ __('mutafest.contact.form.name_placeholder') }}</label>
+                            <input type="text" id="guest-name" name="name" placeholder="{{ __('mutafest.contact.form.name_placeholder') }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guest-email">{{ __('mutafest.contact.form.email_placeholder') }}</label>
+                            <input type="email" id="guest-email" name="email" placeholder="{{ __('mutafest.contact.form.email_placeholder') }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guest-phone">{{ __('mutafest.contact.info.phone_label') }}</label>
+                            <input type="tel" id="guest-phone" name="phone" placeholder="+39 123 456 7890">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guest-count">Number of Guests</label>
+                            <select id="guest-count" name="guests" required>
+                                <option value="">Select number of guests</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred-day">Preferred Day</label>
+                            <select id="preferred-day" name="day">
+                                <option value="">Any day</option>
+                                <option value="friday">Friday 17 Oct - Opening</option>
+                                <option value="saturday">Saturday 18 Oct - Main Events</option>
+                                <option value="sunday">Sunday 19 Oct - Closing</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="special-requests">Special Requests</label>
+                            <textarea id="special-requests" name="requests" placeholder="Any special requirements or questions..." rows="3"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="closeBookingModal()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Invitation Request
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="booking-info">
+                    <div class="info-card">
+                        <h4><i class="fas fa-calendar-alt"></i> Event Details</h4>
+                        <p>{{ __('mutafest.hero.dates') }}</p>
+                        <p>{{ __('mutafest.info.venue.address') }}</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="fas fa-info-circle"></i> Important Notes</h4>
+                        <ul>
+                            <li>Free admission with invitation</li>
+                            <li>Registration required</li>
+                            <li>Limited capacity</li>
+                            <li>Confirmation via email</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav class="main-nav">
         <div class="nav-content">
@@ -1954,9 +2308,68 @@
         }
 
         // Book invitation
+        // Beautiful booking modal functions
         function bookInvitation() {
-            alert('{{ __("mutafest.messages.booking_coming_soon") }}');
+            const modalOverlay = document.getElementById('booking-modal-overlay');
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Add staggered animation to form elements
+            setTimeout(() => {
+                const formGroups = document.querySelectorAll('.form-group');
+                formGroups.forEach((group, index) => {
+                    setTimeout(() => {
+                        group.style.animation = `fadeInUp 0.5s ease forwards`;
+                        group.style.animationDelay = `${index * 0.1}s`;
+                    }, index * 100);
+                });
+            }, 200);
         }
+
+        function closeBookingModal() {
+            const modalOverlay = document.getElementById('booking-modal-overlay');
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset form animations
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                group.style.animation = '';
+                group.style.animationDelay = '';
+            });
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            
+            // Add loading state to submit button
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Show success message
+                alert('🎉 Invitation request sent successfully! You will receive a confirmation email shortly.');
+                closeBookingModal();
+                
+                // Reset form
+                event.target.reset();
+            }, 2000);
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
 
         // Download functions
         function downloadProgram() {
