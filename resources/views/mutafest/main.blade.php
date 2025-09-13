@@ -97,9 +97,9 @@
         .character {
             position: absolute;
             right: 120px;
-            bottom: 180px;
+            bottom: 140px;
             z-index: 5;
-            animation: float 3s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
         }
 
         .character-img {
@@ -122,96 +122,123 @@
             z-index: 6;
         }
 
-        /* Pure CSS Animated Waves */
+        /* Connected Ocean Waves System */
         .ocean {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 300px;
+            height: 150px;
             z-index: 1;
             overflow: hidden;
         }
 
-        /* Wave layers - each with different colors and animations */
+        /* Create continuous wave pattern */
         .wave {
             position: absolute;
-            width: 200%;
+            width: 400%;
             height: 100%;
             bottom: 0;
             left: 0;
+            background-repeat: repeat-x;
         }
 
-        /* First wave layer - lightest color, fastest */
-        .wave:nth-child(1) {
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%2382c4e5'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%235facdb'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%233c97d3'/%3E%3C/svg%3E") repeat-x;
-            background-size: 1200px 120px;
-            animation: wave1 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-            bottom: 40px;
-            height: 120px;
-        }
-
-        /* Second wave layer - medium color, medium speed */
-        .wave:nth-child(2) {
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%235facdb'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%234a9dcf'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%232a89c7'/%3E%3C/svg%3E") repeat-x;
-            background-size: 1200px 140px;
-            animation: wave2 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-            animation-delay: -2s;
-            bottom: 20px;
-            height: 140px;
-            opacity: 0.8;
-        }
-
-        /* Third wave layer - darkest color, slowest */
-        .wave:nth-child(3) {
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%234a9dcf'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23378fc3'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%231e7ab8'/%3E%3C/svg%3E") repeat-x;
-            background-size: 1200px 160px;
-            animation: wave3 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-            animation-delay: -4s;
+        /* Bottom solid base layer - no gaps */
+        .wave-base {
+            position: absolute;
             bottom: 0;
-            height: 160px;
-            opacity: 0.9;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #1e7ab8;
+            z-index: 5;
         }
 
-        /* Wave animations - smooth continuous movement */
-        @keyframes wave1 {
-            0% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-600px) translateY(-5px); }
-            100% { transform: translateX(-1200px) translateY(0); }
+        /* Back wave - continuous flow */
+        .wave:nth-child(1) {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 100' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C150,60 250,20 400,40 C550,60 650,20 800,40 L800,100 L0,100 Z' fill='%231e7ab8'/%3E%3C/svg%3E");
+            background-size: 800px 100px;
+            animation: wave 20s linear infinite;
+            bottom: 0;
+            height: 100px;
+            opacity: 1;
         }
 
-        @keyframes wave2 {
-            0% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-600px) translateY(5px); }
-            100% { transform: translateX(-1200px) translateY(0); }
+        /* Middle wave - overlapping */
+        .wave:nth-child(2) {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 C200,20 300,70 500,50 C700,30 750,60 800,50 L800,100 L0,100 Z' fill='%232a89c7' opacity='0.8'/%3E%3C/svg%3E");
+            background-size: 800px 100px;
+            animation: wave 15s linear infinite;
+            animation-delay: -5s;
+            bottom: 5px;
+            height: 95px;
         }
 
-        @keyframes wave3 {
-            0% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-600px) translateY(-3px); }
-            100% { transform: translateX(-1200px) translateY(0); }
+        /* Front wave - smooth overlap */
+        .wave:nth-child(3) {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 80' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C100,45 200,15 350,30 C500,45 600,15 800,30 L800,80 L0,80 Z' fill='%233c97d3' opacity='0.7'/%3E%3C/svg%3E");
+            background-size: 800px 80px;
+            animation: wave 12s linear infinite;
+            animation-delay: -2s;
+            bottom: 10px;
+            height: 80px;
+        }
+
+        /* Top foam layer */
+        .wave:nth-child(4) {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 60' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C150,35 250,5 400,20 C550,35 650,5 800,20 L800,60 L0,60 Z' fill='%23ffffff' opacity='0.3'/%3E%3C/svg%3E");
+            background-size: 800px 60px;
+            animation: wave 10s linear infinite;
+            animation-delay: -7s;
+            bottom: 15px;
+            height: 60px;
+        }
+
+        /* Simple continuous wave animation */
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-800px);
+            }
+        }
+
+        /* Add surface sparkles */
+        .ocean::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 20%, white, transparent);
+            background-size: 300px 200px;
+            background-repeat: repeat;
+            opacity: 0.3;
+            animation: sparkle 10s linear infinite;
+            z-index: 11;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300px); }
         }
 
         /* Floating animation for character */
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
         }
 
-        /* Add some foam/highlights on top of waves */
-        .ocean::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, 
-                transparent 0%, 
-                transparent 70%, 
-                rgba(255,255,255,0.1) 85%, 
-                rgba(255,255,255,0.05) 100%
-            );
-            z-index: 10;
-            pointer-events: none;
+        /* Adjust character to float with waves */
+        .character {
+            animation: float 6s ease-in-out infinite;
         }
 
         /* Logo placeholder if needed */
@@ -292,6 +319,8 @@
         <div class="wave"></div>
         <div class="wave"></div>
         <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave-base"></div>
     </div>
 
     <!-- Instructions for using your images
