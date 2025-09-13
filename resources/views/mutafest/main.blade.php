@@ -97,7 +97,7 @@
         .character {
             position: absolute;
             right: 120px;
-            bottom: 140px;
+            bottom: 190px;
             z-index: 5;
             animation: float 6s ease-in-out infinite;
         }
@@ -122,86 +122,100 @@
             z-index: 6;
         }
 
-        /* Connected Ocean Waves System */
+        /* Image-based Wave System with 3 Rows */
         .ocean {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px;
+            height: 200px;
             z-index: 1;
             overflow: hidden;
         }
 
-        /* Create continuous wave pattern */
-        .wave {
+        /* Wave row container */
+        .wave-row {
             position: absolute;
-            width: 400%;
-            height: 100%;
-            bottom: 0;
-            left: 0;
-            background-repeat: repeat-x;
+            width: 200%;
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Space between images in same row */
         }
 
-        /* Bottom solid base layer - no gaps */
-        .wave-base {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: #1e7ab8;
-            z-index: 5;
+        /* First row - back layer */
+        .wave-row:nth-child(1) {
+            bottom: 120px; /* Position for top row */
+            animation: waveMove1 25s linear infinite;
+            opacity: 0.6;
+            filter: brightness(0.8);
         }
 
-        /* Back wave - continuous flow */
-        .wave:nth-child(1) {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 100' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C150,60 250,20 400,40 C550,60 650,20 800,40 L800,100 L0,100 Z' fill='%231e7ab8'/%3E%3C/svg%3E");
-            background-size: 800px 100px;
-            animation: wave 20s linear infinite;
-            bottom: 0;
-            height: 100px;
+        /* Second row - middle layer */
+        .wave-row:nth-child(2) {
+            bottom: 60px; /* Position for middle row */
+            animation: waveMove2 20s linear infinite;
+            animation-delay: -10s;
+            opacity: 0.8;
+            filter: brightness(0.9);
+        }
+
+        /* Third row - front layer */
+        .wave-row:nth-child(3) {
+            bottom: 0; /* Position for bottom row */
+            animation: waveMove3 15s linear infinite;
+            animation-delay: -5s;
             opacity: 1;
         }
 
-        /* Middle wave - overlapping */
-        .wave:nth-child(2) {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 C200,20 300,70 500,50 C700,30 750,60 800,50 L800,100 L0,100 Z' fill='%232a89c7' opacity='0.8'/%3E%3C/svg%3E");
-            background-size: 800px 100px;
-            animation: wave 15s linear infinite;
-            animation-delay: -5s;
-            bottom: 5px;
-            height: 95px;
+        /* Individual wave image */
+        .wave-img {
+            height: 50px;
+            width: auto;
+            flex-shrink: 0;
         }
 
-        /* Front wave - smooth overlap */
-        .wave:nth-child(3) {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 80' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C100,45 200,15 350,30 C500,45 600,15 800,30 L800,80 L0,80 Z' fill='%233c97d3' opacity='0.7'/%3E%3C/svg%3E");
-            background-size: 800px 80px;
-            animation: wave 12s linear infinite;
-            animation-delay: -2s;
-            bottom: 10px;
-            height: 80px;
-        }
-
-        /* Top foam layer */
-        .wave:nth-child(4) {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 60' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C150,35 250,5 400,20 C550,35 650,5 800,20 L800,60 L0,60 Z' fill='%23ffffff' opacity='0.3'/%3E%3C/svg%3E");
-            background-size: 800px 60px;
-            animation: wave 10s linear infinite;
-            animation-delay: -7s;
-            bottom: 15px;
-            height: 60px;
-        }
-
-        /* Simple continuous wave animation */
-        @keyframes wave {
+        /* Animation for continuous movement */
+        @keyframes waveMove1 {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-800px);
+                transform: translateX(-50%);
             }
+        }
+
+        @keyframes waveMove2 {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes waveMove3 {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Background water color behind waves */
+        .ocean::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(30, 122, 184, 0.2) 50%,
+                rgba(30, 122, 184, 0.4) 100%
+            );
+            z-index: -1;
         }
 
         /* Add surface sparkles */
@@ -314,13 +328,28 @@
         </div>
     </div>
 
-    <!-- Pure CSS Animated Ocean Waves -->
+    <!-- Image-based Ocean Waves with 3 Rows -->
     <div class="ocean">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave-base"></div>
+        <!-- First Row (Back) -->
+        <div class="wave-row">
+            @for($i = 0; $i < 20; $i++)
+                <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
+            @endfor
+        </div>
+        
+        <!-- Second Row (Middle) -->
+        <div class="wave-row">
+            @for($i = 0; $i < 20; $i++)
+                <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
+            @endfor
+        </div>
+        
+        <!-- Third Row (Front) -->
+        <div class="wave-row">
+            @for($i = 0; $i < 20; $i++)
+                <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
+            @endfor
+        </div>
     </div>
 
     <!-- Instructions for using your images
