@@ -9,3 +9,101 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Custom MutaFest Styles */
+[dir="rtl"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wave-animation {
+    background: linear-gradient(45deg, #1e40af, #0891b2, #059669, #84cc16, #eab308, #dc2626, #9333ea);
+    background-size: 400% 400%;
+    animation: waveGradient 15s ease infinite;
+}
+
+@keyframes waveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.wave-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave-shape svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.guest-card {
+    transition: transform 0.3s ease;
+}
+
+.guest-card:hover {
+    transform: translateY(-5px);
+}
+
+.nav-link {
+    @apply text-gray-700 hover:text-blue-600 transition-colors duration-200;
+}
+
+.nav-link:hover {
+    @apply text-blue-600;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* RTL specific adjustments */
+[dir="rtl"] .space-x-reverse > * + * {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .space-x-8 > * + * {
+    margin-left: 2rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .space-x-4 > * + * {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .space-x-6 > * + * {
+    margin-left: 1.5rem;
+    margin-right: 0;
+}
+
+/* Loading spinner for better UX */
+.loading {
+    @apply opacity-50 pointer-events-none;
+}
+
+/* Focus styles for accessibility */
+.focus\:ring-2:focus {
+    @apply ring-2 ring-blue-500/50;
+}
+
+/* Custom button hover effects */
+.btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 hover:transform hover:scale-105 shadow-lg;
+}
+
+.btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-gray-200;
+}
