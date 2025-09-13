@@ -227,4 +227,9 @@ class MutaFestController extends Controller
     {
         return view('mutafest.main');
     }
+
+    public function about()
+    {
+        return view('mutafest.about');
+    }
 }
