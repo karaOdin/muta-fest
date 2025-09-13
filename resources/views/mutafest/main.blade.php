@@ -64,14 +64,11 @@
             z-index: 5;
         }
 
-        .title-large {
-            font-size: 120px;
-            font-weight: bold;
-            line-height: 0.9;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        .main-logo {
+            height: 120px;
+            width: auto;
             margin-bottom: 20px;
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            letter-spacing: -2px;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
         }
 
         .subtitle {
@@ -146,8 +143,8 @@
         .wave-row:nth-child(1) {
             bottom: 120px; /* Position for top row */
             animation: waveMove1 25s linear infinite;
-            opacity: 0.6;
-            filter: brightness(0.8);
+           /* opacity: 0.6;
+            filter: brightness(0.8);*/
         }
 
         /* Second row - middle layer */
@@ -155,8 +152,8 @@
             bottom: 60px; /* Position for middle row */
             animation: waveMove2 20s linear infinite;
             animation-delay: -10s;
-            opacity: 0.8;
-            filter: brightness(0.9);
+           /* opacity: 0.8;
+            filter: brightness(0.9);*/
         }
 
         /* Third row - front layer */
@@ -226,7 +223,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20% 30%, white, transparent),
                 radial-gradient(2px 2px at 60% 70%, white, transparent),
                 radial-gradient(1px 1px at 50% 50%, white, transparent),
@@ -301,14 +298,16 @@
         <a href="#" class="social-icon">@</a>
     </div>
 
-    <!-- Logo -->
-    <div class="logo">
+    <!-- Logo (hidden since we're using it as main title) -->
+    <!--<div class="logo">
         <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest Logo" class="logo-img">
-    </div>
+    </div>-->
 
     <!-- Main Title -->
     <div class="main-title">
-        <div class="title-large">MutaFest</div>
+        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180"
+             alt="MutaFest"
+             class="main-logo">
         <div class="subtitle">Festival del<br>Mediterraneo<br>a Milano</div>
     </div>
 
@@ -336,14 +335,14 @@
                 <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
             @endfor
         </div>
-        
+
         <!-- Second Row (Middle) -->
         <div class="wave-row">
             @for($i = 0; $i < 20; $i++)
                 <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
             @endfor
         </div>
-        
+
         <!-- Third Row (Front) -->
         <div class="wave-row">
             @for($i = 0; $i < 20; $i++)
