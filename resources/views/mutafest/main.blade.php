@@ -267,14 +267,91 @@
             filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .title-large { font-size: 80px; }
-            .subtitle { font-size: 32px; }
-            .character { right: 20px; }
-            .character-img { width: 150px; }
-            .main-title { left: 30px; }
-            .chi-siamo { left: 30px; }
+        /* Mobile-first Proportional Design */
+        @media (max-width: 1200px) {
+            .main-title {
+                top: 10vh;
+                left: 5vw;
+            }
+
+            .main-logo {
+                height: 9vh;
+                margin-bottom: 1vh;
+            }
+
+            .subtitle {
+                font-size: 7vw;
+                line-height: 1.2;
+            }
+
+            .character {
+                right: 8vw;
+                bottom: 25vh;
+            }
+
+            .character-img {
+                width: 25vw;
+                min-width: 150px;
+                max-width: 250px;
+            }
+
+            .character-text-overlay {
+                font-size: 4.2vw;
+                min-font-size: 16px;
+                max-font-size: 24px;
+            }
+
+            .chi-siamo {
+                bottom: 32vh;
+                left: 5vw;
+                font-size: 4vw;
+            }
+
+            .social-icons {
+                top: 3vh;
+                left: 3vw;
+                gap: 2vw;
+            }
+
+            .social-icon {
+                width: 6vw;
+                height: 6vw;
+                min-width: 35px;
+                min-height: 35px;
+                max-width: 50px;
+                max-height: 50px;
+                font-size: 3vw;
+            }
+
+            .ocean {
+                height: 20vh;
+            }
+
+            .wave-row:nth-child(1) {
+                bottom: 12vh;
+            }
+
+            .wave-row:nth-child(2) {
+                bottom: 6vh;
+            }
+
+            .wave-img {
+                height: 6vh;
+                min-height: 30px;
+                max-height: 50px;
+            }
+
+            .wave-row {
+                gap: 3vw;
+            }
+        }
+
+        /* Prevent scrolling */
+        html, body {
+            overflow: hidden;
+            height: 100%;
+            position: fixed;
+            width: 100%;
         }
 
         /* File upload styling for demonstration */
