@@ -131,6 +131,11 @@ class MutaFestController extends Controller
         return view('mutafest.index', compact('guests', 'program'));
     }
 
+    public function booking()
+    {
+        return view('mutafest.booking');
+    }
+
     public function changeLanguage(Request $request, string $locale)
     {
         $availableLocales = ['en', 'it', 'ar'];
@@ -216,5 +221,10 @@ class MutaFestController extends Controller
             'success' => true,
             'message' => __('mutafest.messages.accreditation_success'),
         ]);
+    }
+
+    public function main()
+    {
+        return view('mutafest.main');
     }
 }

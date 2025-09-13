@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // MutaFest Routes
 Route::get('/', [MutaFestController::class, 'index'])->name('mutafest.home');
+Route::get('/main', [MutaFestController::class, 'main'])->name('mutafest.about');
+Route::get('/booking', [MutaFestController::class, 'booking'])->name('mutafest.booking');
 Route::get('/language/{locale}', [MutaFestController::class, 'changeLanguage'])->name('mutafest.language');
 
 // Download Routes

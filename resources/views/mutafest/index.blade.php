@@ -159,7 +159,7 @@
             backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
-            top: 80px;
+            top: 50px;
             width: 100%;
             z-index: 999;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
@@ -183,13 +183,20 @@
         }
 
         .logo {
-            font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
-            font-size: 2em;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary-blue), var(--coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -646,7 +653,7 @@
             .mobile-overlay {
                 display: block;
             }
-            
+
             .mobile-overlay.active {
                 background: linear-gradient(45deg, rgba(46, 134, 171, 0.3), rgba(0, 0, 0, 0.7));
                 backdrop-filter: blur(10px);
@@ -1048,7 +1055,7 @@
         }
 
         /* Clean layout for mobile navigation */
-        @media (max-width: 1024px) {            
+        @media (max-width: 1024px) {
             .nav-links:not(.active) {
                 display: none !important;
             }
@@ -1059,6 +1066,10 @@
 
             .logo {
                 flex-shrink: 0;
+            }
+            
+            .logo img {
+                height: 35px;
             }
         }
 
@@ -1092,16 +1103,18 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(46, 134, 171, 0.02));
             backdrop-filter: blur(30px);
             border-radius: 25px;
-            max-width: 900px;
+            max-width: 850px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-height: 85vh;
+            overflow: hidden;
             position: relative;
             transform: scale(0.8) translateY(50px);
             opacity: 0;
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(46, 134, 171, 0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .modal-overlay.active .booking-modal {
@@ -1575,7 +1588,7 @@
     <div class="top-bar">
         <div class="top-bar-content">
             <div class="quick-actions">
-                <a href="#" class="btn btn-primary" onclick="bookInvitation()">{{ __('mutafest.nav.book_invitation') }}</a>
+                <a href="{{ route('mutafest.booking') }}" class="btn btn-primary">{{ __('mutafest.nav.book_invitation') }}</a>
                 <a href="#" class="btn btn-secondary" onclick="downloadProgram()">{{ __('mutafest.nav.download_program') }}</a>
             </div>
             <div class="language-switcher">
@@ -1590,13 +1603,11 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
 
-    <!-- Book Invitation Modal -->
-    <div class="modal-overlay" id="booking-modal-overlay" onclick="closeBookingModal()">
         <div class="booking-modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeBookingModal()">
                 <i class="fas fa-times"></i>
             </button>
-            
+
             <div class="modal-header">
                 <div class="modal-icon">
                     <i class="fas fa-ticket-alt"></i>
@@ -1684,7 +1695,9 @@
 
     <nav class="main-nav">
         <div class="nav-content">
-            <div class="logo">MutaFest</div>
+            <div class="logo">
+                <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" style="height: 40px; width: auto;">
+            </div>
             <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()">
                 <i class="fas fa-bars"></i>
             </button>
@@ -2313,7 +2326,7 @@
             const modalOverlay = document.getElementById('booking-modal-overlay');
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
+
             // Add staggered animation to form elements
             setTimeout(() => {
                 const formGroups = document.querySelectorAll('.form-group');
@@ -2330,7 +2343,7 @@
             const modalOverlay = document.getElementById('booking-modal-overlay');
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
-            
+
             // Reset form animations
             const formGroups = document.querySelectorAll('.form-group');
             formGroups.forEach(group => {
@@ -2342,23 +2355,23 @@
         function submitBooking(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            
+
             // Add loading state to submit button
             const submitBtn = event.target.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
-            
+
             // Simulate API call
             setTimeout(() => {
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                
+
                 // Show success message
                 alert('🎉 Invitation request sent successfully! You will receive a confirmation email shortly.');
                 closeBookingModal();
-                
+
                 // Reset form
                 event.target.reset();
             }, 2000);
