@@ -905,6 +905,197 @@
             background: var(--primary-blue);
         }
 
+        /* Enhanced About Page Styles */
+        .about-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .about-card.fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--coral));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(46, 134, 171, 0.3);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            font-size: 1.5em;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        /* About Grid for Organizers */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .about-card-small {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .about-card-small.fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .about-card-small:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-icon-small {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--teal), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: white;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Enhanced Contact Form Styles */
+        .about-content form input:focus,
+        .about-content form textarea:focus {
+            border-color: var(--coral) !important;
+            box-shadow: 0 0 0 3px rgba(241, 143, 1, 0.1) !important;
+            transform: translateY(-2px);
+        }
+
+        .about-content form input:hover,
+        .about-content form textarea:hover {
+            border-color: var(--teal) !important;
+            transform: translateY(-1px);
+        }
+
+        .about-content form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(241, 143, 1, 0.4) !important;
+        }
+
+        /* Newsletter form responsiveness */
+        @media (max-width: 768px) {
+            .about-content div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+        }
+            box-shadow: 0 6px 15px rgba(162, 59, 114, 0.3);
+        }
+
+        .about-card-small h4 {
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .about-card-small p {
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        /* Director Card Special Styling */
+        .director-card {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(242, 66, 54, 0.05));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .director-info h4 {
+            color: var(--coral);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile About Page Styles */
+        @media (max-width: 768px) {
+            .about-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .about-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+                margin: 0 auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 30px 0;
+            }
+
+            .about-card-small {
+                padding: 20px;
+            }
+
+            .about-icon-small {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
+        }
+
         /* RTL Support */
         [dir="rtl"] .session {
             border-right: none;
@@ -974,24 +1165,71 @@
     <div class="page-content" id="about">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.about.title') }}</h2>
-            <div class="card">
-                <h3>{{ __('mutafest.about.festival_title') }}</h3>
-                <p>{{ __('mutafest.about.description') }}</p>
+            
+            <!-- Festival Introduction Card -->
+            <div class="about-card fade-in" data-delay="0">
+                <div class="about-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.about.festival_title') }}</h3>
+                    <p>{{ __('mutafest.about.description') }}</p>
+                </div>
+            </div>
 
-                <h4>{{ __('mutafest.about.goal_title') }}</h4>
-                <p>{{ __('mutafest.about.goal_description') }}</p>
+            <!-- Goal Card -->
+            <div class="about-card fade-in" data-delay="200">
+                <div class="about-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.about.goal_title') }}</h3>
+                    <p>{{ __('mutafest.about.goal_description') }}</p>
+                </div>
+            </div>
 
-                <h4>{{ __('mutafest.about.organizers_title') }}</h4>
-                <ul>
-                    <li><strong>{{ __('mutafest.about.organizer1_name') }}:</strong> {{ __('mutafest.about.organizer1_desc') }}</li>
-                    <li><strong>{{ __('mutafest.about.organizer2_name') }}:</strong> {{ __('mutafest.about.organizer2_desc') }}</li>
-                </ul>
+            <!-- Organizers Cards -->
+            <div class="about-grid">
+                <div class="about-card-small fade-in" data-delay="400">
+                    <div class="about-icon-small">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>{{ __('mutafest.about.organizer1_name') }}</h4>
+                    <p>{{ __('mutafest.about.organizer1_desc') }}</p>
+                </div>
+                
+                <div class="about-card-small fade-in" data-delay="600">
+                    <div class="about-icon-small">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4>{{ __('mutafest.about.organizer2_name') }}</h4>
+                    <p>{{ __('mutafest.about.organizer2_desc') }}</p>
+                </div>
+            </div>
 
-                <h4>{{ __('mutafest.about.partners_title') }}</h4>
-                <p>{{ __('mutafest.about.partners_description') }}</p>
+            <!-- Partners Card -->
+            <div class="about-card fade-in" data-delay="800">
+                <div class="about-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.about.partners_title') }}</h3>
+                    <p>{{ __('mutafest.about.partners_description') }}</p>
+                </div>
+            </div>
 
-                <h4>{{ __('mutafest.about.director_title') }}</h4>
-                <p><strong>{{ __('mutafest.about.director_name') }}:</strong> {{ __('mutafest.about.director_description') }}</p>
+            <!-- Director Card -->
+            <div class="about-card director-card fade-in" data-delay="1000">
+                <div class="about-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.about.director_title') }}</h3>
+                    <div class="director-info">
+                        <h4>{{ __('mutafest.about.director_name') }}</h4>
+                        <p>{{ __('mutafest.about.director_description') }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1052,42 +1290,72 @@
     <div class="page-content" id="exhibitions">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.exhibitions.title') }}</h2>
-
-            <div class="card">
-                <h3><i class="fas fa-camera"></i> {{ __('mutafest.exhibitions.photo.title') }}</h3>
-                <p>{{ __('mutafest.exhibitions.photo.description') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.photo.location_label') }}:</strong> {{ __('mutafest.exhibitions.photo.location') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.photo.timing_label') }}:</strong> {{ __('mutafest.exhibitions.photo.timing') }}</p>
+            
+            <!-- Photo Exhibition Card -->
+            <div class="about-card fade-in" data-delay="0">
+                <div class="about-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.exhibitions.photo.title') }}</h3>
+                    <p>{{ __('mutafest.exhibitions.photo.description') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.photo.location_label') }}:</strong> {{ __('mutafest.exhibitions.photo.location') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.photo.timing_label') }}:</strong> {{ __('mutafest.exhibitions.photo.timing') }}</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-theater-masks"></i> {{ __('mutafest.exhibitions.show.title') }}</h3>
-                <p>{{ __('mutafest.exhibitions.show.description') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.show.direction_label') }}:</strong> {{ __('mutafest.exhibitions.show.direction') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.show.duration_label') }}:</strong> {{ __('mutafest.exhibitions.show.duration') }}</p>
+            <!-- Theater Show Card -->
+            <div class="about-card fade-in" data-delay="200">
+                <div class="about-icon">
+                    <i class="fas fa-theater-masks"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.exhibitions.show.title') }}</h3>
+                    <p>{{ __('mutafest.exhibitions.show.description') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.show.direction_label') }}:</strong> {{ __('mutafest.exhibitions.show.direction') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.show.duration_label') }}:</strong> {{ __('mutafest.exhibitions.show.duration') }}</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-music"></i> {{ __('mutafest.exhibitions.music.title') }}</h3>
-                <p>{{ __('mutafest.exhibitions.music.description') }}</p>
-                <ul>
-                    @foreach(__('mutafest.exhibitions.music.events') as $event)
-                    <li>{{ $event }}</li>
-                    @endforeach
-                </ul>
+            <!-- Music Performances Card -->
+            <div class="about-card fade-in" data-delay="400">
+                <div class="about-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.exhibitions.music.title') }}</h3>
+                    <p>{{ __('mutafest.exhibitions.music.description') }}</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        @foreach(__('mutafest.exhibitions.music.events') as $event)
+                        <li style="margin-bottom: 8px; color: var(--dark);">{{ $event }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-film"></i> {{ __('mutafest.exhibitions.cinema.title') }}</h3>
-                <p>{{ __('mutafest.exhibitions.cinema.description') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.cinema.schedule_label') }}:</strong> {{ __('mutafest.exhibitions.cinema.schedule') }}</p>
+            <!-- Cinema Screenings Card -->
+            <div class="about-card fade-in" data-delay="600">
+                <div class="about-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.exhibitions.cinema.title') }}</h3>
+                    <p>{{ __('mutafest.exhibitions.cinema.description') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.cinema.schedule_label') }}:</strong> {{ __('mutafest.exhibitions.cinema.schedule') }}</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-cocktail"></i> {{ __('mutafest.exhibitions.after_party.title') }}</h3>
-                <p>{{ __('mutafest.exhibitions.after_party.description') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.after_party.timing_label') }}:</strong> {{ __('mutafest.exhibitions.after_party.timing') }}</p>
-                <p><strong>{{ __('mutafest.exhibitions.after_party.location_label') }}:</strong> {{ __('mutafest.exhibitions.after_party.location') }}</p>
+            <!-- After Party Card -->
+            <div class="about-card fade-in" data-delay="800">
+                <div class="about-icon">
+                    <i class="fas fa-cocktail"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.exhibitions.after_party.title') }}</h3>
+                    <p>{{ __('mutafest.exhibitions.after_party.description') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.after_party.timing_label') }}:</strong> {{ __('mutafest.exhibitions.after_party.timing') }}</p>
+                    <p><strong>{{ __('mutafest.exhibitions.after_party.location_label') }}:</strong> {{ __('mutafest.exhibitions.after_party.location') }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1097,50 +1365,74 @@
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.press.title') }}</h2>
 
-            <div class="card">
-                <h3><i class="fas fa-newspaper"></i> {{ __('mutafest.press.materials.title') }}</h3>
-                <p>{{ __('mutafest.press.materials.description') }}</p>
-                <div style="margin-top: 20px;">
-                    <a href="#" class="btn btn-primary" style="margin-left: 10px;" onclick="downloadPressKit()">{{ __('mutafest.press.materials.press_kit_btn') }}</a>
-                    <a href="#" class="btn btn-secondary">{{ __('mutafest.press.materials.press_release_btn') }}</a>
+            <!-- Press Materials Card -->
+            <div class="about-card fade-in" data-delay="0">
+                <div class="about-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.press.materials.title') }}</h3>
+                    <p>{{ __('mutafest.press.materials.description') }}</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn btn-primary" style="margin-right: 10px;" onclick="downloadPressKit()">{{ __('mutafest.press.materials.press_kit_btn') }}</a>
+                        <a href="#" class="btn btn-secondary">{{ __('mutafest.press.materials.press_release_btn') }}</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-images"></i> {{ __('mutafest.press.images.title') }}</h3>
-                <p>{{ __('mutafest.press.images.description') }}</p>
-                <ul>
-                    @foreach(__('mutafest.press.images.types') as $type)
-                    <li>{{ $type }}</li>
-                    @endforeach
-                </ul>
-                <button class="btn btn-primary" onclick="downloadImages()">{{ __('mutafest.press.images.download_btn') }}</button>
+            <!-- Press Images Card -->
+            <div class="about-card fade-in" data-delay="200">
+                <div class="about-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.press.images.title') }}</h3>
+                    <p>{{ __('mutafest.press.images.description') }}</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        @foreach(__('mutafest.press.images.types') as $type)
+                        <li style="margin-bottom: 8px; color: var(--dark);">{{ $type }}</li>
+                        @endforeach
+                    </ul>
+                    <button class="btn btn-primary" style="margin-top: 15px;" onclick="downloadImages()">{{ __('mutafest.press.images.download_btn') }}</button>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-microphone"></i> {{ __('mutafest.press.accreditation.title') }}</h3>
-                <p>{{ __('mutafest.press.accreditation.description') }}</p>
-                <form style="margin-top: 20px;" onsubmit="submitPressAccreditation(event)">
-                    @csrf
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" name="name" placeholder="{{ __('mutafest.press.accreditation.name_placeholder') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <input type="email" name="email" placeholder="{{ __('mutafest.press.accreditation.email_placeholder') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" name="organization" placeholder="{{ __('mutafest.press.accreditation.organization_placeholder') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">{{ __('mutafest.press.accreditation.submit_btn') }}</button>
-                </form>
+            <!-- Press Accreditation Card -->
+            <div class="about-card fade-in" data-delay="400">
+                <div class="about-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.press.accreditation.title') }}</h3>
+                    <p>{{ __('mutafest.press.accreditation.description') }}</p>
+                    <form style="margin-top: 20px;" onsubmit="submitPressAccreditation(event)">
+                        @csrf
+                        <div style="margin-bottom: 15px;">
+                            <input type="text" name="name" placeholder="{{ __('mutafest.press.accreditation.name_placeholder') }}" style="width: 100%; padding: 12px; border: 2px solid var(--primary-blue); border-radius: 8px; font-size: 14px;" required>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <input type="email" name="email" placeholder="{{ __('mutafest.press.accreditation.email_placeholder') }}" style="width: 100%; padding: 12px; border: 2px solid var(--primary-blue); border-radius: 8px; font-size: 14px;" required>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <input type="text" name="organization" placeholder="{{ __('mutafest.press.accreditation.organization_placeholder') }}" style="width: 100%; padding: 12px; border: 2px solid var(--primary-blue); border-radius: 8px; font-size: 14px;" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">{{ __('mutafest.press.accreditation.submit_btn') }}</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-phone"></i> {{ __('mutafest.press.contact.title') }}</h3>
-                <p><strong>{{ __('mutafest.press.contact.coordinator_label') }}:</strong> {{ __('mutafest.press.contact.coordinator_email') }}</p>
-                <p><strong>{{ __('mutafest.press.contact.phone_label') }}:</strong> {{ __('mutafest.press.contact.phone') }}</p>
-                <p><strong>{{ __('mutafest.press.contact.whatsapp_label') }}:</strong> {{ __('mutafest.press.contact.whatsapp') }}</p>
-                <p>{{ __('mutafest.press.contact.availability') }}</p>
+            <!-- Press Contact Card -->
+            <div class="about-card fade-in" data-delay="600">
+                <div class="about-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.press.contact.title') }}</h3>
+                    <p><strong>{{ __('mutafest.press.contact.coordinator_label') }}:</strong> <a href="mailto:{{ __('mutafest.press.contact.coordinator_email') }}" style="color: var(--coral);">{{ __('mutafest.press.contact.coordinator_email') }}</a></p>
+                    <p><strong>{{ __('mutafest.press.contact.phone_label') }}:</strong> <a href="tel:{{ __('mutafest.press.contact.phone') }}" style="color: var(--coral);">{{ __('mutafest.press.contact.phone') }}</a></p>
+                    <p><strong>{{ __('mutafest.press.contact.whatsapp_label') }}:</strong> <a href="https://wa.me/{{ str_replace(['+', ' '], '', __('mutafest.press.contact.whatsapp')) }}" style="color: var(--coral);" target="_blank">{{ __('mutafest.press.contact.whatsapp') }}</a></p>
+                    <p style="margin-top: 15px; font-style: italic; color: var(--teal);">{{ __('mutafest.press.contact.availability') }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1150,52 +1442,85 @@
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.info.title') }}</h2>
 
-            <div class="card">
-                <h3><i class="fas fa-map-marker-alt"></i> {{ __('mutafest.info.venue.title') }}</h3>
-                <p><strong>{{ __('mutafest.info.venue.address_label') }}:</strong> {{ __('mutafest.info.venue.address') }}</p>
-                <p><strong>{{ __('mutafest.info.venue.metro_label') }}:</strong> {{ __('mutafest.info.venue.metro') }}</p>
-                <p><strong>{{ __('mutafest.info.venue.bus_label') }}:</strong> {{ __('mutafest.info.venue.bus') }}</p>
-                <p><strong>{{ __('mutafest.info.venue.car_label') }}:</strong> {{ __('mutafest.info.venue.car') }}</p>
-                <p><strong>{{ __('mutafest.info.venue.airport_label') }}:</strong> {{ __('mutafest.info.venue.airport') }}</p>
+            <!-- Venue Information Card -->
+            <div class="about-card fade-in" data-delay="0">
+                <div class="about-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.info.venue.title') }}</h3>
+                    <p><strong>{{ __('mutafest.info.venue.address_label') }}:</strong> {{ __('mutafest.info.venue.address') }}</p>
+                    <p><strong>{{ __('mutafest.info.venue.metro_label') }}:</strong> {{ __('mutafest.info.venue.metro') }}</p>
+                    <p><strong>{{ __('mutafest.info.venue.bus_label') }}:</strong> {{ __('mutafest.info.venue.bus') }}</p>
+                    <p><strong>{{ __('mutafest.info.venue.car_label') }}:</strong> {{ __('mutafest.info.venue.car') }}</p>
+                    <p><strong>{{ __('mutafest.info.venue.airport_label') }}:</strong> {{ __('mutafest.info.venue.airport') }}</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-bed"></i> {{ __('mutafest.info.accommodation.title') }}</h3>
-                <ul>
-                    @foreach(__('mutafest.info.accommodation.hotels') as $hotel)
-                    <li><strong>{{ $hotel['name'] }}:</strong> {{ $hotel['description'] }} - {{ $hotel['price'] }}</li>
-                    @endforeach
-                </ul>
-                <p>{{ __('mutafest.info.accommodation.discount_note') }}</p>
+            <!-- Accommodation Card -->
+            <div class="about-card fade-in" data-delay="200">
+                <div class="about-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.info.accommodation.title') }}</h3>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        @foreach(__('mutafest.info.accommodation.hotels') as $hotel)
+                        <li style="margin-bottom: 10px; color: var(--dark);"><strong>{{ $hotel['name'] }}:</strong> {{ $hotel['description'] }} - <span style="color: var(--coral);">{{ $hotel['price'] }}</span></li>
+                        @endforeach
+                    </ul>
+                    <p style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(241, 143, 1, 0.1)); border-radius: 10px; font-weight: bold; color: var(--primary-blue);">{{ __('mutafest.info.accommodation.discount_note') }}</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-wheelchair"></i> {{ __('mutafest.info.accessibility.title') }}</h3>
-                <p>{{ __('mutafest.info.accessibility.description') }}</p>
-                <ul>
-                    @foreach(__('mutafest.info.accessibility.features') as $feature)
-                    <li>{{ $feature }}</li>
-                    @endforeach
-                </ul>
+            <!-- Accessibility Card -->
+            <div class="about-card fade-in" data-delay="400">
+                <div class="about-icon">
+                    <i class="fas fa-wheelchair"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.info.accessibility.title') }}</h3>
+                    <p>{{ __('mutafest.info.accessibility.description') }}</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        @foreach(__('mutafest.info.accessibility.features') as $feature)
+                        <li style="margin-bottom: 8px; color: var(--dark);">{{ $feature }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-utensils"></i> {{ __('mutafest.info.restaurants.title') }}</h3>
-                <p>{{ __('mutafest.info.restaurants.description') }}</p>
-                <ul>
-                    @foreach(__('mutafest.info.restaurants.list') as $restaurant)
-                    <li><strong>{{ $restaurant['name'] }}:</strong> {{ $restaurant['description'] }}</li>
-                    @endforeach
-                </ul>
+            <!-- Restaurants Card -->
+            <div class="about-card fade-in" data-delay="600">
+                <div class="about-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.info.restaurants.title') }}</h3>
+                    <p>{{ __('mutafest.info.restaurants.description') }}</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        @foreach(__('mutafest.info.restaurants.list') as $restaurant)
+                        <li style="margin-bottom: 10px; color: var(--dark);"><strong style="color: var(--teal);">{{ $restaurant['name'] }}:</strong> {{ $restaurant['description'] }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-info-circle"></i> {{ __('mutafest.info.important.title') }}</h3>
-                <ul>
-                    @foreach(__('mutafest.info.important.items') as $item)
-                    <li><strong>{{ $item['label'] }}:</strong> {{ $item['value'] }}</li>
-                    @endforeach
-                </ul>
+            <!-- Important Information Card -->
+            <div class="about-card fade-in" data-delay="800">
+                <div class="about-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.info.important.title') }}</h3>
+                    <div style="margin-top: 15px;">
+                        @foreach(__('mutafest.info.important.items') as $item)
+                        <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(241, 143, 1, 0.05), rgba(46, 134, 171, 0.05)); border-radius: 10px; border-left: 4px solid var(--coral);">
+                            <strong style="color: var(--primary-blue);">{{ $item['label'] }}:</strong> 
+                            <span style="color: var(--dark); margin-left: 8px;">{{ $item['value'] }}</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1205,40 +1530,72 @@
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.contact.title') }}</h2>
 
-            <div class="card">
-                <h3><i class="fas fa-envelope"></i> {{ __('mutafest.contact.form.title') }}</h3>
-                <form style="margin-top: 20px;" onsubmit="submitContact(event)">
-                    @csrf
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" name="name" placeholder="{{ __('mutafest.contact.form.name_placeholder') }}" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <input type="email" name="email" placeholder="{{ __('mutafest.contact.form.email_placeholder') }}" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" name="subject" placeholder="{{ __('mutafest.contact.form.subject_placeholder') }}" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;" required>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <textarea name="message" placeholder="{{ __('mutafest.contact.form.message_placeholder') }}" rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">{{ __('mutafest.contact.form.submit_btn') }}</button>
-                </form>
+            <!-- Contact Form Card -->
+            <div class="about-card fade-in" data-delay="0">
+                <div class="about-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.contact.form.title') }}</h3>
+                    <form style="margin-top: 25px;" onsubmit="submitContact(event)">
+                        @csrf
+                        <div style="margin-bottom: 20px;">
+                            <input type="text" name="name" placeholder="{{ __('mutafest.contact.form.name_placeholder') }}" style="width: 100%; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 12px; font-size: 16px; background: rgba(255,255,255,0.8); transition: all 0.3s ease; outline: none;" required>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <input type="email" name="email" placeholder="{{ __('mutafest.contact.form.email_placeholder') }}" style="width: 100%; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 12px; font-size: 16px; background: rgba(255,255,255,0.8); transition: all 0.3s ease; outline: none;" required>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <input type="text" name="subject" placeholder="{{ __('mutafest.contact.form.subject_placeholder') }}" style="width: 100%; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 12px; font-size: 16px; background: rgba(255,255,255,0.8); transition: all 0.3s ease; outline: none;" required>
+                        </div>
+                        <div style="margin-bottom: 25px;">
+                            <textarea name="message" placeholder="{{ __('mutafest.contact.form.message_placeholder') }}" rows="6" style="width: 100%; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 12px; font-size: 16px; background: rgba(255,255,255,0.8); transition: all 0.3s ease; outline: none; resize: vertical; min-height: 140px;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, var(--coral), var(--primary-blue)); border: none; padding: 15px 30px; border-radius: 25px; font-size: 16px; font-weight: bold; color: white; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(241, 143, 1, 0.3);">{{ __('mutafest.contact.form.submit_btn') }}</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-info"></i> {{ __('mutafest.contact.info.title') }}</h3>
-                <p><strong>{{ __('mutafest.contact.info.email_label') }}:</strong> {{ __('mutafest.contact.info.email') }}</p>
-                <p><strong>{{ __('mutafest.contact.info.phone_label') }}:</strong> {{ __('mutafest.contact.info.phone') }}</p>
-                <p><strong>{{ __('mutafest.contact.info.address_label') }}:</strong> {{ __('mutafest.contact.info.address') }}</p>
-                <p><strong>{{ __('mutafest.contact.info.hours_label') }}:</strong> {{ __('mutafest.contact.info.hours') }}</p>
+            <!-- Contact Information Card -->
+            <div class="about-card fade-in" data-delay="200">
+                <div class="about-icon">
+                    <i class="fas fa-info"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.contact.info.title') }}</h3>
+                    <div style="margin-top: 20px;">
+                        <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--coral);">
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.email_label') }}:</strong> 
+                            <a href="mailto:{{ __('mutafest.contact.info.email') }}" style="color: var(--coral); text-decoration: none; margin-left: 8px;">{{ __('mutafest.contact.info.email') }}</a>
+                        </div>
+                        <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--teal);">
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.phone_label') }}:</strong> 
+                            <a href="tel:{{ str_replace(' ', '', __('mutafest.contact.info.phone')) }}" style="color: var(--teal); text-decoration: none; margin-left: 8px;">{{ __('mutafest.contact.info.phone') }}</a>
+                        </div>
+                        <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.address_label') }}:</strong> 
+                            <span style="color: var(--dark); margin-left: 8px;">{{ __('mutafest.contact.info.address') }}</span>
+                        </div>
+                        <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--gold);">
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.hours_label') }}:</strong> 
+                            <span style="color: var(--dark); margin-left: 8px;">{{ __('mutafest.contact.info.hours') }}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="newsletter">
-                <h3><i class="fas fa-paper-plane"></i> {{ __('mutafest.contact.newsletter.title') }}</h3>
-                <p>{{ __('mutafest.contact.newsletter.description') }}</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="{{ __('mutafest.contact.newsletter.email_placeholder') }}">
-                    <button type="submit" onclick="subscribeNewsletter()">{{ __('mutafest.contact.newsletter.submit_btn') }}</button>
+            <!-- Newsletter Subscription Card -->
+            <div class="about-card fade-in" data-delay="400">
+                <div class="about-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <div class="about-content">
+                    <h3>{{ __('mutafest.contact.newsletter.title') }}</h3>
+                    <p style="margin-bottom: 25px;">{{ __('mutafest.contact.newsletter.description') }}</p>
+                    <div style="display: flex; gap: 15px; max-width: 500px;">
+                        <input type="email" placeholder="{{ __('mutafest.contact.newsletter.email_placeholder') }}" style="flex: 1; padding: 15px; border: 2px solid var(--primary-blue); border-radius: 25px; font-size: 16px; background: rgba(255,255,255,0.8); transition: all 0.3s ease; outline: none;">
+                        <button type="submit" onclick="subscribeNewsletter()" style="padding: 15px 30px; background: linear-gradient(135deg, var(--teal), var(--coral)); color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; font-weight: bold; white-space: nowrap; box-shadow: 0 8px 20px rgba(60, 179, 113, 0.3);">{{ __('mutafest.contact.newsletter.submit_btn') }}</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1325,6 +1682,25 @@
             if (activeLink) {
                 activeLink.classList.add('active');
             }
+
+            // Trigger animations for About page
+            if (pageId === 'about') {
+                triggerAboutAnimations();
+            }
+        }
+
+        // About page animations
+        function triggerAboutAnimations() {
+            setTimeout(() => {
+                const aboutElements = document.querySelectorAll('#about .fade-in');
+                aboutElements.forEach((element, index) => {
+                    const delay = element.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        element.style.animationDelay = '0s';
+                        element.classList.add('fade-in');
+                    }, parseInt(delay));
+                });
+            }, 100);
         }
 
         // Mobile navigation toggle
