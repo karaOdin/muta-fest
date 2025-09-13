@@ -77,7 +77,7 @@
             filter: drop-shadow(0 8px 25px rgba(0,0,0,0.4)) brightness(1.1);
             transition: all 0.4s ease;
         }
-        
+
         .main-logo:hover {
             transform: scale(1.05);
             filter: drop-shadow(0 12px 35px rgba(0,0,0,0.5)) brightness(1.2);
@@ -132,7 +132,7 @@
             filter: drop-shadow(0 15px 35px rgba(0,0,0,0.4)) brightness(1.1) contrast(1.1);
             transition: all 0.4s ease;
         }
-        
+
         .character-img:hover {
             filter: drop-shadow(0 20px 45px rgba(0,0,0,0.5)) brightness(1.2) contrast(1.2);
             transform: scale(1.02);
@@ -150,8 +150,6 @@
             line-height: 1.1;
             text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
             z-index: 6;
-            background: rgba(49, 105, 149, 0.8);
-            padding: 15px 20px;
             border-radius: 15px;
             backdrop-filter: blur(15px);
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -420,19 +418,26 @@
         }
 
         .modal-content {
-            background: #316995;
-            border-radius: 24px;
+            background: linear-gradient(135deg,
+                #316995 0%,
+                #3a7ba8 25%,
+                #4a90a4 50%,
+                #3a7ba8 75%,
+                #316995 100%);
+            border-radius: 32px;
             max-width: 90vw;
             max-height: 85vh;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             position: relative;
             overflow: hidden;
-            transform: scale(0.9) translateY(30px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: scale(0.85) translateY(50px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow:
+                0 40px 80px -20px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 0 120px rgba(49, 105, 149, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .modal-overlay.active .modal-content {
@@ -446,80 +451,128 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-            animation: shimmer 2s ease-in-out infinite;
+            height: 6px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.9) 30%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(255, 255, 255, 0.9) 70%,
+                transparent);
+            border-radius: 32px 32px 0 0;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .modal-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.1),
+                transparent);
+            pointer-events: none;
+            border-radius: 0 0 32px 32px;
         }
 
         @keyframes shimmer {
-            0% { opacity: 0; transform: translateX(-100%); }
+            0% { opacity: 0.6; transform: translateX(-120%); }
             50% { opacity: 1; }
-            100% { opacity: 0; transform: translateX(100%); }
+            100% { opacity: 0.6; transform: translateX(120%); }
         }
 
         .modal-header {
             position: relative;
             z-index: 10;
-            padding: 32px 32px 24px;
+            padding: 40px 40px 32px;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                transparent 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .modal-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 8px;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
+            font-size: 2.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.95) 50%,
+                rgba(255, 255, 255, 0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
         }
 
         .modal-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            font-weight: 400;
-            letter-spacing: 0.025em;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .modal-body {
-            padding: 32px;
+            padding: 40px 40px 50px;
             position: relative;
             z-index: 10;
-            max-height: 60vh;
+            max-height: 58vh;
             overflow-y: auto;
+            background: linear-gradient(180deg,
+                rgba(255, 255, 255, 0.02) 0%,
+                transparent 20%,
+                transparent 80%,
+                rgba(0, 0, 0, 0.03) 100%);
         }
 
         .modal-body::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .modal-body::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .modal-body::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.4),
+                rgba(255, 255, 255, 0.2));
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .modal-body::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.6),
+                rgba(255, 255, 255, 0.4));
         }
 
         .modal-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            padding: 0 4px;
         }
 
         .modal-text:first-child {
             font-weight: 500;
-            color: white;
-            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.98);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
         .modal-text:last-child {
@@ -528,28 +581,39 @@
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            width: 44px;
-            height: 44px;
+            top: 24px;
+            right: 24px;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.15),
+                rgba(255, 255, 255, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 15;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .modal-close:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.25),
+                rgba(255, 255, 255, 0.15));
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.08) rotate(90deg);
+            color: white;
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         /* Responsive modal */
@@ -557,29 +621,45 @@
             .modal-content {
                 max-width: 95vw;
                 margin: 20px;
-                border-radius: 20px;
+                border-radius: 28px;
+                max-width: 420px;
             }
 
             .modal-header {
-                padding: 24px 24px 20px;
+                padding: 32px 28px 24px;
             }
 
             .modal-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                font-weight: 700;
             }
 
             .modal-subtitle {
-                font-size: 1rem;
+                font-size: 1.05rem;
             }
 
             .modal-body {
-                padding: 24px;
+                padding: 28px;
                 max-height: 50vh;
             }
 
             .modal-text {
-                font-size: 0.95rem;
-                line-height: 1.5;
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1.8rem;
+            }
+
+            .modal-text:first-child {
+                font-size: 1.08rem;
+                margin-bottom: 2rem;
+            }
+
+            .modal-close {
+                width: 44px;
+                height: 44px;
+                top: 20px;
+                right: 20px;
+                font-size: 18px;
             }
         }
 
@@ -618,7 +698,7 @@
     </div>
 
     <!-- Chi siamo text -->
-    <div class="chi-siamo" onclick="openModal()">Chi siamo</div>
+    <div class="chi-siamo" onclick="openModal()">Cos’è</div>
 
     <!-- Character Image with floating animation -->
     <div class="character">
@@ -663,34 +743,36 @@
             <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
-            
+
             <div class="modal-header">
-                <h2 class="modal-title">Chi Siamo</h2>
+                <h2 class="modal-title">  <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180"
+                                               alt="MutaFest"
+                                               class="main-logo"></h2>
                 <p class="modal-subtitle">MutaFest - Festival del Mediterraneo</p>
             </div>
-            
+
             <div class="modal-body">
                 <p class="modal-text">
                     MutaFest è un festival culturale annuale che si svolge a Milano, dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.
                 </p>
-                
+
                 <p class="modal-text">
                     Nasce da un'esperienza decennale nel campo editoriale e culturale, fatta di traduzioni, pubblicazioni e incontri tra voci provenienti da Est e Ovest, da Sud e Nord, da piccole isole e grandi città: tutte affacciate sullo stesso mare, ma ognuna con il proprio colore.
                 </p>
-                
+
                 <p class="modal-text">
                     MutaFest guarda al Mediterraneo non solo come spazio geografico, ma come orizzonte culturale e spirituale: un archivio vivo di memorie, tragedie, suoni, domande, migrazioni e bellezza plurale che rifiuta ogni semplificazione. In un tempo in cui questo spazio viene ridotto a tragedia o trincea, attraversato dagli esiliati e chiuso dalle frontiere, dove le storie affondano prima ancora di essere raccontate, MutaFest nasce per restituirgli il suo significato originario: luogo d'incontro, di pluralità, di ascolto reciproco.
                 </p>
-                
+
                 <p class="modal-text">
                     Per tre giorni, il festival trasforma la città di Milano in un crocevia di lingue, cibi, musiche, immagini e visioni. Ospita scrittori, poeti, musicisti, registi, chef e artisti visivi da tutti i Paesi del Mediterraneo, dando vita a un programma corale fatto di letture, concerti, proiezioni, dibattiti, performance e momenti conviviali. Non per appiattire le differenze, ma per renderle visibili, vive, fertili.
                 </p>
-                
+
                 <p class="modal-text">
                     Dietro MutaFest c'è Almutawassit, casa editrice e laboratorio culturale guidato da Khaled Soliman Al Nassiry, che dal 2015 porta avanti un progetto che vede nelle lingue del Mediterraneo delle case provvisorie, su una costa condivisa.
                 </p>
             </div>
-            
+
         </div>
     </div>
 
@@ -708,32 +790,32 @@
     function openModal() {
         const modal = document.getElementById('modalOverlay');
         modal.classList.add('active');
-        
+
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
-        
+
         // Add entrance animation delay
         setTimeout(() => {
             const modalContent = modal.querySelector('.modal-content');
             modalContent.style.animation = 'none';
         }, 500);
     }
-    
+
     function closeModal() {
         const modal = document.getElementById('modalOverlay');
         modal.classList.remove('active');
-        
+
         // Restore body scroll
         document.body.style.overflow = 'hidden'; // Keep hidden as per original design
     }
-    
+
     // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeModal();
         }
     });
-    
+
     // JavaScript to help with image loading and animation
     document.addEventListener('DOMContentLoaded', function() {
         // Add cursor pointer to Chi siamo text
@@ -741,12 +823,12 @@
         if (chiSiamo) {
             chiSiamo.style.cursor = 'pointer';
             chiSiamo.style.transition = 'transform 0.3s ease, color 0.3s ease';
-            
+
             chiSiamo.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.05)';
                 this.style.color = '#4a90a4';
             });
-            
+
             chiSiamo.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
                 this.style.color = '#ff8c42';
