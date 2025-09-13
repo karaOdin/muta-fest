@@ -379,5 +379,6 @@ return [
         'newsletter_success' => 'Thank you for subscribing to our newsletter!',
         'contact_success' => 'Your message has been sent successfully! We will contact you soon.',
         'accreditation_success' => 'Accreditation request sent successfully! We will contact you soon.',
+        'booking_coming_soon' => 'Booking system coming soon!',
     ],
 ];

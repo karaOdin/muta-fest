@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>MutaFest - {{ __('mutafest.meta.title') }}</title>
+    <title>{{ __('mutafest.meta.title') }}</title>
     <meta name="description" content="{{ __('mutafest.meta.description') }}">
-    
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary-blue: #2E86AB;
             --deep-blue: #1B4F72;
@@ -18,19 +21,82 @@
             --sand: #F6E3CE;
             --teal: #A23B72;
             --gold: #F18F01;
+            --white: #FFFFFF;
+            --dark: #2C3E50;
         }
-        
-        .wave-bg {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .top-bar {
             background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--deep-blue) 50%, var(--teal) 100%);
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        .section-gradient {
-            background: linear-gradient(45deg, var(--sand), #ffffff);
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
         }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: var(--coral);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -282,11 +348,6 @@
             border-radius: 8px;
         }
 
-        [dir="rtl"] .session {
-            border-right: none;
-            border-left: 4px solid var(--coral);
-        }
-
         .session-time {
             font-weight: bold;
             color: var(--coral);
@@ -492,22 +553,15 @@
             background: var(--primary-blue);
         }
 
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 15px;
+        /* RTL Support */
+        [dir="rtl"] .session {
+            border-right: none;
+            border-left: 4px solid var(--coral);
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .form-group textarea {
-            resize: vertical;
+        [dir="rtl"] .nav-links a::after {
+            right: 0;
+            left: auto;
         }
     </style>
 </head>
@@ -516,7 +570,7 @@
     <div class="top-bar">
         <div class="top-bar-content">
             <div class="quick-actions">
-                <a href="#" class="btn btn-primary">{{ __('mutafest.nav.book_invitation') }}</a>
+                <a href="#" class="btn btn-primary" onclick="bookInvitation()">{{ __('mutafest.nav.book_invitation') }}</a>
                 <a href="#" class="btn btn-secondary" onclick="downloadProgram()">{{ __('mutafest.nav.download_program') }}</a>
             </div>
             <div class="language-switcher">
@@ -692,8 +746,8 @@
                 <h3><i class="fas fa-newspaper"></i> {{ __('mutafest.press.materials.title') }}</h3>
                 <p>{{ __('mutafest.press.materials.description') }}</p>
                 <div style="margin-top: 20px;">
-                    <button class="btn btn-primary" onclick="downloadPressKit()" style="margin-left: 10px;">{{ __('mutafest.press.materials.press_kit_btn') }}</button>
-                    <button class="btn btn-secondary">{{ __('mutafest.press.materials.press_release_btn') }}</button>
+                    <a href="#" class="btn btn-primary" style="margin-left: 10px;" onclick="downloadPressKit()">{{ __('mutafest.press.materials.press_kit_btn') }}</a>
+                    <a href="#" class="btn btn-secondary">{{ __('mutafest.press.materials.press_release_btn') }}</a>
                 </div>
             </div>
 
@@ -712,14 +766,15 @@
                 <h3><i class="fas fa-microphone"></i> {{ __('mutafest.press.accreditation.title') }}</h3>
                 <p>{{ __('mutafest.press.accreditation.description') }}</p>
                 <form style="margin-top: 20px;" onsubmit="submitPressAccreditation(event)">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="{{ __('mutafest.press.accreditation.name_placeholder') }}" required>
+                    @csrf
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="name" placeholder="{{ __('mutafest.press.accreditation.name_placeholder') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="{{ __('mutafest.press.accreditation.email_placeholder') }}" required>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" name="email" placeholder="{{ __('mutafest.press.accreditation.email_placeholder') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="organization" placeholder="{{ __('mutafest.press.accreditation.organization_placeholder') }}" required>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="organization" placeholder="{{ __('mutafest.press.accreditation.organization_placeholder') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('mutafest.press.accreditation.submit_btn') }}</button>
                 </form>
@@ -798,17 +853,18 @@
             <div class="card">
                 <h3><i class="fas fa-envelope"></i> {{ __('mutafest.contact.form.title') }}</h3>
                 <form style="margin-top: 20px;" onsubmit="submitContact(event)">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="{{ __('mutafest.contact.form.name_placeholder') }}" required>
+                    @csrf
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="name" placeholder="{{ __('mutafest.contact.form.name_placeholder') }}" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;" required>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="{{ __('mutafest.contact.form.email_placeholder') }}" required>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" name="email" placeholder="{{ __('mutafest.contact.form.email_placeholder') }}" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" placeholder="{{ __('mutafest.contact.form.subject_placeholder') }}" required>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="subject" placeholder="{{ __('mutafest.contact.form.subject_placeholder') }}" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;" required>
                     </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="{{ __('mutafest.contact.form.message_placeholder') }}" required></textarea>
+                    <div style="margin-bottom: 20px;">
+                        <textarea name="message" placeholder="{{ __('mutafest.contact.form.message_placeholder') }}" rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('mutafest.contact.form.submit_btn') }}</button>
                 </form>
@@ -826,8 +882,8 @@
                 <h3><i class="fas fa-paper-plane"></i> {{ __('mutafest.contact.newsletter.title') }}</h3>
                 <p>{{ __('mutafest.contact.newsletter.description') }}</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="{{ __('mutafest.contact.newsletter.email_placeholder') }}" id="newsletter-email">
-                    <button type="button" onclick="subscribeNewsletter()">{{ __('mutafest.contact.newsletter.submit_btn') }}</button>
+                    <input type="email" placeholder="{{ __('mutafest.contact.newsletter.email_placeholder') }}">
+                    <button type="submit" onclick="subscribeNewsletter()">{{ __('mutafest.contact.newsletter.submit_btn') }}</button>
                 </div>
             </div>
         </div>
@@ -858,7 +914,7 @@
             
             <div class="footer-section">
                 <h3>{{ __('mutafest.footer.partners') }}</h3>
-                <a href="https://almutawassit.it">{{ __('mutafest.footer.partner1') }}</a>
+                <a href="#">{{ __('mutafest.footer.partner1') }}</a>
                 <a href="#">{{ __('mutafest.footer.partner2') }}</a>
                 <a href="#">{{ __('mutafest.footer.partner3') }}</a>
                 <a href="#">{{ __('mutafest.footer.partner4') }}</a>
@@ -866,8 +922,8 @@
             
             <div class="footer-section">
                 <h3>{{ __('mutafest.footer.contact_us') }}</h3>
-                <a href="mailto:info@mutafest.it">{{ __('mutafest.contact.info.email') }}</a>
-                <a href="tel:+390287654321">{{ __('mutafest.contact.info.phone') }}</a>
+                <a href="mailto:{{ __('mutafest.contact.info.email') }}">{{ __('mutafest.contact.info.email') }}</a>
+                <a href="tel:{{ str_replace(' ', '', __('mutafest.contact.info.phone')) }}">{{ __('mutafest.contact.info.phone') }}</a>
                 <p>{{ __('mutafest.contact.info.address') }}</p>
             </div>
         </div>
@@ -918,21 +974,27 @@
 
         // Language switching
         function switchLanguage(lang) {
-            window.location.href = `/language/${lang}`;
+            window.location.href = '/language/' + lang;
+        }
+
+        // Book invitation
+        function bookInvitation() {
+            alert('{{ __("mutafest.messages.booking_coming_soon") }}');
         }
 
         // Download functions
         function downloadProgram() {
-            fetch('/mutafest/download/program')
+            fetch('{{ route("mutafest.download.program") }}')
                 .then(response => response.json())
                 .then(data => {
                     alert(data.message);
+                    // In a real implementation, trigger file download here
                 })
                 .catch(error => console.error('Error:', error));
         }
 
         function downloadPressKit() {
-            fetch('/mutafest/download/press-kit')
+            fetch('{{ route("mutafest.download.press-kit") }}')
                 .then(response => response.json())
                 .then(data => {
                     alert(data.message);
@@ -941,7 +1003,7 @@
         }
 
         function downloadImages() {
-            fetch('/mutafest/download/images')
+            fetch('{{ route("mutafest.download.images") }}')
                 .then(response => response.json())
                 .then(data => {
                     alert(data.message);
@@ -951,25 +1013,25 @@
 
         // Newsletter subscription
         function subscribeNewsletter() {
-            const email = document.getElementById('newsletter-email').value;
+            const email = document.querySelector('.newsletter input').value;
             if (!email) {
-                alert('Please enter your email address');
+                alert('{{ __("mutafest.contact.newsletter.email_placeholder") }}');
                 return;
             }
 
-            fetch('/mutafest/newsletter/subscribe', {
+            fetch('{{ route("mutafest.newsletter.subscribe") }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
                 body: JSON.stringify({ email: email })
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message);
                 if (data.success) {
-                    document.getElementById('newsletter-email').value = '';
+                    alert(data.message);
+                    document.querySelector('.newsletter input').value = '';
                 }
             })
             .catch(error => console.error('Error:', error));
@@ -979,20 +1041,18 @@
         function submitContact(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
 
-            fetch('/mutafest/contact/submit', {
+            fetch('{{ route("mutafest.contact.submit") }}', {
                 method: 'POST',
+                body: formData,
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                },
-                body: JSON.stringify(data)
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message);
                 if (data.success) {
+                    alert(data.message);
                     event.target.reset();
                 }
             })
@@ -1002,27 +1062,25 @@
         function submitPressAccreditation(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
 
-            fetch('/mutafest/press/accreditation', {
+            fetch('{{ route("mutafest.press.accreditation") }}', {
                 method: 'POST',
+                body: formData,
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                },
-                body: JSON.stringify(data)
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message);
                 if (data.success) {
+                    alert(data.message);
                     event.target.reset();
                 }
             })
             .catch(error => console.error('Error:', error));
         }
 
-        // Initialize page
+        // Add click event listeners to navigation links
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {

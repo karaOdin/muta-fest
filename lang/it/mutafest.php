@@ -379,5 +379,6 @@ return [
         'newsletter_success' => 'Grazie per esserti iscritto alla nostra newsletter!',
         'contact_success' => 'Il tuo messaggio è stato inviato con successo! Ti contatteremo presto.',
         'accreditation_success' => 'Richiesta di accreditamento inviata con successo! Ti contatteremo presto.',
+        'booking_coming_soon' => 'Sistema di prenotazione in arrivo!',
     ],
 ];
