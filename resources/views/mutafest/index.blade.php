@@ -159,10 +159,17 @@
             backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
-            top: 60px;
+            top: 80px;
             width: 100%;
             z-index: 999;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Ensure main-nav is properly positioned below top-bar on mobile */
+        @media (max-width: 768px) {
+            .main-nav {
+                top: 120px;
+            }
         }
 
         .nav-content {
@@ -191,10 +198,18 @@
             gap: 30px;
         }
 
+        /* Hide desktop navigation on mobile */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
             font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
+            font-weight: 700;
             font-weight: 700;
             position: relative;
             padding: 10px 0;
@@ -542,30 +557,56 @@
             color: rgba(255,255,255,0.6);
         }
 
-        /* Mobile Navigation Toggle */
+        /* Mobile Navigation Toggle - Beautiful & Animated */
         .nav-toggle {
-            display: none;
+            display: block;
             background: linear-gradient(135deg, var(--primary-blue), var(--coral));
             border: none;
             font-size: 1.5em;
             color: white;
             cursor: pointer;
             padding: 12px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+            border-radius: 12px;
             position: relative;
             z-index: 1001;
+            width: 50px;
+            height: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px rgba(46, 134, 171, 0.3);
         }
 
         .nav-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(46, 134, 171, 0.4);
+            background: linear-gradient(135deg, var(--coral), var(--primary-blue));
         }
 
         .nav-toggle:active {
-            transform: translateY(0);
+            transform: translateY(-1px) scale(0.98);
         }
+
+        /* Hamburger Animation */
+        .nav-toggle i {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .nav-toggle.active {
+            background: linear-gradient(135deg, var(--coral), var(--teal));
+            transform: rotate(90deg);
+        }
+
+        .nav-toggle.active i {
+            transform: rotate(90deg);
+        }
+
+        /* Hide on desktop only */
+        @media (min-width: 1025px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+
 
         /* Hamburger Animation */
         .nav-toggle i {
@@ -576,23 +617,40 @@
             background: linear-gradient(135deg, var(--coral), var(--primary-blue));
         }
 
-        /* Mobile Menu Overlay */
+        /* Beautiful Mobile Menu Overlay */
         .mobile-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 998;
+            pointer-events: none;
+            backdrop-filter: blur(0px);
         }
 
         .mobile-overlay.active {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Overlay animation on mobile */
+        @media (max-width: 1024px) {
+            .mobile-overlay {
+                display: block;
+            }
+            
+            .mobile-overlay.active {
+                background: linear-gradient(45deg, rgba(46, 134, 171, 0.3), rgba(0, 0, 0, 0.7));
+                backdrop-filter: blur(10px);
+            }
         }
 
         /* Mobile Responsiveness */
@@ -622,26 +680,28 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 80%;
-                max-width: 350px;
+                width: 85%;
+                max-width: 360px;
                 height: 100vh;
                 background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(46, 134, 171, 0.05));
-                backdrop-filter: blur(30px);
+                backdrop-filter: blur(25px);
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: stretch;
                 padding: 120px 0 40px 0;
-                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-                z-index: 1000;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-                border-left: 1px solid rgba(46, 134, 171, 0.1);
+                transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+                z-index: 999;
+                box-shadow: -15px 0 40px rgba(0, 0, 0, 0.15);
+                border-left: 1px solid rgba(46, 134, 171, 0.2);
                 display: none;
+                overflow-y: auto;
+                transform: translateX(100%);
             }
 
             .nav-links.active {
                 display: flex !important;
-                right: 0;
-                transform: translateX(0);
+                right: 0 !important;
+                transform: translateX(0) !important;
             }
 
             /* RTL Support for drawer */
@@ -669,7 +729,8 @@
                 margin: 0;
                 opacity: 0;
                 transform: translateX(50px);
-                animation: slideInNav 0.5s ease forwards;
+                animation: slideInNav 0.6s ease forwards;
+                list-style: none;
             }
 
             .nav-links.active li {
@@ -678,16 +739,20 @@
 
             .nav-links a {
                 font-size: 1.1em;
-                padding: 18px 30px;
+                padding: 20px 30px;
                 margin: 8px 20px;
                 display: block;
                 text-align: left;
                 border-radius: 15px;
-                transition: all 0.3s ease;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                 position: relative;
                 overflow: hidden;
                 background: transparent;
                 border-left: 4px solid transparent;
+                color: var(--dark);
+                text-decoration: none;
+                font-family: 'DiodrumArabic', 'Noto Sans Arabic', 'Inter', sans-serif;
+                font-weight: 600;
             }
 
             .nav-links a::before {
@@ -698,7 +763,7 @@
                 width: 0;
                 height: 100%;
                 background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(241, 143, 1, 0.1));
-                transition: width 0.3s ease;
+                transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                 z-index: -1;
             }
 
@@ -711,7 +776,20 @@
             .nav-links a.active {
                 color: var(--coral);
                 border-left-color: var(--coral);
-                transform: translateX(10px);
+                transform: translateX(15px);
+                box-shadow: 0 8px 25px rgba(241, 143, 1, 0.2);
+            }
+
+            /* Animation for menu items */
+            @keyframes slideInNav {
+                from {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
 
             /* RTL adjustments for menu items */
@@ -724,15 +802,7 @@
             [dir="rtl"] .nav-links a:hover,
             [dir="rtl"] .nav-links a.active {
                 border-right-color: var(--coral);
-                transform: translateX(-10px);
-            }
-
-            /* Animation for menu items */
-            @keyframes slideInNav {
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
+                transform: translateX(-15px);
             }
 
             /* Mobile Top Bar */
@@ -931,12 +1001,6 @@
 
         @media (max-width: 480px) {
             /* Extra small mobile devices */
-            .nav-toggle {
-                display: block !important;
-                font-size: 1.3em !important;
-                padding: 10px !important;
-            }
-
             .nav-links {
                 width: 90% !important;
                 max-width: 300px !important;
@@ -983,15 +1047,8 @@
             }
         }
 
-        /* Ensure navigation toggle is always visible on any small screen */
-        @media (max-width: 1024px) {
-            .nav-toggle {
-                display: block !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-                pointer-events: auto !important;
-            }
-            
+        /* Clean layout for mobile navigation */
+        @media (max-width: 1024px) {            
             .nav-links:not(.active) {
                 display: none !important;
             }
@@ -1002,18 +1059,6 @@
 
             .logo {
                 flex-shrink: 0;
-            }
-        }
-
-        /* Force hamburger visibility on all mobile devices */
-        @media screen and (max-width: 1024px) {
-            .nav-toggle {
-                display: block !important;
-                background: linear-gradient(135deg, var(--coral), var(--primary-blue)) !important;
-                color: white !important;
-                border: none !important;
-                min-width: 44px !important;
-                min-height: 44px !important;
             }
         }
 
@@ -1323,7 +1368,7 @@
     <div class="page-content" id="about">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.about.title') }}</h2>
-            
+
             <!-- Festival Introduction Card -->
             <div class="about-card fade-in" data-delay="0">
                 <div class="about-icon">
@@ -1355,7 +1400,7 @@
                     <h4>{{ __('mutafest.about.organizer1_name') }}</h4>
                     <p>{{ __('mutafest.about.organizer1_desc') }}</p>
                 </div>
-                
+
                 <div class="about-card-small fade-in" data-delay="600">
                     <div class="about-icon-small">
                         <i class="fas fa-palette"></i>
@@ -1448,7 +1493,7 @@
     <div class="page-content" id="exhibitions">
         <div class="container">
             <h2 class="section-title">{{ __('mutafest.exhibitions.title') }}</h2>
-            
+
             <!-- Photo Exhibition Card -->
             <div class="about-card fade-in" data-delay="0">
                 <div class="about-icon">
@@ -1673,7 +1718,7 @@
                     <div style="margin-top: 15px;">
                         @foreach(__('mutafest.info.important.items') as $item)
                         <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(241, 143, 1, 0.05), rgba(46, 134, 171, 0.05)); border-radius: 10px; border-left: 4px solid var(--coral);">
-                            <strong style="color: var(--primary-blue);">{{ $item['label'] }}:</strong> 
+                            <strong style="color: var(--primary-blue);">{{ $item['label'] }}:</strong>
                             <span style="color: var(--dark); margin-left: 8px;">{{ $item['value'] }}</span>
                         </div>
                         @endforeach
@@ -1723,19 +1768,19 @@
                     <h3>{{ __('mutafest.contact.info.title') }}</h3>
                     <div style="margin-top: 20px;">
                         <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--coral);">
-                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.email_label') }}:</strong> 
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.email_label') }}:</strong>
                             <a href="mailto:{{ __('mutafest.contact.info.email') }}" style="color: var(--coral); text-decoration: none; margin-left: 8px;">{{ __('mutafest.contact.info.email') }}</a>
                         </div>
                         <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--teal);">
-                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.phone_label') }}:</strong> 
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.phone_label') }}:</strong>
                             <a href="tel:{{ str_replace(' ', '', __('mutafest.contact.info.phone')) }}" style="color: var(--teal); text-decoration: none; margin-left: 8px;">{{ __('mutafest.contact.info.phone') }}</a>
                         </div>
                         <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.address_label') }}:</strong> 
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.address_label') }}:</strong>
                             <span style="color: var(--dark); margin-left: 8px;">{{ __('mutafest.contact.info.address') }}</span>
                         </div>
                         <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, rgba(46, 134, 171, 0.05), rgba(241, 143, 1, 0.05)); border-radius: 10px; border-left: 4px solid var(--gold);">
-                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.hours_label') }}:</strong> 
+                            <strong style="color: var(--primary-blue);">{{ __('mutafest.contact.info.hours_label') }}:</strong>
                             <span style="color: var(--dark); margin-left: 8px;">{{ __('mutafest.contact.info.hours') }}</span>
                         </div>
                     </div>
@@ -2052,14 +2097,14 @@
             function handleSwipe() {
                 const navLinks = document.getElementById('nav-links');
                 const swipeThreshold = 100;
-                
+
                 // Swipe right to left to close menu (for LTR)
                 if (touchStartX - touchEndX > swipeThreshold && navLinks.classList.contains('active')) {
                     if (document.dir !== 'rtl') {
                         closeMobileNav();
                     }
                 }
-                
+
                 // Swipe left to right to close menu (for RTL)
                 if (touchEndX - touchStartX > swipeThreshold && navLinks.classList.contains('active')) {
                     if (document.dir === 'rtl') {
