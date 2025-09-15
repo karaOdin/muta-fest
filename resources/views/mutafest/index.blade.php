@@ -187,14 +187,14 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-        
+
         .logo img {
             height: 40px;
             width: auto;
             filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
             transition: transform 0.3s ease;
         }
-        
+
         .logo img:hover {
             transform: scale(1.05);
         }
@@ -1067,7 +1067,7 @@
             .logo {
                 flex-shrink: 0;
             }
-            
+
             .logo img {
                 height: 35px;
             }
@@ -1603,94 +1603,6 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
 
-        <div class="booking-modal" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeBookingModal()">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <div class="modal-header">
-                <div class="modal-icon">
-                    <i class="fas fa-ticket-alt"></i>
-                </div>
-                <h2>{{ __('mutafest.nav.book_invitation') }}</h2>
-                <p>{{ __('mutafest.hero.subtitle') }}</p>
-            </div>
-
-            <div class="modal-content">
-                <div class="booking-form">
-                    <form id="booking-form" onsubmit="submitBooking(event)">
-                        @csrf
-                        <div class="form-group">
-                            <label for="guest-name">{{ __('mutafest.contact.form.name_placeholder') }}</label>
-                            <input type="text" id="guest-name" name="name" placeholder="{{ __('mutafest.contact.form.name_placeholder') }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="guest-email">{{ __('mutafest.contact.form.email_placeholder') }}</label>
-                            <input type="email" id="guest-email" name="email" placeholder="{{ __('mutafest.contact.form.email_placeholder') }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="guest-phone">{{ __('mutafest.contact.info.phone_label') }}</label>
-                            <input type="tel" id="guest-phone" name="phone" placeholder="+39 123 456 7890">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="guest-count">Number of Guests</label>
-                            <select id="guest-count" name="guests" required>
-                                <option value="">Select number of guests</option>
-                                <option value="1">1 Guest</option>
-                                <option value="2">2 Guests</option>
-                                <option value="3">3 Guests</option>
-                                <option value="4">4 Guests</option>
-                                <option value="5+">5+ Guests</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="preferred-day">Preferred Day</label>
-                            <select id="preferred-day" name="day">
-                                <option value="">Any day</option>
-                                <option value="friday">Friday 17 Oct - Opening</option>
-                                <option value="saturday">Saturday 18 Oct - Main Events</option>
-                                <option value="sunday">Sunday 19 Oct - Closing</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="special-requests">Special Requests</label>
-                            <textarea id="special-requests" name="requests" placeholder="Any special requirements or questions..." rows="3"></textarea>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="closeBookingModal()">Cancel</button>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i>
-                                Send Invitation Request
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="booking-info">
-                    <div class="info-card">
-                        <h4><i class="fas fa-calendar-alt"></i> Event Details</h4>
-                        <p>{{ __('mutafest.hero.dates') }}</p>
-                        <p>{{ __('mutafest.info.venue.address') }}</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h4><i class="fas fa-info-circle"></i> Important Notes</h4>
-                        <ul>
-                            <li>Free admission with invitation</li>
-                            <li>Registration required</li>
-                            <li>Limited capacity</li>
-                            <li>Confirmation via email</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <nav class="main-nav">

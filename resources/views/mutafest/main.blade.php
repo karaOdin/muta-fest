@@ -150,10 +150,7 @@
             line-height: 1.1;
             text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
             z-index: 6;
-            border-radius: 15px;
             backdrop-filter: blur(15px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         /* Image-based Wave System with 3 Rows */
