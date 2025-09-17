@@ -99,7 +99,7 @@
         /* Chi siamo text */
         .chi-siamo {
             position: absolute;
-            bottom: 200px;
+            bottom: 220px;
             left: 60px;
             color: #ff8c42;
             font-size: 36px;
@@ -115,6 +115,42 @@
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 140, 66, 0.3);
             background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enter Festival Button */
+        .enter-festival {
+            position: absolute;
+            bottom: 140px;
+            left: 60px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            color: #316995;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 5;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .enter-festival:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95));
+        }
+
+        .enter-festival i {
+            transition: transform 0.3s ease;
+        }
+
+        .enter-festival:hover i {
+            transform: translateX(4px);
         }
 
         /* Character Image */
@@ -339,9 +375,16 @@
             }
 
             .chi-siamo {
-                bottom: 32vh;
+                bottom: 36vh;
                 left: 5vw;
                 font-size: 4vw;
+            }
+
+            .enter-festival {
+                bottom: 28vh;
+                left: 5vw;
+                font-size: 3.5vw;
+                padding: 3vw 6vw;
             }
 
             .social-icons {
@@ -695,7 +738,13 @@
     </div>
 
     <!-- Chi siamo text -->
-    <div class="chi-siamo" onclick="openModal()">Cos’è</div>
+    <div class="chi-siamo" onclick="openModal()">Cos'è</div>
+    
+    <!-- Enter Festival Button -->
+    <a href="{{ route('mutafest.home') }}" class="enter-festival">
+        Entra nel Festival
+        <i class="fas fa-arrow-right"></i>
+    </a>
 
     <!-- Character Image with floating animation -->
     <div class="character">

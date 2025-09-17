@@ -232,4 +232,9 @@ class MutaFestController extends Controller
     {
         return view('mutafest.about');
     }
+
+    public function home2()
+    {
+        return view('mutafest.index2');
+    }
 }
