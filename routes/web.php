@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // MutaFest Routes
 Route::get('/', [MutaFestController::class, 'index'])->name('mutafest.home');
-Route::get('/home2', [MutaFestController::class, 'index'])->name('mutafest.home2');
+Route::get('/home2', [MutaFestController::class, 'home2'])->name('mutafest.home2');
 Route::get('/main', [MutaFestController::class, 'main'])->name('mutafest.about');
 Route::get('about', [MutaFestController::class, 'about'])->name('mutafest.about');
 Route::get('/booking', [MutaFestController::class, 'booking'])->name('mutafest.booking');

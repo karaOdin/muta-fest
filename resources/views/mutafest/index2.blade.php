@@ -22,6 +22,7 @@
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="%23ff8c42" opacity="0.8"/></svg>') 16 16, auto;
         }
 
         /* Header */
@@ -31,7 +32,9 @@
             z-index: 100;
             background: rgba(49, 105, 149, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px dashed rgba(255, 255, 255, 0.3);
+            transform: rotate(-0.5deg);
+            margin-bottom: -2px;
         }
 
         .nav-container {
@@ -68,61 +71,262 @@
         }
 
         .cta-button {
-            background: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(45deg, #ff8c42, #ffb366);
             color: white;
-            padding: 12px 24px;
-            border-radius: 24px;
+            padding: 12px 28px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 3px solid white;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            transform: rotate(2deg);
+            display: inline-block;
         }
 
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+            transform: rotate(-2deg) scale(1.1);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
+            animation: wiggle 0.5s ease-in-out;
         }
 
-        /* Hero Section */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-2deg) scale(1.1); }
+            25% { transform: rotate(3deg) scale(1.1); }
+            75% { transform: rotate(-3deg) scale(1.1); }
+        }
+
+        /* Hero Section - Poster Style */
         .hero {
-            padding: 120px 0 80px;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
         }
 
         .hero-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Fun Shapes & Doodles */
+        .hero-shape {
+            position: absolute;
+            animation: floatShape 15s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 30% 30%, #ff8c42, #ffb366);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 10%;
+            left: -50px;
+            animation-delay: 0s;
+            opacity: 0.7;
+            transform: rotate(15deg);
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #4a90a4, #5BA8C4);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            bottom: 20%;
+            right: -30px;
+            animation-delay: 3s;
+            opacity: 0.6;
+        }
+
+        .shape-3 {
+            width: 120px;
+            height: 120px;
+            background: #ffb366;
+            border-radius: 50%;
+            top: 50%;
+            right: 15%;
+            animation-delay: 6s;
+            opacity: 0.5;
+        }
+
+        .shape-3::after {
+            content: '♪';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: white;
+        }
+
+        /* Squiggly lines */
+        .squiggle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.3;
+        }
+
+        .squiggle-1 {
+            top: 20%;
+            left: 40%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,50 Q30,10 50,50 T90,50" stroke="%23ff8c42" stroke-width="3" fill="none" stroke-linecap="round"/></svg>');
+            animation: rotate 10s linear infinite;
+        }
+
+        .squiggle-2 {
+            bottom: 30%;
+            left: 20%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,80 80,20" stroke="%234a90a4" stroke-width="3" fill="none" stroke-dasharray="5,5"/></svg>');
+            animation: rotate -15s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            25% { transform: translate(30px, -30px) scale(1.1) rotate(90deg); }
+            50% { transform: translate(-20px, 20px) scale(0.95) rotate(180deg); }
+            75% { transform: translate(40px, 10px) scale(1.05) rotate(270deg); }
+        }
+
+        .hero-content {
+            position: relative;
         }
 
         .hero-logo {
-            height: 120px;
+            height: 140px;
             width: auto;
             margin-bottom: 32px;
-            filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.4));
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 300;
-            line-height: 1.2;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 0.9;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
+            text-shadow: 5px 5px 0 #ff8c42, 10px 10px 0 rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.2s both;
+            transform: rotate(-2deg);
+            display: inline-block;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 48px;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
-        /* Content Cards */
+        .hero-date {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff8c42, #ffb366);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            border: 4px solid white;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.6s both, bounce 2s ease-in-out 2s infinite;
+            transform: rotate(-3deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(-3deg) translateY(0); }
+            50% { transform: rotate(-3deg) translateY(-10px); }
+        }
+
+        /* Hero Image Section */
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1.2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-girl {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)) hue-rotate(10deg) brightness(1.1);
+            animation: float 4s ease-in-out infinite;
+            transform: rotate(5deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(5deg) scale(1); }
+            25% { transform: translateY(-30px) rotate(8deg) scale(1.05); }
+            50% { transform: translateY(-20px) rotate(3deg) scale(1.02); }
+            75% { transform: translateY(-10px) rotate(7deg) scale(1.01); }
+        }
+
+        /* Decorative Elements */
+        .hero-decoration {
+            position: absolute;
+            font-weight: 900;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .deco-1 {
+            top: -60px;
+            left: -40px;
+            transform: rotate(-15deg);
+            font-size: 140px;
+            background: linear-gradient(45deg, #ff8c42, #ffb366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.8;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .deco-2 {
+            bottom: -40px;
+            right: -20px;
+            font-size: 100px;
+            transform: rotate(25deg);
+            color: rgba(255, 255, 255, 0.2);
+            animation: wiggle 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: rotate(-15deg) scale(1); }
+            50% { transform: rotate(-15deg) scale(1.1); }
+        }
+
+        /* Content Cards - Poster Style */
         .content-section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
         }
 
         .container {
@@ -132,114 +336,309 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 600;
+            font-size: 3.5rem;
+            font-weight: 900;
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: 80px;
             color: white;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            transform: rotate(-1deg);
+            text-shadow: 4px 4px 0 #ff8c42, 8px 8px 0 rgba(0,0,0,0.2);
         }
 
+        .section-title::after {
+            content: '✦ ✦ ✦';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #ffb366;
+            letter-spacing: 20px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+        }
+
+        /* Poster-style Cards Grid */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
+            gap: 40px;
             margin-bottom: 64px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            padding: 0;
             color: #2c3e50;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+            position: relative;
+            transform: rotate(-1deg);
+            border: 4px solid white;
+        }
+
+        .card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #316995, #4a90a4, #ff8c42);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #316995, #4a90a4);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px dashed white;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.3);
+            z-index: 10;
         }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #316995, #4a90a4);
-            border-radius: 16px;
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
-            margin-bottom: 24px;
+            color: #316995;
+            font-size: 40px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            animation: iconBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-5deg); }
+            75% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        .card-body {
+            padding: 40px;
         }
 
         .card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 16px;
             color: #316995;
         }
 
         .card-description {
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.7;
             color: #4a5568;
         }
 
-        /* Program Section */
+        /* Program Section - Poster Style */
+        #program {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #program::before {
+            content: 'PROGRAM';
+            position: absolute;
+            top: -50px;
+            right: -100px;
+            font-size: 200px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            transform: rotate(-90deg);
+            z-index: 0;
+        }
+
         .program-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            position: relative;
+            z-index: 1;
         }
 
         .program-day {
-            background: rgba(255, 255, 255, 0.1);
+            background: white;
+            padding: 0;
+            border: 4px solid #316995;
             border-radius: 20px;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            transform: rotate(-2deg);
+        }
+
+        .program-day:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .program-day::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(49, 105, 149, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .program-day:hover {
+            transform: rotate(0deg) scale(1.05) translateY(-10px);
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        .program-day:hover::before {
+            opacity: 1;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #316995, #4a90a4);
             padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px dashed white;
+        }
+
+        .day-header::after {
+            content: attr(data-day);
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 100px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.3);
+            line-height: 1;
+            transform: rotate(-10deg);
         }
 
         .day-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 24px;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0;
             color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sessions-container {
+            padding: 32px;
         }
 
         .session {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1) 0%, rgba(49, 105, 149, 0.05) 100%);
+            border-left: 6px dotted #ff8c42;
+            border-radius: 15px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateX(0);
+        }
+
+        .session:hover {
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.2) 0%, rgba(49, 105, 149, 0.1) 100%);
+            transform: translateX(15px) rotate(1deg);
+            border-left-color: #316995;
         }
 
         .session:last-child {
-            border-bottom: none;
             margin-bottom: 0;
         }
 
         .session-time {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: #ff8c42;
+            font-weight: 700;
             margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .session-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 4px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #2c3e50;
         }
 
         .session-participants {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.5;
         }
 
         /* Footer */
         .footer {
-            background: rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(49, 105, 149, 0.4) 100%);
             padding: 60px 0 40px;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '🌊 🎨 🎭 🎵 🌊 🎨 🎭 🎵';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            font-size: 30px;
+            white-space: nowrap;
+            animation: footerScroll 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes footerScroll {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
         }
 
         .footer-content {
@@ -301,12 +700,29 @@
                 grid-template-columns: 1fr;
             }
 
-            .card {
+            .card-body {
                 padding: 32px 24px;
             }
 
             .program-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                margin-top: 40px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-girl {
+                max-width: 300px;
             }
         }
     </style>
@@ -331,10 +747,28 @@
 
 <!-- Hero Section -->
 <section class="hero">
+    <!-- Fun Shapes -->
+    <div class="hero-shape shape-1"></div>
+    <div class="hero-shape shape-2"></div>
+    <div class="hero-shape shape-3"></div>
+    <div class="squiggle squiggle-1"></div>
+    <div class="squiggle squiggle-2"></div>
+
     <div class="hero-container">
-        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="hero-logo">
-        <h1 class="hero-title">Festival del Mediterraneo<br>a Milano</h1>
-        <p class="hero-subtitle">Un viaggio attraverso culture, letterature e arti del Mediterraneo</p>
+        <div class="hero-content">
+            <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="hero-logo">
+            <h1 class="hero-title">Festival del<br>Mediterraneo</h1>
+            <p class="hero-subtitle">🌊 Un viaggio attraverso culture, letterature e arti del Mediterraneo 🎭</p>
+            <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-image-wrapper">
+                <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
+                <div class="hero-decoration deco-1">2025</div>
+                <div class="hero-decoration deco-2">FEST!</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -344,27 +778,39 @@
         <h2 class="section-title">{{ __('mutafest.about.title') }}</h2>
         <div class="cards-grid">
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-globe-europe"></i>
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
                 </div>
-                <h3 class="card-title">Culture Mediterranee</h3>
-                <p class="card-description">Un festival dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.</p>
+                <div class="card-body">
+                    <h3 class="card-title">Culture Mediterranee</h3>
+                    <p class="card-description">Un festival dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.</p>
+                </div>
             </div>
 
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-book-open"></i>
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
                 </div>
-                <h3 class="card-title">Letteratura & Poesia</h3>
-                <p class="card-description">Incontri con scrittori, poeti e traduttori da tutti i Paesi del Mediterraneo.</p>
+                <div class="card-body">
+                    <h3 class="card-title">Letteratura & Poesia</h3>
+                    <p class="card-description">Incontri con scrittori, poeti e traduttori da tutti i Paesi del Mediterraneo.</p>
+                </div>
             </div>
 
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-music"></i>
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
                 </div>
-                <h3 class="card-title">Arti & Musica</h3>
-                <p class="card-description">Concerti, performance e momenti conviviali che celebrano la diversità culturale.</p>
+                <div class="card-body">
+                    <h3 class="card-title">Arti & Musica</h3>
+                    <p class="card-description">Concerti, performance e momenti conviviali che celebrano la diversità culturale.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -377,14 +823,18 @@
         <div class="program-grid">
             @foreach($program as $dayKey => $day)
                 <div class="program-day">
-                    <h3 class="day-title">{{ $day['title'] }}</h3>
-                    @foreach($day['sessions'] as $session)
-                        <div class="session">
-                            <div class="session-time">{{ $session['time'] }}</div>
-                            <div class="session-title">{{ $session['title'] }}</div>
-                            <div class="session-participants">{{ $session['participants'] }}</div>
-                        </div>
-                    @endforeach
+                    <div class="day-header" data-day="{{ substr($dayKey, -1) }}">
+                        <h3 class="day-title">{{ $day['title'] }}</h3>
+                    </div>
+                    <div class="sessions-container">
+                        @foreach($day['sessions'] as $session)
+                            <div class="session">
+                                <div class="session-time">{{ $session['time'] }}</div>
+                                <div class="session-title">{{ $session['title'] }}</div>
+                                <div class="session-participants">{{ $session['participants'] }}</div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -398,15 +848,19 @@
         <div class="cards-grid">
             @foreach($guests as $guest)
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="{{ $guest['icon'] }}"></i>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="{{ $guest['icon'] }}"></i>
+                        </div>
                     </div>
-                    <h3 class="card-title">{{ $guest['name'] }}</h3>
-                    <p class="card-description">
-                        <strong>{{ $guest['country'] }}</strong><br>
-                        {{ $guest['role'] }}<br>
-                        {{ $guest['bio'] }}
-                    </p>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ $guest['name'] }}</h3>
+                        <p class="card-description">
+                            <strong style="color: #ff8c42;">{{ $guest['country'] }}</strong><br>
+                            <em style="color: #316995;">{{ $guest['role'] }}</em><br><br>
+                            {{ $guest['bio'] }}
+                        </p>
+                    </div>
                 </div>
             @endforeach
         </div>

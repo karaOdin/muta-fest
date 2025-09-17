@@ -183,34 +183,34 @@
         }
 
         @keyframes organicFloat {
-            0%, 100% { 
+            0%, 100% {
                 transform: translateY(0) scale(1);
                 border-radius: 85% 15% 80% 20% / 92% 18% 82% 8%;
             }
-            33% { 
+            33% {
                 transform: translateY(-15px) scale(1.1);
                 border-radius: 42% 58% 70% 30% / 45% 80% 20% 55%;
             }
-            66% { 
+            66% {
                 transform: translateY(10px) scale(0.9);
                 border-radius: 68% 32% 45% 55% / 72% 28% 88% 12%;
             }
         }
 
         @keyframes floatShape {
-            0%, 100% { 
+            0%, 100% {
                 transform: translate(0, 0) scale(1) rotate(0deg);
                 border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
             }
-            25% { 
+            25% {
                 transform: translate(25px, -20px) scale(1.08) rotate(5deg);
                 border-radius: 48% 52% 68% 32% / 42% 58% 72% 28%;
             }
-            50% { 
+            50% {
                 transform: translate(-15px, 15px) scale(0.96) rotate(-3deg);
                 border-radius: 72% 28% 48% 52% / 64% 36% 24% 76%;
             }
-            75% { 
+            75% {
                 transform: translate(20px, 5px) scale(1.04) rotate(2deg);
                 border-radius: 54% 46% 72% 28% / 68% 42% 58% 32%;
             }
@@ -381,7 +381,7 @@
             border-radius: 0;
             padding: 0;
             color: #2c3e50;
-            box-shadow: 
+            box-shadow:
                 8px 8px 0 #ff8c42,
                 16px 16px 0 rgba(49, 105, 149, 0.2);
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -393,7 +393,7 @@
         .card:nth-child(2n) {
             transform: rotate(1deg);
             border-color: #ff8c42;
-            box-shadow: 
+            box-shadow:
                 -8px 8px 0 #316995,
                 -16px 16px 0 rgba(255, 140, 66, 0.2);
         }
@@ -401,7 +401,7 @@
         .card:nth-child(3n) {
             transform: rotate(0deg);
             border-color: #4a90a4;
-            box-shadow: 
+            box-shadow:
                 8px -8px 0 #ff8c42,
                 16px -16px 0 rgba(74, 144, 164, 0.2);
         }
@@ -449,19 +449,19 @@
 
         .card:hover {
             transform: rotate(0deg) scale(1.02);
-            box-shadow: 
+            box-shadow:
                 12px 12px 0 #ff8c42,
                 24px 24px 0 rgba(49, 105, 149, 0.15);
         }
 
         .card:nth-child(2n):hover {
-            box-shadow: 
+            box-shadow:
                 -12px 12px 0 #316995,
                 -24px 24px 0 rgba(255, 140, 66, 0.15);
         }
 
         .card:nth-child(3n):hover {
-            box-shadow: 
+            box-shadow:
                 12px -12px 0 #ff8c42,
                 24px -24px 0 rgba(74, 144, 164, 0.15);
         }
@@ -721,7 +721,7 @@
             padding: 0;
             border: 4px solid #316995;
             border-radius: 0;
-            box-shadow: 
+            box-shadow:
                 6px 6px 0 #ff8c42,
                 12px 12px 0 rgba(49, 105, 149, 0.2);
             overflow: hidden;
@@ -733,7 +733,7 @@
         .program-day:nth-child(2n) {
             transform: rotate(0.5deg);
             border-color: #ff8c42;
-            box-shadow: 
+            box-shadow:
                 -6px 6px 0 #316995,
                 -12px 12px 0 rgba(255, 140, 66, 0.2);
         }
@@ -741,7 +741,7 @@
         .program-day:nth-child(3n) {
             transform: rotate(0deg);
             border-color: #4a90a4;
-            box-shadow: 
+            box-shadow:
                 6px -6px 0 #ff8c42,
                 12px -12px 0 rgba(74, 144, 164, 0.2);
         }
@@ -766,19 +766,19 @@
 
         .program-day:hover {
             transform: rotate(0deg) scale(1.01);
-            box-shadow: 
+            box-shadow:
                 10px 10px 0 #ff8c42,
                 20px 20px 0 rgba(49, 105, 149, 0.15);
         }
 
         .program-day:nth-child(2n):hover {
-            box-shadow: 
+            box-shadow:
                 -10px 10px 0 #316995,
                 -20px 20px 0 rgba(255, 140, 66, 0.15);
         }
 
         .program-day:nth-child(3n):hover {
-            box-shadow: 
+            box-shadow:
                 10px -10px 0 #ff8c42,
                 20px -20px 0 rgba(74, 144, 164, 0.15);
         }
@@ -880,7 +880,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
 
         .footer-content {
             text-align: center;
@@ -973,7 +973,7 @@
     <header class="header">
         <div class="nav-container">
             <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="logo">
-            
+
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#about" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
@@ -981,7 +981,7 @@
                     <li><a href="#guests" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
                 </ul>
             </nav>
-            
+
             <a href="{{ route('mutafest.booking') }}" class="cta-button">{{ __('mutafest.nav.book_invitation') }}</a>
         </div>
     </header>
@@ -994,7 +994,7 @@
         <div class="hero-shape shape-3"></div>
         <div class="organic-element organic-1"></div>
         <div class="organic-element organic-2"></div>
-        
+
         <div class="hero-container">
             <div class="hero-content">
                 <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="hero-logo">
@@ -1002,7 +1002,7 @@
                 <p class="hero-subtitle">Un viaggio attraverso culture, letterature e arti del Mediterraneo</p>
                 <div class="hero-date">2-4 Maggio 2025 • Milano</div>
             </div>
-            
+
             <div class="hero-visual">
                 <div class="hero-image-wrapper">
                     <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
@@ -1029,7 +1029,7 @@
                         <p class="card-description">Un festival dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.</p>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">
@@ -1041,7 +1041,7 @@
                         <p class="card-description">Incontri con scrittori, poeti e traduttori da tutti i Paesi del Mediterraneo.</p>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">
@@ -1114,14 +1114,14 @@
             <div class="footer-content">
                 <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="footer-logo">
                 <p class="footer-text">MutaFest - Festival del Mediterraneo a Milano</p>
-                
+
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                 </div>
-                
+
                 <p class="footer-text">&copy; 2025 MutaFest. Tutti i diritti riservati.</p>
             </div>
         </div>
