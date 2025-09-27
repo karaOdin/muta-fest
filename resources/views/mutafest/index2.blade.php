@@ -365,6 +365,199 @@
             50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
         }
 
+        /* Mediterranean Floating Elements */
+        .mediterranean-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.6;
+            animation: floatAround 20s infinite ease-in-out;
+        }
+
+        .floating-bird {
+            width: 60px;
+            top: 10%;
+            left: 85%;
+            animation: birdFly 15s infinite linear;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        @keyframes birdFly {
+            0% { transform: translateX(0) translateY(0) rotate(-5deg); }
+            25% { transform: translateX(-200px) translateY(50px) rotate(5deg); }
+            50% { transform: translateX(-400px) translateY(-20px) rotate(-3deg); }
+            75% { transform: translateX(-600px) translateY(30px) rotate(3deg); }
+            100% { transform: translateX(-800px) translateY(0) rotate(-5deg); }
+        }
+
+        .floating-olive {
+            width: 50px;
+            top: 70%;
+            left: 10%;
+            animation: gentleFloat 12s infinite ease-in-out;
+            transform: rotate(-15deg);
+        }
+
+        .floating-orange {
+            width: 40px;
+            top: 45%;
+            right: 8%;
+            animation: bounceFloat 8s infinite ease-in-out;
+        }
+
+        .floating-watermelon {
+            width: 55px;
+            bottom: 20%;
+            left: 30%;
+            animation: spinFloat 14s infinite linear;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0) rotate(-15deg); }
+            50% { transform: translateY(-30px) rotate(15deg); }
+        }
+
+        @keyframes bounceFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-20px) scale(1.1); }
+            50% { transform: translateY(0) scale(0.9); }
+            75% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        @keyframes spinFloat {
+            0% { transform: rotate(0deg) translateX(0); }
+            100% { transform: rotate(360deg) translateX(40px); }
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -20px); }
+            50% { transform: translate(-20px, 30px); }
+            75% { transform: translate(40px, 10px); }
+        }
+
+        /* Ocean Life Animations */
+        .ocean-life {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 350px;
+            pointer-events: none;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .swimming-fish {
+            position: absolute;
+            width: 60px;
+            animation: swimLeft 25s infinite linear;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .swimming-fish.fish-1 {
+            bottom: 150px;
+            animation-delay: 0s;
+        }
+
+        .swimming-fish.fish-2 {
+            bottom: 200px;
+            animation-delay: -8s;
+            width: 50px;
+        }
+
+        .fish-school {
+            position: absolute;
+            width: 120px;
+            bottom: 100px;
+            right: -120px;
+            animation: swimRight 30s infinite linear;
+            opacity: 0.8;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        @keyframes swimLeft {
+            0% { transform: translateX(100vw) scaleX(-1); }
+            100% { transform: translateX(-200px) scaleX(-1); }
+        }
+
+        @keyframes swimRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        /* Dancing Characters */
+        .dance-floor {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .dancer {
+            width: 120px;
+            height: auto;
+            animation: dance 3s infinite ease-in-out;
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.4));
+            opacity: 0.9;
+        }
+
+        .dancer-boy {
+            animation-delay: -1.5s;
+        }
+
+        .dancer-girl {
+            animation-delay: 0s;
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: translateY(0) rotate(-5deg) scale(1); }
+            25% { transform: translateY(-20px) rotate(5deg) scale(1.05); }
+            50% { transform: translateY(0) rotate(-5deg) scale(0.95); }
+            75% { transform: translateY(-10px) rotate(3deg) scale(1.02); }
+        }
+
+        /* Custom Icon Images */
+        .card-icon img {
+            width: 50px;
+            height: 50px;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon img {
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        /* Hide animations on mobile for better performance */
+        @media (max-width: 768px) {
+            .mediterranean-elements,
+            .ocean-life {
+                display: none;
+            }
+            
+            .dance-floor {
+                bottom: 10px;
+                padding: 0 20px;
+            }
+            
+            .dancer {
+                width: 80px;
+            }
+        }
+
         /* Poster-style Cards Grid */
         .cards-grid {
             display: grid;
@@ -728,10 +921,25 @@
     </style>
 </head>
 <body>
+<!-- Mediterranean Floating Elements -->
+<div class="mediterranean-elements">
+    <img src="{{ asset('images/bird.png') }}" alt="Bird" class="floating-element floating-bird">
+    <img src="{{ asset('images/olive-branch.png') }}" alt="Olive Branch" class="floating-element floating-olive">
+    <img src="{{ asset('images/orange.png') }}" alt="Orange" class="floating-element floating-orange">
+    <img src="{{ asset('images/watermelon.png') }}" alt="Watermelon" class="floating-element floating-watermelon">
+</div>
+
+<!-- Ocean Life -->
+<div class="ocean-life">
+    <img src="{{ asset('images/fish.png') }}" alt="Fish" class="swimming-fish fish-1">
+    <img src="{{ asset('images/fish.png') }}" alt="Fish" class="swimming-fish fish-2">
+    <img src="{{ asset('images/fishs.png') }}" alt="Fish School" class="fish-school">
+</div>
+
 <!-- Header -->
 <header class="header">
     <div class="nav-container">
-        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="logo">
+        <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="logo">
 
         <nav>
             <ul class="nav-menu">
@@ -754,9 +962,15 @@
     <div class="squiggle squiggle-1"></div>
     <div class="squiggle squiggle-2"></div>
 
+    <!-- Dancing Characters -->
+    <div class="dance-floor">
+        <img src="{{ asset('images/dancer-boy.png') }}" alt="Dancer Boy" class="dancer dancer-boy">
+        <img src="{{ asset('images/dancer-girl.png') }}" alt="Dancer Girl" class="dancer dancer-girl">
+    </div>
+
     <div class="hero-container">
         <div class="hero-content">
-            <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="hero-logo">
+            <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="hero-logo">
             <h1 class="hero-title">Festival del<br>Mediterraneo</h1>
             <p class="hero-subtitle">🌊 Un viaggio attraverso culture, letterature e arti del Mediterraneo 🎭</p>
             <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>
@@ -780,7 +994,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">
-                        <i class="fas fa-globe-europe"></i>
+                        <img src="{{ asset('images/olive-branch.png') }}" alt="Culture">
                     </div>
                 </div>
                 <div class="card-body">
@@ -792,7 +1006,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">
-                        <i class="fas fa-book-open"></i>
+                        <img src="{{ asset('images/book.png') }}" alt="Literature">
                     </div>
                 </div>
                 <div class="card-body">
@@ -804,7 +1018,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">
-                        <i class="fas fa-music"></i>
+                        <img src="{{ asset('images/guitar.png') }}" alt="Music">
                     </div>
                 </div>
                 <div class="card-body">
@@ -871,7 +1085,7 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
-            <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="footer-logo">
+            <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="footer-logo">
             <p class="footer-text">MutaFest - Festival del Mediterraneo a Milano</p>
 
             <div class="social-links">
