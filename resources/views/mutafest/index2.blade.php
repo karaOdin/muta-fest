@@ -18,7 +18,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-            background: #316995;
+            background: #ab4e9e;
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
@@ -30,7 +30,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(49, 105, 149, 0.95);
+            background: rgba(171, 78, 158, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 3px dashed rgba(255, 255, 255, 0.3);
             transform: rotate(-0.5deg);
@@ -139,7 +139,7 @@
         .shape-2 {
             width: 150px;
             height: 150px;
-            background: linear-gradient(135deg, #4a90a4, #5BA8C4);
+            background: linear-gradient(135deg, #ab4e9e, #c968b7);
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             bottom: 20%;
             right: -30px;
@@ -186,7 +186,7 @@
         .squiggle-2 {
             bottom: 30%;
             left: 20%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,80 80,20" stroke="%234a90a4" stroke-width="3" fill="none" stroke-dasharray="5,5"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,80 80,20" stroke="%23ab4e9e" stroke-width="3" fill="none" stroke-dasharray="5,5"/></svg>');
             animation: rotate -15s linear infinite;
         }
 
@@ -590,7 +590,7 @@
             left: 0;
             width: 100%;
             height: 6px;
-            background: linear-gradient(90deg, #316995, #4a90a4, #ff8c42);
+            background: linear-gradient(90deg, #ab4e9e, #c968b7, #ff8c42);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -601,7 +601,7 @@
         }
 
         .card-header {
-            background: linear-gradient(135deg, #316995, #4a90a4);
+            background: linear-gradient(135deg, #ab4e9e, #c968b7);
             padding: 40px;
             position: relative;
             overflow: hidden;
@@ -638,7 +638,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #316995;
+            color: #ab4e9e;
             font-size: 40px;
             margin: 0 auto;
             position: relative;
@@ -662,7 +662,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 16px;
-            color: #316995;
+            color: #ab4e9e;
         }
 
         .card-description {
@@ -700,7 +700,7 @@
         .program-day {
             background: white;
             padding: 0;
-            border: 4px solid #316995;
+            border: 4px solid #ab4e9e;
             border-radius: 20px;
             box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
             overflow: hidden;
@@ -720,7 +720,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(49, 105, 149, 0.05) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(171, 78, 158, 0.05) 0%, transparent 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -736,7 +736,7 @@
         }
 
         .day-header {
-            background: linear-gradient(135deg, #316995, #4a90a4);
+            background: linear-gradient(135deg, #ab4e9e, #c968b7);
             padding: 32px;
             position: relative;
             overflow: hidden;
@@ -771,7 +771,7 @@
         .session {
             margin-bottom: 24px;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1) 0%, rgba(49, 105, 149, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1) 0%, rgba(171, 78, 158, 0.05) 100%);
             border-left: 6px dotted #ff8c42;
             border-radius: 15px;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -779,9 +779,9 @@
         }
 
         .session:hover {
-            background: linear-gradient(135deg, rgba(255, 140, 66, 0.2) 0%, rgba(49, 105, 149, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.2) 0%, rgba(171, 78, 158, 0.1) 100%);
             transform: translateX(15px) rotate(1deg);
-            border-left-color: #316995;
+            border-left-color: #ab4e9e;
         }
 
         .session:last-child {
@@ -811,7 +811,7 @@
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(49, 105, 149, 0.4) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(171, 78, 158, 0.4) 100%);
             padding: 60px 0 40px;
             margin-top: 80px;
             position: relative;
@@ -1119,9 +1119,9 @@
     window.addEventListener('scroll', () => {
         const header = document.querySelector('.header');
         if (window.scrollY > 50) {
-            header.style.background = 'rgba(49, 105, 149, 0.98)';
+            header.style.background = 'rgba(171, 78, 158, 0.98)';
         } else {
-            header.style.background = 'rgba(49, 105, 149, 0.95)';
+            header.style.background = 'rgba(171, 78, 158, 0.95)';
         }
     });
 </script>
