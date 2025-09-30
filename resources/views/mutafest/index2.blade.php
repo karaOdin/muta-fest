@@ -1238,13 +1238,13 @@
 <body>
 <!-- Mediterranean Floating Elements -->
 <div class="mediterranean-elements">
-    <img src="{{ asset('images/orange.png') }}" alt="Orange" class="floating-element floating-orange">
+    <!--<img src="{{ asset('images/orange.png') }}" alt="Orange" class="floating-element floating-orange">-->
     <img src="{{ asset('images/watermelon.png') }}" alt="Watermelon" class="floating-element floating-watermelon">
 </div>
 
-<!-- Fixed Elements -->
+<!-- Fixed Elements
 <img src="{{ asset('images/bird.png') }}" alt="Bird" class="floating-bird">
-<img src="{{ asset('images/olive-branch.png') }}" alt="Olive Branch" class="floating-olive">
+<img src="{{ asset('images/olive-branch.png') }}" alt="Olive Branch" class="floating-olive">-->
 
 <!-- Ocean Life -->
 <div class="ocean-life">
