@@ -17,7 +17,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;*/
+            fort-familt : Source Serif Variable;
             background: #ab4e9e;
             color: white;
             line-height: 1.6;
@@ -159,7 +160,7 @@
         }
 
         .shape-3::after {
-            content: '♪';
+            content: '';
             position: absolute;
             top: 50%;
             left: 50%;
@@ -224,7 +225,7 @@
             line-height: 0.9;
             margin-bottom: 24px;
             color: white;
-            text-shadow: 5px 5px 0 #ff8c42, 10px 10px 0 rgba(0,0,0,0.2);
+           /* text-shadow: 5px 5px 0 #ff8c42, 10px 10px 0 rgba(0,0,0,0.2);*/
             animation: fadeInUp 1s ease-out 0.2s both;
             transform: rotate(-2deg);
             display: inline-block;
@@ -274,7 +275,7 @@
         }
 
         .hero-girl {
-            width: 100%;
+            width: 50%;
             max-width: 400px;
             height: auto;
             filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)) hue-rotate(10deg) brightness(1.1);
@@ -349,7 +350,7 @@
         }
 
         .section-title::after {
-            content: '✦ ✦ ✦';
+            content: '';
             position: absolute;
             bottom: -30px;
             left: 50%;
@@ -551,7 +552,7 @@
             .ocean-life {
                 display: none;
             }
-            
+
             .floating-bird {
                 width: 60px;
                 bottom: 15px;
@@ -829,7 +830,7 @@
         }
 
         .footer::before {
-            content: '🌊 🎨 🎭 🎵 🌊 🎨 🎭 🎵';
+            content: '';
             position: absolute;
             top: 20px;
             left: 0;
@@ -996,6 +997,7 @@
 
             .shape-3::after {
                 font-size: 40px;
+                content: '';
             }
 
             /* Content sections mobile */
@@ -1278,8 +1280,8 @@
         <div class="hero-content">
             <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="hero-logo">
             <h1 class="hero-title">Festival del<br>Mediterraneo</h1>
-            <p class="hero-subtitle">🌊 Un viaggio attraverso culture, letterature e arti del Mediterraneo 🎭</p>
-            <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>
+           <!-- <p class="hero-subtitle">🌊 Un viaggio attraverso culture, letterature e arti del Mediterraneo 🎭</p>
+            <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>-->
         </div>
 
         <!
