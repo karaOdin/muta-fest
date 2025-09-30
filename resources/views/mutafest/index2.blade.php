@@ -382,19 +382,18 @@
         }
 
         .floating-bird {
-            width: 60px;
-            top: 10%;
-            left: 85%;
-            animation: birdFly 15s infinite linear;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            width: 80px;
+            bottom: 20px;
+            right: 20px;
+            position: fixed;
+            z-index: 100;
+            animation: birdStand 3s infinite ease-in-out;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
-        @keyframes birdFly {
-            0% { transform: translateX(0) translateY(0) rotate(-5deg); }
-            25% { transform: translateX(-200px) translateY(50px) rotate(5deg); }
-            50% { transform: translateX(-400px) translateY(-20px) rotate(-3deg); }
-            75% { transform: translateX(-600px) translateY(30px) rotate(3deg); }
-            100% { transform: translateX(-800px) translateY(0) rotate(-5deg); }
+        @keyframes birdStand {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
         }
 
         .floating-olive {
@@ -413,10 +412,12 @@
         }
 
         .floating-watermelon {
-            width: 55px;
-            bottom: 20%;
-            left: 30%;
-            animation: spinFloat 14s infinite linear;
+            width: 70px;
+            bottom: 80px;
+            left: -100px;
+            animation: boatMove 20s infinite linear;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            z-index: 5;
         }
 
         @keyframes gentleFloat {
@@ -431,9 +432,12 @@
             75% { transform: translateY(-15px) scale(1.05); }
         }
 
-        @keyframes spinFloat {
-            0% { transform: rotate(0deg) translateX(0); }
-            100% { transform: rotate(360deg) translateX(40px); }
+        @keyframes boatMove {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(25vw) translateY(-10px) rotate(2deg); }
+            50% { transform: translateX(50vw) translateY(0) rotate(-1deg); }
+            75% { transform: translateX(75vw) translateY(-8px) rotate(3deg); }
+            100% { transform: translateX(calc(100vw + 150px)) translateY(0) rotate(0deg); }
         }
 
         @keyframes floatAround {
@@ -546,6 +550,12 @@
             .mediterranean-elements,
             .ocean-life {
                 display: none;
+            }
+            
+            .floating-bird {
+                width: 60px;
+                bottom: 15px;
+                right: 15px;
             }
 
             .dance-floor {
@@ -1217,11 +1227,13 @@
 <body>
 <!-- Mediterranean Floating Elements -->
 <div class="mediterranean-elements">
-    <img src="{{ asset('images/bird.png') }}" alt="Bird" class="floating-element floating-bird">
     <img src="{{ asset('images/olive-branch.png') }}" alt="Olive Branch" class="floating-element floating-olive">
     <img src="{{ asset('images/orange.png') }}" alt="Orange" class="floating-element floating-orange">
     <img src="{{ asset('images/watermelon.png') }}" alt="Watermelon" class="floating-element floating-watermelon">
 </div>
+
+<!-- Fixed Bird at Bottom Right -->
+<img src="{{ asset('images/bird.png') }}" alt="Bird" class="floating-bird">
 
 <!-- Ocean Life -->
 <div class="ocean-life">
