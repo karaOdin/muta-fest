@@ -122,16 +122,26 @@
         }
 
         .mobile-drawer .nav-menu {
+            display: flex !important;
             flex-direction: column;
             gap: 30px;
             margin-top: 50px;
+            list-style: none;
+        }
+
+        .mobile-drawer .nav-menu li {
+            width: 100%;
         }
 
         .mobile-drawer .nav-link {
+            display: block;
             font-size: 1.2rem;
             padding: 15px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
         }
 
         .mobile-drawer .nav-link:hover {
