@@ -6,7 +6,7 @@
     <title>{{ __('mutafest.meta.title') }}</title>
     <meta name="description" content="{{ __('mutafest.meta.description') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style>
@@ -17,8 +17,7 @@
         }
 
         body {
-            /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;*/
-            fort-familt : Source Serif Variable;
+            font-family: 'EB Garamond', serif;
             background: #ab4e9e;
             color: white;
             line-height: 1.6;
@@ -28,14 +27,15 @@
 
         /* Header */
         .header {
-            position: sticky;
-            top: 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             background: rgba(171, 78, 158, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 3px dashed rgba(255, 255, 255, 0.3);
-            transform: rotate(-0.5deg);
-            margin-bottom: -2px;
+            border-top: 3px dashed rgba(255, 255, 255, 0.3);
+            transform: rotate(0deg);
         }
 
         .nav-container {
@@ -274,20 +274,42 @@
             display: inline-block;
         }
 
+        .girl-text-overlay {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.1;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+            z-index: 6;
+            backdrop-filter: blur(15px);
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            max-width: 120px;
+            word-wrap: break-word;
+        }
+
         .hero-girl {
-            width: 50%;
-            max-width: 400px;
+            width: 200px;
             height: auto;
-            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)) hue-rotate(10deg) brightness(1.1);
-            animation: float 4s ease-in-out infinite;
-            transform: rotate(5deg);
+            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.4)) brightness(1.1) contrast(1.1);
+            animation: float 6s ease-in-out infinite;
+            transition: all 0.4s ease;
+        }
+
+        .hero-girl:hover {
+            filter: drop-shadow(0 20px 45px rgba(0,0,0,0.5)) brightness(1.2) contrast(1.2);
+            transform: scale(1.02);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(5deg) scale(1); }
-            25% { transform: translateY(-30px) rotate(8deg) scale(1.05); }
-            50% { transform: translateY(-20px) rotate(3deg) scale(1.02); }
-            75% { transform: translateY(-10px) rotate(7deg) scale(1.01); }
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
         }
 
         /* Decorative Elements */
@@ -399,7 +421,7 @@
 
         .floating-olive {
             width: 70px;
-            top: 150px;
+            top: 20px;
             left: 20px;
             position: fixed;
             z-index: 99;
@@ -454,7 +476,7 @@
         /* Ocean Life Animations */
         .ocean-life {
             position: fixed;
-            bottom: 0;
+            bottom: 300px;
             left: 0;
             width: 100%;
             height: 350px;
@@ -564,7 +586,7 @@
 
             .floating-olive {
                 width: 50px;
-                top: 80px;
+                top: 15px;
                 left: 15px;
             }
 
@@ -832,7 +854,7 @@
         /* Footer */
         .footer {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(171, 78, 158, 0.4) 100%);
-            padding: 60px 0 40px;
+            padding: 60px 0 120px;
             margin-top: 80px;
             position: relative;
             overflow: hidden;
@@ -900,7 +922,6 @@
             /* Header adjustments */
             .header {
                 transform: rotate(0deg);
-                margin-bottom: 0;
             }
 
             .nav-container {
@@ -1128,7 +1149,7 @@
 
             /* Footer mobile */
             .footer {
-                padding: 40px 0 30px;
+                padding: 40px 0 100px;
                 margin-top: 60px;
             }
 
@@ -1173,6 +1194,12 @@
             .hero-girl {
                 max-width: 240px;
                 width: 80vw;
+            }
+
+            .girl-text-overlay {
+                font-size: 16px;
+                top: 45%;
+                max-width: 100px;
             }
 
             .section-title {
@@ -1297,8 +1324,11 @@
         <div class="hero-visual">
             <div class="hero-image-wrapper">
                 <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
-                <!--<div class="hero-decoration deco-1">2025</div>
-                <div class="hero-decoration deco-2">FEST!</div>-->
+                <!-- <div class="girl-text-overlay">
+                     Prima<br>edizione<br>2025
+                 </div>
+              !--<div class="hero-decoration deco-1">2025</div>
+                 <div class="hero-decoration deco-2">FEST!</div>-->
             </div>
         </div>
     </div>
