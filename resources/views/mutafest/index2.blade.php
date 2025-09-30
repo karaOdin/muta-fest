@@ -398,11 +398,14 @@
         }
 
         .floating-olive {
-            width: 50px;
-            top: 70%;
-            left: 10%;
+            width: 70px;
+            top: 150px;
+            left: 20px;
+            position: fixed;
+            z-index: 99;
             animation: gentleFloat 12s infinite ease-in-out;
             transform: rotate(-15deg);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
         .floating-orange {
@@ -557,6 +560,12 @@
                 width: 60px;
                 bottom: 15px;
                 right: 15px;
+            }
+
+            .floating-olive {
+                width: 50px;
+                top: 80px;
+                left: 15px;
             }
 
             .dance-floor {
@@ -1229,13 +1238,13 @@
 <body>
 <!-- Mediterranean Floating Elements -->
 <div class="mediterranean-elements">
-    <img src="{{ asset('images/olive-branch.png') }}" alt="Olive Branch" class="floating-element floating-olive">
     <img src="{{ asset('images/orange.png') }}" alt="Orange" class="floating-element floating-orange">
     <img src="{{ asset('images/watermelon.png') }}" alt="Watermelon" class="floating-element floating-watermelon">
 </div>
 
-<!-- Fixed Bird at Bottom Right -->
+<!-- Fixed Elements -->
 <img src="{{ asset('images/bird.png') }}" alt="Bird" class="floating-bird">
+<img src="{{ asset('images/olive-branch.png') }}" alt="Olive Branch" class="floating-olive">
 
 <!-- Ocean Life -->
 <div class="ocean-life">
