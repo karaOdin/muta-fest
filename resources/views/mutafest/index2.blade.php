@@ -547,12 +547,12 @@
             .ocean-life {
                 display: none;
             }
-            
+
             .dance-floor {
                 bottom: 10px;
                 padding: 0 20px;
             }
-            
+
             .dancer {
                 width: 80px;
             }
@@ -882,20 +882,20 @@
                 transform: rotate(0deg);
                 margin-bottom: 0;
             }
-            
+
             .nav-container {
                 padding: 0 16px;
                 height: 70px;
             }
-            
+
             .logo {
                 height: 40px;
             }
-            
+
             .nav-menu {
                 display: none;
             }
-            
+
             .cta-button {
                 padding: 8px 16px;
                 font-size: 0.9rem;
@@ -907,7 +907,7 @@
                 min-height: 100vh;
                 padding: 20px 0;
             }
-            
+
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -918,7 +918,7 @@
             .hero-content {
                 order: 1;
             }
-            
+
             .hero-visual {
                 order: 2;
                 margin-top: 0;
@@ -941,7 +941,7 @@
                 margin-bottom: 32px;
                 padding: 0 20px;
             }
-            
+
             .hero-date {
                 font-size: 1.1rem;
                 padding: 16px 28px;
@@ -953,37 +953,37 @@
                 max-width: 280px;
                 width: 85vw;
             }
-            
+
             /* Decorative elements mobile */
             .hero-decoration {
                 display: none;
             }
-            
+
             .hero-shape {
                 transform: scale(0.6);
             }
-            
+
             .shape-1 {
                 width: 120px;
                 height: 120px;
                 top: 5%;
                 left: -30px;
             }
-            
+
             .shape-2 {
                 width: 100px;
                 height: 100px;
                 bottom: 15%;
                 right: -20px;
             }
-            
+
             .shape-3 {
                 width: 80px;
                 height: 80px;
                 top: 40%;
                 right: 10%;
             }
-            
+
             .shape-3::after {
                 font-size: 40px;
             }
@@ -992,7 +992,7 @@
             .content-section {
                 padding: 60px 0;
             }
-            
+
             .container {
                 padding: 0 16px;
             }
@@ -1002,7 +1002,7 @@
                 margin-bottom: 40px;
                 text-shadow: 3px 3px 0 #ff8c42, 6px 6px 0 rgba(0,0,0,0.2);
             }
-            
+
             .section-title::after {
                 font-size: 18px;
                 letter-spacing: 12px;
@@ -1014,21 +1014,21 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-            
+
             .card {
                 transform: rotate(0deg);
                 border-radius: 20px;
                 border-width: 3px;
             }
-            
+
             .card:nth-child(even) {
                 transform: rotate(0deg);
             }
-            
+
             .card-header {
                 padding: 28px 20px;
             }
-            
+
             .card-icon {
                 width: 70px;
                 height: 70px;
@@ -1039,12 +1039,12 @@
             .card-body {
                 padding: 24px 20px;
             }
-            
+
             .card-title {
                 font-size: 1.5rem;
                 margin-bottom: 12px;
             }
-            
+
             .card-description {
                 font-size: 1rem;
                 line-height: 1.6;
@@ -1055,52 +1055,52 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
+
             .program-day {
                 border-radius: 16px;
                 transform: rotate(0deg);
                 border-width: 3px;
             }
-            
+
             .program-day:nth-child(even) {
                 transform: rotate(0deg);
             }
-            
+
             .day-header {
                 padding: 24px 20px;
             }
-            
+
             .day-header::after {
                 font-size: 60px;
                 bottom: -10px;
                 right: 15px;
             }
-            
+
             .day-title {
                 font-size: 1.6rem;
             }
-            
+
             .sessions-container {
                 padding: 20px;
             }
-            
+
             .session {
                 padding: 16px;
                 margin-bottom: 16px;
                 border-radius: 12px;
                 border-left-width: 4px;
             }
-            
+
             .session-time {
                 font-size: 0.85rem;
                 margin-bottom: 6px;
             }
-            
+
             .session-title {
                 font-size: 1.1rem;
                 margin-bottom: 4px;
             }
-            
+
             .session-participants {
                 font-size: 0.9rem;
             }
@@ -1110,104 +1110,104 @@
                 padding: 40px 0 30px;
                 margin-top: 60px;
             }
-            
+
             .footer-logo {
                 height: 50px;
                 margin-bottom: 20px;
             }
-            
+
             .footer-text {
                 font-size: 0.9rem;
                 margin-bottom: 24px;
             }
-            
+
             .social-links {
                 gap: 16px;
                 margin-bottom: 24px;
             }
-            
+
             .social-link {
                 width: 44px;
                 height: 44px;
                 font-size: 18px;
             }
         }
-        
+
         /* Extra small screens */
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 2.2rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 0.95rem;
                 padding: 0 10px;
             }
-            
+
             .hero-date {
                 font-size: 1rem;
                 padding: 14px 24px;
             }
-            
+
             .hero-girl {
                 max-width: 240px;
                 width: 80vw;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .card-title {
                 font-size: 1.3rem;
             }
-            
+
             .card-description {
                 font-size: 0.95rem;
             }
-            
+
             .day-title {
                 font-size: 1.4rem;
             }
-            
+
             .session-title {
                 font-size: 1rem;
             }
-            
+
             .session-participants {
                 font-size: 0.85rem;
             }
-            
+
             .cta-button {
                 padding: 8px 14px;
                 font-size: 0.85rem;
             }
         }
-        
+
         /* Landscape mobile orientation */
         @media (max-width: 768px) and (orientation: landscape) {
             .hero {
                 min-height: 120vh;
             }
-            
+
             .hero-container {
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
                 text-align: left;
             }
-            
+
             .hero-content {
                 order: 1;
             }
-            
+
             .hero-visual {
                 order: 2;
             }
-            
+
             .hero-title {
                 font-size: 2.2rem;
             }
-            
+
             .hero-girl {
                 max-width: 200px;
             }
@@ -1243,7 +1243,7 @@
             </ul>
         </nav>
 
-        <a href="{{ route('mutafest.booking') }}" class="cta-button">{{ __('mutafest.nav.book_invitation') }}</a>
+       <!-- <a href="{{ route('mutafest.booking') }}" class="cta-button">{{ __('mutafest.nav.book_invitation') }}</a>-->
     </div>
 </header>
 
@@ -1256,11 +1256,11 @@
     <div class="squiggle squiggle-1"></div>
     <div class="squiggle squiggle-2"></div>
 
-    <!-- Dancing Characters -->
+    <!-- Dancing Characters
     <div class="dance-floor">
         <img src="{{ asset('images/dancer-boy.png') }}" alt="Dancer Boy" class="dancer dancer-boy">
         <img src="{{ asset('images/dancer-girl.png') }}" alt="Dancer Girl" class="dancer dancer-girl">
-    </div>
+    </div>-->
 
     <div class="hero-container">
         <div class="hero-content">
@@ -1270,11 +1270,12 @@
             <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>
         </div>
 
+        <!
         <div class="hero-visual">
             <div class="hero-image-wrapper">
                 <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
-                <div class="hero-decoration deco-1">2025</div>
-                <div class="hero-decoration deco-2">FEST!</div>
+                <!--<div class="hero-decoration deco-1">2025</div>
+                <div class="hero-decoration deco-2">FEST!</div>-->
             </div>
         </div>
     </div>
