@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guests - MutaFest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif Variable', serif;
+            background: #ab4e9e;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: rgba(171, 78, 158, 0.95);
+            padding: 20px 0;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .guests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .guest-card {
+            background: white;
+            color: #333;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .guest-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .guest-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ab4e9e;
+        }
+
+        .guest-country {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff8c42;
+            margin-bottom: 5px;
+        }
+
+        .guest-role {
+            font-size: 1rem;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .guest-bio {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff8c42, #ffb366);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .guests-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .guest-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img src="images/mutafest logo.png" alt="MutaFest" class="logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index2.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="program.html" class="nav-link">Program</a></li>
+                    <li><a href="guests.html" class="nav-link">Guests</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index2.html" class="back-button">← Back to Home</a>
+        
+        <h1 class="page-title">Our Guests</h1>
+        
+        <div class="guests-grid">
+            <div class="guest-card">
+                <h3 class="guest-name">Amina Bouayach</h3>
+                <div class="guest-country">Morocco</div>
+                <div class="guest-role">Writer & Human Rights Activist</div>
+                <p class="guest-bio">Amina Bouayach is a prominent Moroccan human rights activist and writer. She has dedicated her career to promoting human rights and social justice throughout the Mediterranean region. Her literary works explore themes of identity, migration, and cultural dialogue.</p>
+            </div>
+
+            <div class="guest-card">
+                <h3 class="guest-name">Marco Bellardi</h3>
+                <div class="guest-country">Italy</div>
+                <div class="guest-role">Poet & Translator</div>
+                <p class="guest-bio">Marco Bellardi is an Italian poet and translator known for his work bridging Mediterranean cultures through literature. His poetry collections have been translated into multiple languages, and he specializes in contemporary Arabic and Mediterranean poetry translation.</p>
+            </div>
+
+            <div class="guest-card">
+                <h3 class="guest-name">Leila Othmani</h3>
+                <div class="guest-country">Tunisia</div>
+                <div class="guest-role">Filmmaker & Visual Artist</div>
+                <p class="guest-bio">Leila Othmani is a Tunisian filmmaker and visual artist whose work focuses on Mediterranean stories and cross-cultural narratives. Her documentaries have been featured in international film festivals, exploring themes of identity and belonging.</p>
+            </div>
+
+            <div class="guest-card">
+                <h3 class="guest-name">Carlos Mendez</h3>
+                <div class="guest-country">Spain</div>
+                <div class="guest-role">Musician & Composer</div>
+                <p class="guest-bio">Carlos Mendez is a Spanish musician and composer who blends traditional Mediterranean sounds with contemporary music. His compositions celebrate the rich musical heritage of the Mediterranean basin and promote cultural dialogue through music.</p>
+            </div>
+
+            <div class="guest-card">
+                <h3 class="guest-name">Samir Kasemi</h3>
+                <div class="guest-country">Albania</div>
+                <div class="guest-role">Author & Cultural Critic</div>
+                <p class="guest-bio">Samir Kasemi is an Albanian author and cultural critic whose works examine the intersection of Balkan and Mediterranean cultures. His novels and essays have gained international recognition for their insightful portrayal of contemporary Mediterranean society.</p>
+            </div>
+
+            <div class="guest-card">
+                <h3 class="guest-name">Ivo Saglietti</h3>
+                <div class="guest-country">Italy</div>
+                <div class="guest-role">Photographer & Journalist</div>
+                <p class="guest-bio">Ivo Saglietti is an Italian photographer and journalist who has documented Mediterranean cultures for over two decades. His photographic exhibitions capture the essence of Mediterranean life and the connections between different coastal communities.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

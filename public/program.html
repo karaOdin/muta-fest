@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program - MutaFest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif Variable', serif;
+            background: #ab4e9e;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: rgba(171, 78, 158, 0.95);
+            padding: 20px 0;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .day-card {
+            background: white;
+            color: #333;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #ab4e9e, #c968b7);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .day-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .day-date {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .day-preview {
+            padding: 30px;
+        }
+
+        .session-count {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ab4e9e;
+            margin-bottom: 15px;
+        }
+
+        .session-preview {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .day-details {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .day-details.active {
+            display: block;
+        }
+
+        .session {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff8c42;
+        }
+
+        .session:last-child {
+            margin-bottom: 0;
+        }
+
+        .session-time {
+            font-size: 0.9rem;
+            color: #ff8c42;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .session-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #ab4e9e;
+        }
+
+        .session-participants {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff8c42, #ffb366);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle-button {
+            background: #ff8c42;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .toggle-button:hover {
+            background: #e67e3c;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .days-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .day-header {
+                padding: 20px;
+            }
+
+            .day-preview {
+                padding: 20px;
+            }
+
+            .day-details {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img src="images/mutafest logo.png" alt="MutaFest" class="logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index2.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="program.html" class="nav-link">Program</a></li>
+                    <li><a href="guests.html" class="nav-link">Guests</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index2.html" class="back-button">← Back to Home</a>
+        
+        <h1 class="page-title">Festival Program</h1>
+        
+        <div class="days-grid">
+            <div class="day-card">
+                <div class="day-header">
+                    <h3 class="day-title">Day 1</h3>
+                    <div class="day-date">2 Maggio 2025</div>
+                </div>
+                <div class="day-preview">
+                    <div class="session-count">3 Sessions</div>
+                    <p class="session-preview">Opening ceremonies, cultural presentations, and evening performances featuring Mediterranean artists and writers.</p>
+                    <button class="toggle-button" onclick="toggleDay('day1')">View Details</button>
+                </div>
+                <div class="day-details" id="day1">
+                    <div class="session">
+                        <div class="session-time">18:00 - 19:00</div>
+                        <div class="session-title">Opening Ceremony</div>
+                        <div class="session-participants">Welcome remarks and inaugural presentation by festival directors</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">19:30 - 21:00</div>
+                        <div class="session-title">Mediterranean Voices</div>
+                        <div class="session-participants">Reading session with Amina Bouayach, Marco Bellardi, and Leila Othmani</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">21:30 - 23:00</div>
+                        <div class="session-title">Musical Journey</div>
+                        <div class="session-participants">Concert featuring Carlos Mendez and traditional Mediterranean musicians</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <h3 class="day-title">Day 2</h3>
+                    <div class="day-date">3 Maggio 2025</div>
+                </div>
+                <div class="day-preview">
+                    <div class="session-count">4 Sessions</div>
+                    <p class="session-preview">Full day of workshops, discussions, and cultural exchanges exploring Mediterranean heritage and contemporary issues.</p>
+                    <button class="toggle-button" onclick="toggleDay('day2')">View Details</button>
+                </div>
+                <div class="day-details" id="day2">
+                    <div class="session">
+                        <div class="session-time">10:00 - 11:30</div>
+                        <div class="session-title">Translation Workshop</div>
+                        <div class="session-participants">Interactive workshop with Marco Bellardi on Mediterranean poetry translation</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">12:00 - 13:30</div>
+                        <div class="session-title">Cultural Dialogue</div>
+                        <div class="session-participants">Panel discussion with Samir Kasemi and Ivo Saglietti on Mediterranean identity</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">16:00 - 17:30</div>
+                        <div class="session-title">Visual Stories</div>
+                        <div class="session-participants">Film screening and discussion with Leila Othmani</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">20:00 - 22:00</div>
+                        <div class="session-title">Mediterranean Feast</div>
+                        <div class="session-participants">Traditional dinner with music and storytelling</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <h3 class="day-title">Day 3</h3>
+                    <div class="day-date">4 Maggio 2025</div>
+                </div>
+                <div class="day-preview">
+                    <div class="session-count">4 Sessions</div>
+                    <p class="session-preview">Closing day with collaborative projects, final performances, and celebration of Mediterranean unity.</p>
+                    <button class="toggle-button" onclick="toggleDay('day3')">View Details</button>
+                </div>
+                <div class="day-details" id="day3">
+                    <div class="session">
+                        <div class="session-time">11:00 - 12:30</div>
+                        <div class="session-title">Collaborative Writing</div>
+                        <div class="session-participants">Multilingual poetry session with all guest writers</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">14:00 - 15:30</div>
+                        <div class="session-title">Photography Exhibition</div>
+                        <div class="session-participants">Opening of Ivo Saglietti's Mediterranean portrait exhibition</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">18:00 - 20:00</div>
+                        <div class="session-title">Final Performance</div>
+                        <div class="session-participants">Collaborative performance featuring music, poetry, and visual arts</div>
+                    </div>
+                    <div class="session">
+                        <div class="session-time">20:30 - 23:00</div>
+                        <div class="session-title">Closing Celebration</div>
+                        <div class="session-participants">Farewell party with live music and Mediterranean cuisine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDay(dayId) {
+            const details = document.getElementById(dayId);
+            const button = details.previousElementSibling.querySelector('.toggle-button');
+            
+            if (details.classList.contains('active')) {
+                details.classList.remove('active');
+                button.textContent = 'View Details';
+            } else {
+                // Hide all other details
+                document.querySelectorAll('.day-details').forEach(detail => {
+                    detail.classList.remove('active');
+                });
+                document.querySelectorAll('.toggle-button').forEach(btn => {
+                    btn.textContent = 'View Details';
+                });
+                
+                // Show current details
+                details.classList.add('active');
+                button.textContent = 'Hide Details';
+            }
+        }
+    </script>
+</body>
+</html>

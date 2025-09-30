@@ -1251,9 +1251,9 @@
 
         <nav>
             <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
-                <li><a href="#program" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
-                <li><a href="#guests" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
+                <li><a href="about.html" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
+                <li><a href="program.html" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
+                <li><a href="guests.html" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
             </ul>
         </nav>
 
@@ -1263,13 +1263,13 @@
 
 <!-- Hero Section -->
 <section class="hero">
-    <!-- Fun Shapes -->
+    <!-- Fun Shapes
     <div class="hero-shape shape-1"></div>
     <div class="hero-shape shape-2"></div>
     <div class="hero-shape shape-3"></div>
     <div class="squiggle squiggle-1"></div>
     <div class="squiggle squiggle-2"></div>
-
+    -->
     <!-- Dancing Characters
     <div class="dance-floor">
         <img src="{{ asset('images/dancer-boy.png') }}" alt="Dancer Boy" class="dancer dancer-boy">
@@ -1295,100 +1295,6 @@
     </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="content-section">
-    <div class="container">
-        <h2 class="section-title">{{ __('mutafest.about.title') }}</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <img src="{{ asset('images/olive-branch.png') }}" alt="Culture">
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Culture Mediterranee</h3>
-                    <p class="card-description">Un festival dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <img src="{{ asset('images/book.png') }}" alt="Literature">
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Letteratura & Poesia</h3>
-                    <p class="card-description">Incontri con scrittori, poeti e traduttori da tutti i Paesi del Mediterraneo.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <img src="{{ asset('images/guitar.png') }}" alt="Music">
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Arti & Musica</h3>
-                    <p class="card-description">Concerti, performance e momenti conviviali che celebrano la diversità culturale.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Program Section -->
-<section id="program" class="content-section">
-    <div class="container">
-        <h2 class="section-title">{{ __('mutafest.nav.program') }}</h2>
-        <div class="program-grid">
-            @foreach($program as $dayKey => $day)
-                <div class="program-day">
-                    <div class="day-header" data-day="{{ substr($dayKey, -1) }}">
-                        <h3 class="day-title">{{ $day['title'] }}</h3>
-                    </div>
-                    <div class="sessions-container">
-                        @foreach($day['sessions'] as $session)
-                            <div class="session">
-                                <div class="session-time">{{ $session['time'] }}</div>
-                                <div class="session-title">{{ $session['title'] }}</div>
-                                <div class="session-participants">{{ $session['participants'] }}</div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-<!-- Guests Section -->
-<section id="guests" class="content-section">
-    <div class="container">
-        <h2 class="section-title">{{ __('mutafest.nav.guests') }}</h2>
-        <div class="cards-grid">
-            @foreach($guests as $guest)
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="{{ $guest['icon'] }}"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">{{ $guest['name'] }}</h3>
-                        <p class="card-description">
-                            <strong style="color: #ff8c42;">{{ $guest['country'] }}</strong><br>
-                            <em style="color: #316995;">{{ $guest['role'] }}</em><br><br>
-                            {{ $guest['bio'] }}
-                        </p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
 
 <!-- Footer -->
 <footer class="footer">
