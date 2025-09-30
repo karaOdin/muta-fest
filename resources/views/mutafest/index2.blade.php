@@ -71,6 +71,92 @@
             color: white;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(171, 78, 158, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .mobile-drawer .nav-menu {
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .mobile-drawer .nav-link {
+            font-size: 1.2rem;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-drawer .nav-link:hover {
+            color: #ff8c42;
+            transform: translateX(10px);
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .cta-button {
             background: linear-gradient(45deg, #ff8c42, #ffb366);
             color: white;
@@ -953,6 +1039,10 @@
             .nav-menu {
                 display: none;
             }
+            
+            .hamburger {
+                display: flex;
+            }
 
             .cta-button {
                 padding: 8px 16px;
@@ -1307,11 +1397,28 @@
                 <li><a href="program.html" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
                 <li><a href="guests.html" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
             </ul>
+            
+            <!-- Hamburger Menu -->
+            <div class="hamburger" onclick="toggleDrawer()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
 
        <!-- <a href="{{ route('mutafest.booking') }}" class="cta-button">{{ __('mutafest.nav.book_invitation') }}</a>-->
     </div>
 </header>
+
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer">
+    <ul class="nav-menu">
+        <li><a href="about.html" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.about') }}</a></li>
+        <li><a href="program.html" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.program') }}</a></li>
+        <li><a href="guests.html" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.guests') }}</a></li>
+    </ul>
+</div>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -1394,6 +1501,35 @@
             header.style.background = 'rgba(171, 78, 158, 0.95)';
         }
     });
+
+    // Mobile drawer functions
+    function toggleDrawer() {
+        const drawer = document.querySelector('.mobile-drawer');
+        const overlay = document.querySelector('.drawer-overlay');
+        const hamburger = document.querySelector('.hamburger');
+        
+        drawer.classList.toggle('open');
+        overlay.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        
+        // Prevent body scroll when drawer is open
+        if (drawer.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    function closeDrawer() {
+        const drawer = document.querySelector('.mobile-drawer');
+        const overlay = document.querySelector('.drawer-overlay');
+        const hamburger = document.querySelector('.hamburger');
+        
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 </script>
 </body>
 </html>
