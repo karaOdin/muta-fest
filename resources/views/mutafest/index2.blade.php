@@ -571,11 +571,28 @@
             transform: scale(1.2) rotate(-10deg);
         }
 
-        /* Hide animations on mobile for better performance */
+        /* Mobile adjustments */
         @media (max-width: 768px) {
-            .mediterranean-elements,
+            .mediterranean-elements {
+                display: block;
+            }
+
             .ocean-life {
-                display: none;
+                display: block;
+            }
+
+            .floating-watermelon {
+                width: 50px;
+                bottom: 60px;
+            }
+
+            .swimming-fish {
+                width: 40px;
+            }
+
+            .fish-school {
+                width: 80px;
+                bottom: 80px;
             }
 
             .floating-bird {
@@ -972,7 +989,6 @@
 
             .hero-title {
                 font-size: 2.8rem;
-                text-shadow: 3px 3px 0 #ff8c42, 6px 6px 0 rgba(0,0,0,0.2);
                 margin-bottom: 16px;
                 line-height: 0.95;
             }
