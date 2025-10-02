@@ -106,6 +106,78 @@
             line-height: 1.8;
         }
 
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .day-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .day-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.3;
+        }
+
         @media (max-width: 768px) {
 
             .day-title {
@@ -137,6 +209,35 @@
             .session-description {
                 font-size: 1.1rem;
             }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .day-info {
+                padding: 20px;
+                position: static;
+                margin-bottom: 30px;
+                order: -1;
+            }
+
+            .day-info h3 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+
+            .info-item {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .info-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                margin-right: 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -150,6 +251,30 @@
 
             .session-description {
                 font-size: 1rem;
+            }
+
+            .day-info {
+                padding: 15px;
+            }
+
+            .day-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .info-item {
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+
+            .info-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+
+            .info-value {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -166,7 +291,54 @@
 
         <img src="{{ asset('images/mauja.png') }}" alt="Day {{ $day }}" class="header-image">
         
-        <div class="sessions-list">
+        <!-- Content with Sidebar -->
+        <div class="content-wrapper">
+            <!-- Sidebar Information -->
+            <div class="day-info">
+                <h3>Informazioni del Giorno</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Data</div>
+                        <div class="info-value">{{ $day == 1 ? '2 Maggio 2025' : ($day == 2 ? '3 Maggio 2025' : '4 Maggio 2025') }}</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Luogo</div>
+                        <div class="info-value">Centro Culturale Milano<br><small>Via Mediterraneo 15</small></div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Durata</div>
+                        <div class="info-value">{{ $day == 1 ? '5 ore' : ($day == 2 ? '10 ore' : '12 ore') }}</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Partecipanti</div>
+                        <div class="info-value">Aperto al pubblico<br><small>Prenotazione consigliata</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sessions-list">
             @if($day == 1)
                 <div class="session">
                     <div class="session-time">18:00 - 19:00</div>
@@ -256,6 +428,7 @@
                     </p>
                 </div>
             @endif
+            </div>
         </div>
     </div>
 

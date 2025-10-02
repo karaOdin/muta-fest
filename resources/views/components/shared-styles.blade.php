@@ -149,6 +149,22 @@
         overflow: hidden;
     }
 
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 0;
+        font-size: 30px;
+        white-space: nowrap;
+        animation: footerScroll 20s linear infinite;
+        opacity: 0.3;
+    }
+
+    @keyframes footerScroll {
+        from { transform: translateX(100%); }
+        to { transform: translateX(-100%); }
+    }
+
     .footer-content {
         text-align: center;
     }
@@ -197,6 +213,33 @@
         
         .hamburger {
             display: flex;
+        }
+
+        /* Footer mobile */
+        .footer {
+            padding: 40px 0 100px;
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            font-size: 18px;
         }
     }
 </style>
