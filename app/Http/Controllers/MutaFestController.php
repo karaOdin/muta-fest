@@ -354,4 +354,71 @@ class MutaFestController extends Controller
         ];
         return view('mutafest.index2', compact('guests', 'program'));
     }
+
+    public function program()
+    {
+        return view('mutafest.program');
+    }
+
+    public function programDay($day)
+    {
+        return view('mutafest.program-day', compact('day'));
+    }
+
+    public function guests()
+    {
+        return view('mutafest.guests');
+    }
+
+    public function guestDetails($id)
+    {
+        $guests = [
+            1 => [
+                'id' => 1,
+                'name' => 'Amina Bouayach',
+                'role' => 'Writer & Human Rights Activist',
+                'country' => 'Morocco',
+                'bio' => 'Amina Bouayach is a prominent Moroccan human rights activist and writer. She has dedicated her career to promoting human rights and social justice throughout the Mediterranean region.'
+            ],
+            2 => [
+                'id' => 2,
+                'name' => 'Marco Bellardi',
+                'role' => 'Poet & Translator',
+                'country' => 'Italy',
+                'bio' => 'Marco Bellardi is an Italian poet and translator known for his work bridging Mediterranean cultures through literature.'
+            ],
+            3 => [
+                'id' => 3,
+                'name' => 'Leila Othmani',
+                'role' => 'Filmmaker & Visual Artist',
+                'country' => 'Tunisia',
+                'bio' => 'Leila Othmani is a Tunisian filmmaker and visual artist whose work focuses on Mediterranean stories and cross-cultural narratives.'
+            ],
+            4 => [
+                'id' => 4,
+                'name' => 'Carlos Mendez',
+                'role' => 'Musician & Composer',
+                'country' => 'Spain',
+                'bio' => 'Carlos Mendez is a Spanish musician and composer who blends traditional Mediterranean sounds with contemporary music.'
+            ],
+            5 => [
+                'id' => 5,
+                'name' => 'Samir Kasemi',
+                'role' => 'Author & Cultural Critic',
+                'country' => 'Albania',
+                'bio' => 'Samir Kasemi is an Albanian author and cultural critic whose works examine the intersection of Balkan and Mediterranean cultures.'
+            ],
+            6 => [
+                'id' => 6,
+                'name' => 'Ivo Saglietti',
+                'role' => 'Photographer & Journalist',
+                'country' => 'Italy',
+                'bio' => 'Ivo Saglietti is an Italian photographer and journalist who has documented Mediterranean cultures for over two decades.'
+            ]
+        ];
+
+        $guest = $guests[$id] ?? $guests[1];
+        
+        return view('mutafest.guest-details', compact('guest'));
+    }
 }

@@ -4,12 +4,20 @@ use App\Http\Controllers\MutaFestController;
 use Illuminate\Support\Facades\Route;
 
 // MutaFest Routes
-Route::get('/', [MutaFestController::class, 'index'])->name('mutafest.home');
+Route::get('/', [MutaFestController::class, 'index'])->name('mutafest.index');
 Route::get('/home2', [MutaFestController::class, 'home2'])->name('mutafest.home2');
-Route::get('/main', [MutaFestController::class, 'main'])->name('mutafest.about');
-Route::get('about', [MutaFestController::class, 'about'])->name('mutafest.about');
+Route::get('/main', [MutaFestController::class, 'main'])->name('mutafest.main');
+Route::get('/about', [MutaFestController::class, 'about'])->name('mutafest.about');
 Route::get('/booking', [MutaFestController::class, 'booking'])->name('mutafest.booking');
 Route::get('/language/{locale}', [MutaFestController::class, 'changeLanguage'])->name('mutafest.language');
+
+// Program Routes
+Route::get('/program', [MutaFestController::class, 'program'])->name('mutafest.program');
+Route::get('/program/day/{day}', [MutaFestController::class, 'programDay'])->name('mutafest.program.day');
+
+// Guest Routes
+Route::get('/guests', [MutaFestController::class, 'guests'])->name('mutafest.guests');
+Route::get('/guest/{id}', [MutaFestController::class, 'guestDetails'])->name('mutafest.guest.details');
 
 // Download Routes
 Route::get('/mutafest/download/program', [MutaFestController::class, 'downloadProgram'])->name('mutafest.download.program');

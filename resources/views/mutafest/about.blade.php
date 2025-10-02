@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MutaFest - Festival del Mediterraneo a Milano</title>
+    <title>About - MutaFest</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -12,450 +15,127 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #4a90a4 0%, #357892 100%);
-            height: 100vh;
-            position: relative;
+            font-family: 'EB Garamond', serif;
+            background: #ab4e9e;
+            color: white;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px 20px 120px;
         }
 
-        .container {
-            position: relative;
+
+        .about-container {
+            max-width: 800px;
             width: 100%;
-            height: 100vh;
-            background:#316995;
-        }
-
-        /* Social Icons */
-        .social-icons {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            display: flex;
-            gap: 15px;
-            z-index: 10;
-        }
-
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #357892;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-            font-weight: bold;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-
-        /* Main Title */
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 120px 60px;
-            color: white;
-        }
-
-        .main-title {
-            z-index: 5;
-        }
-
-        .main-logo {
-            height: 120px;
-            width: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
-        }
-
-        .subtitle {
-            font-size: 48px;
-            font-weight: 300;
-            line-height: 1.1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            max-width: 600px;
-        }
-
-        /* Chi siamo text */
-        .chi-siamo {
-            position: absolute;
-            bottom: 200px;
-            left: 60px;
-            color: #ff8c42;
-            font-size: 36px;
-            font-weight: 300;
-            z-index: 5;
-        }
-
-        /* Character Image */
-        .character {
-            position: absolute;
-            right: 120px;
-            bottom: 190px;
-            z-index: 5;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .character-img {
-            width: 200px;
-            height: auto;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
-        }
-
-        .character-text-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px;
             text-align: center;
-            line-height: 1.1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            z-index: 6;
+            margin: 60px auto;
         }
 
-        /* Image-based Wave System with 3 Rows */
-        .ocean {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            z-index: 1;
-            overflow: hidden;
+        .about-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
         }
 
-        /* Wave row container */
-        .wave-row {
-            position: absolute;
-            width: 200%;
-            display: flex;
-            align-items: center;
-            gap: 30px; /* Space between images in same row */
+        .about-content {
+            font-size: 1.25rem;
+            line-height: 2;
+            text-align: left;
         }
 
-        /* First row - back layer */
-        .wave-row:nth-child(1) {
-            bottom: 120px; /* Position for top row */
-            animation: waveMove1 25s linear infinite;
-            /* opacity: 0.6;
-             filter: brightness(0.8);*/
+        .about-content p {
+            margin-bottom: 25px;
         }
 
-        /* Second row - middle layer */
-        .wave-row:nth-child(2) {
-            bottom: 60px; /* Position for middle row */
-            animation: waveMove2 20s linear infinite;
-            animation-delay: -10s;
-            /* opacity: 0.8;
-             filter: brightness(0.9);*/
+        .about-content p:last-child {
+            margin-bottom: 0;
         }
 
-        /* Third row - front layer */
-        .wave-row:nth-child(3) {
-            bottom: 0; /* Position for bottom row */
-            animation: waveMove3 15s linear infinite;
-            animation-delay: -5s;
-            opacity: 1;
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 2px solid white;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
         }
 
-        /* Individual wave image */
-        .wave-img {
-            height: 50px;
-            width: auto;
-            flex-shrink: 0;
-        }
-
-        /* Animation for continuous movement */
-        @keyframes waveMove1 {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes waveMove2 {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes waveMove3 {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Background water color behind waves */
-        .ocean::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom,
-            transparent 0%,
-            rgba(30, 122, 184, 0.2) 50%,
-            rgba(30, 122, 184, 0.4) 100%
-            );
-            z-index: -1;
-        }
-
-        /* Add surface sparkles */
-        .ocean::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(2px 2px at 20% 30%, white, transparent),
-                radial-gradient(2px 2px at 60% 70%, white, transparent),
-                radial-gradient(1px 1px at 50% 50%, white, transparent),
-                radial-gradient(1px 1px at 80% 20%, white, transparent);
-            background-size: 300px 200px;
-            background-repeat: repeat;
-            opacity: 0.3;
-            animation: sparkle 10s linear infinite;
-            z-index: 11;
-        }
-
-        @keyframes sparkle {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(300px); }
-        }
-
-        /* Floating animation for character */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(-2deg); }
-            33% { transform: translateY(-10px) rotate(1deg); }
-            66% { transform: translateY(-5px) rotate(-1deg); }
-        }
-
-        /* Adjust character to float with waves */
-        .character {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Logo placeholder if needed */
-        .logo {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 10;
+        .back-link:hover {
             opacity: 0.8;
         }
 
-        .logo-img {
-            width: 80px;
-            height: auto;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
-        }
+        @media (max-width: 768px) {
 
-        /* Mobile-first Proportional Design */
-        @media (max-width: 1200px) {
-            .main-title {
-                top: 10vh;
-                left: 5vw;
+            .about-container {
+                padding: 40px 30px;
             }
 
-            .main-logo {
-                height: 9vh;
-                margin-bottom: 1vh;
+            .about-title {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
             }
 
-            .subtitle {
-                font-size: 7vw;
-                line-height: 1.2;
+            .about-content {
+                font-size: 1.1rem;
+                line-height: 1.8;
             }
 
-            .character {
-                right: 8vw;
-                bottom: 25vh;
-            }
-
-            .character-img {
-                width: 25vw;
-                min-width: 150px;
-                max-width: 250px;
-            }
-
-            .character-text-overlay {
-                font-size: 4.2vw;
-                min-font-size: 16px;
-                max-font-size: 24px;
-            }
-
-            .chi-siamo {
-                bottom: 32vh;
-                left: 5vw;
-                font-size: 4vw;
-            }
-
-            .social-icons {
-                top: 3vh;
-                left: 3vw;
-                gap: 2vw;
-            }
-
-            .social-icon {
-                width: 6vw;
-                height: 6vw;
-                min-width: 35px;
-                min-height: 35px;
-                max-width: 50px;
-                max-height: 50px;
-                font-size: 3vw;
-            }
-
-            .ocean {
-                height: 20vh;
-            }
-
-            .wave-row:nth-child(1) {
-                bottom: 12vh;
-            }
-
-            .wave-row:nth-child(2) {
-                bottom: 6vh;
-            }
-
-            .wave-img {
-                height: 6vh;
-                min-height: 30px;
-                max-height: 50px;
-            }
-
-            .wave-row {
-                gap: 3vw;
+            .about-content p {
+                margin-bottom: 20px;
             }
         }
 
-        /* Prevent scrolling */
-        html, body {
-            overflow: hidden;
-            height: 100%;
-            position: fixed;
-            width: 100%;
-        }
+        @media (max-width: 480px) {
+            .about-container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
 
-        /* File upload styling for demonstration */
-        .image-placeholder {
-            background: rgba(255,255,255,0.1);
-            border: 2px dashed rgba(255,255,255,0.3);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
+            .about-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                font-size: 1rem;
+            }
         }
     </style>
+    @include('components.shared-styles')
 </head>
 <body>
-<div class="container">
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="#" class="social-icon">f</a>
-        <a href="#" class="social-icon">𝕏</a>
-        <a href="#" class="social-icon">@</a>
-    </div>
+    @include('components.navbar')
 
-    <!-- Logo (hidden since we're using it as main title) -->
-    <!--<div class="logo">
-        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest Logo" class="logo-img">
-    </div>-->
-
-    <!-- Main Title -->
-    <div class="hero">
-        <div class="main-title">
-            <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180"
-                 alt="MutaFest"
-                 class="main-logo">
-
-            <div class="subtitle">Festival del<br>Mediterraneo<br>a Milano</div>
-        </div>
-
-        <div>
-            <h2>About </h2>
+    <div class="about-container">
+        <h1 class="about-title">{{ __('mutafest.about.title') }}</h1>
+        
+        <div class="about-content">
+            <p>
+                MutaFest è un festival culturale annuale che si svolge a Milano, dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.
+            </p>
+            
+            <p>
+                Nasce da un'esperienza decennale nel campo editoriale e culturale, fatta di traduzioni, pubblicazioni e incontri tra voci provenienti da Est e Ovest, da Sud e Nord, da piccole isole e grandi città: tutte affacciate sullo stesso mare, ma ognuna con il proprio colore.
+            </p>
+            
+            <p>
+                MutaFest guarda al Mediterraneo non solo come spazio geografico, ma come orizzonte culturale e spirituale: un archivio vivo di memorie, tragedie, suoni, domande, migrazioni e bellezza plurale che rifiuta ogni semplificazione.
+            </p>
+            
+            <p>
+                In un tempo in cui questo spazio viene ridotto a tragedia o trincea, attraversato dagli esiliati e chiuso dalle frontiere, dove le storie affondano prima ancora di essere raccontate, MutaFest nasce per restituirgli il suo significato originario: luogo d'incontro, di pluralità, di ascolto reciproco.
+            </p>
         </div>
     </div>
 
-    <!-- Chi siamo text -->
+    @include('components.footer')
 
-    <!-- Character Image with floating animation -->
-
-
-    <!-- Image-based Ocean Waves with 3 Rows -->
-    <div class="ocean">
-        <!-- First Row (Back) -->
-        <div class="wave-row">
-            @for($i = 0; $i < 20; $i++)
-                <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
-            @endfor
-        </div>
-
-        <!-- Second Row (Middle) -->
-        <div class="wave-row">
-            @for($i = 0; $i < 20; $i++)
-                <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
-            @endfor
-        </div>
-
-        <!-- Third Row (Front) -->
-        <div class="wave-row">
-            @for($i = 0; $i < 20; $i++)
-                <img src="{{ asset('images/mauja.png') }}" alt="Wave" class="wave-img">
-            @endfor
-        </div>
-    </div>
-
-    <!-- Instructions for using your images
-    <div style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px; border-radius: 5px; font-size: 12px; max-width: 300px; z-index: 1000;">
-        <strong>To use your images:</strong><br>
-        1. Replace the character img src with your girl image<br>
-        2. Replace wave background-image with your wave image<br>
-        3. Add your logo image in the logo section
-    </div>-->
-</div>
-
-<script>
-    // JavaScript to help with image loading and animation
-    document.addEventListener('DOMContentLoaded', function() {
-        // You can add JavaScript here to dynamically load your images
-        // and handle any additional animations
-
-        // Example of how to replace images dynamically:
-        /*
-        const characterImg = document.querySelector('.character-img');
-        const waveSegments = document.querySelectorAll('.wave-segment');
-
-        // Replace with your actual image URLs
-        characterImg.src = 'path/to/your/girl-image.png';
-
-        waveSegments.forEach(segment => {
-            segment.style.backgroundImage = 'url(path/to/your/wave-image.png)';
-        });
-        */
-    });
-</script>
+    @include('components.shared-scripts')
 </body>
 </html>
