@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('guest_session', function (Blueprint $table) {
             $table->id();
             $table->foreignId('guest_id')->constrained()->onDelete('cascade');
-            $table->foreignId('session_id')->constrained()->onDelete('cascade');
+            $table->foreignId('session_id')->constrained('festival_sessions')->onDelete('cascade');
             $table->string('role_in_session')->nullable()->comment('Speaker, Moderator, Performer, etc.');
             $table->timestamps();
             
