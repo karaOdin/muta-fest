@@ -3,28 +3,29 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SessionResource\Pages;
-use App\Models\Session;
 use App\Models\Day;
-use App\Models\Hall;
 use App\Models\Guest;
+use App\Models\Hall;
+use App\Models\Session;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Infolists;
-use Filament\Infolists\Infolist;
+use FilamentTiptapEditor\TiptapEditor;
 
 class SessionResource extends Resource
 {
     protected static ?string $model = Session::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-microphone';
-    
+
     protected static ?string $navigationGroup = 'Festival Management';
-    
+
     protected static ?int $navigationSort = 3;
-    
+
     protected static ?string $navigationLabel = 'Sessions';
 
     public static function form(Form $form): Form
@@ -38,13 +39,15 @@ class SessionResource extends Resource
                             ->maxLength(255)
                             ->placeholder('Opening Ceremony')
                             ->columnSpanFull(),
-                            
-                        Forms\Components\Textarea::make('description')
-                            ->rows(3)
+
+                        TiptapEditor::make('description')
                             ->placeholder('Brief description of the session...')
+                            ->profile('simple')
+                            ->tools(['bold', 'italic', 'bullet-list', 'ordered-list', 'link'])
+                            ->maxContentWidth('5xl')
                             ->columnSpanFull(),
                     ]),
-                    
+
                 Forms\Components\Section::make('Schedule & Location')
                     ->schema([
                         Forms\Components\Grid::make(3)
@@ -55,28 +58,28 @@ class SessionResource extends Resource
                                     ->required()
                                     ->searchable()
                                     ->preload(),
-                                    
+
                                 Forms\Components\Select::make('hall_id')
                                     ->label('Hall')
                                     ->options(Hall::orderBy('name')->pluck('name', 'id'))
                                     ->required()
                                     ->searchable()
                                     ->preload(),
-                                    
+
                                 Forms\Components\TextInput::make('order')
                                     ->numeric()
                                     ->minValue(1)
                                     ->default(1)
                                     ->placeholder('1'),
                             ]),
-                            
+
                         Forms\Components\Grid::make(2)
                             ->schema([
                                 Forms\Components\TimePicker::make('start_time')
                                     ->required()
                                     ->native(false)
                                     ->displayFormat('H:i'),
-                                    
+
                                 Forms\Components\TimePicker::make('end_time')
                                     ->required()
                                     ->native(false)
@@ -84,7 +87,7 @@ class SessionResource extends Resource
                                     ->after('start_time'),
                             ]),
                     ]),
-                    
+
                 Forms\Components\Section::make('Guests & Speakers')
                     ->schema([
                         Forms\Components\Select::make('guests')
@@ -95,7 +98,7 @@ class SessionResource extends Resource
                             ->searchable()
                             ->preload()
                             ->columnSpanFull(),
-                            
+
                         Forms\Components\Placeholder::make('guest_roles_note')
                             ->label('Note')
                             ->content('Guest roles can be managed after creating the session.')
@@ -114,40 +117,40 @@ class SessionResource extends Resource
                     ->sortable()
                     ->weight('bold')
                     ->wrap(),
-                    
+
                 Tables\Columns\TextColumn::make('day.name')
                     ->label('Day')
                     ->sortable()
                     ->badge()
                     ->color('warning'),
-                    
+
                 Tables\Columns\TextColumn::make('time_range')
                     ->label('Time')
                     ->badge()
                     ->color('info'),
-                    
+
                 Tables\Columns\TextColumn::make('duration')
                     ->label('Duration')
                     ->badge()
                     ->color('gray'),
-                    
+
                 Tables\Columns\TextColumn::make('hall.name')
                     ->label('Hall')
                     ->sortable()
                     ->badge()
                     ->color('primary'),
-                    
+
                 Tables\Columns\TextColumn::make('guests_count')
                     ->counts('guests')
                     ->label('Guests')
                     ->badge()
                     ->color('success'),
-                    
+
                 Tables\Columns\TextColumn::make('order')
                     ->numeric()
                     ->sortable()
                     ->toggleable(),
-                    
+
                 Tables\Columns\TextColumn::make('description')
                     ->limit(50)
                     ->toggleable(),
@@ -157,16 +160,16 @@ class SessionResource extends Resource
                     ->label('Day')
                     ->options(Day::orderBy('order')->pluck('name', 'id'))
                     ->preload(),
-                    
+
                 Tables\Filters\SelectFilter::make('hall_id')
                     ->label('Hall')
                     ->options(Hall::orderBy('name')->pluck('name', 'id'))
                     ->preload(),
-                    
+
                 Tables\Filters\Filter::make('has_guests')
                     ->query(fn ($query) => $query->has('guests'))
                     ->label('Has Guests'),
-                    
+
                 Tables\Filters\Filter::make('long_sessions')
                     ->query(fn ($query) => $query->whereRaw('TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) >= 7200'))
                     ->label('Long Sessions (2h+)'),
@@ -196,45 +199,46 @@ class SessionResource extends Resource
                             ->size('lg')
                             ->weight('bold')
                             ->columnSpanFull(),
-                            
+
                         Infolists\Components\Grid::make(2)
                             ->schema([
                                 Infolists\Components\TextEntry::make('day.name')
                                     ->label('Day')
                                     ->badge()
                                     ->color('warning'),
-                                    
+
                                 Infolists\Components\TextEntry::make('day.date')
                                     ->label('Date')
                                     ->date('l, F j, Y')
                                     ->badge()
                                     ->color('primary'),
                             ]),
-                            
+
                         Infolists\Components\Grid::make(3)
                             ->schema([
                                 Infolists\Components\TextEntry::make('time_range')
                                     ->label('Time')
                                     ->badge()
                                     ->color('info'),
-                                    
+
                                 Infolists\Components\TextEntry::make('duration')
                                     ->label('Duration')
                                     ->badge()
                                     ->color('gray'),
-                                    
+
                                 Infolists\Components\TextEntry::make('hall.name')
                                     ->label('Hall')
                                     ->badge()
                                     ->color('primary'),
                             ]),
-                            
+
                         Infolists\Components\TextEntry::make('description')
                             ->label('Description')
                             ->columnSpanFull()
+                            ->html()
                             ->placeholder('No description available'),
                     ]),
-                    
+
                 Infolists\Components\Section::make('Hall Information')
                     ->schema([
                         Infolists\Components\Grid::make(3)
@@ -244,18 +248,19 @@ class SessionResource extends Resource
                                     ->suffix(' people')
                                     ->badge()
                                     ->color('primary'),
-                                    
+
                                 Infolists\Components\TextEntry::make('hall.floor')
                                     ->label('Floor')
                                     ->badge()
                                     ->color('gray'),
-                                    
+
                                 Infolists\Components\TextEntry::make('hall.description')
                                     ->label('Hall Description')
-                                    ->limit(50),
+                                    ->html()
+                                    ->limit(100),
                             ]),
                     ]),
-                    
+
                 Infolists\Components\Section::make('Guests & Speakers')
                     ->schema([
                         Infolists\Components\RepeatableEntry::make('guests')
@@ -264,17 +269,17 @@ class SessionResource extends Resource
                                     ->schema([
                                         Infolists\Components\TextEntry::make('name')
                                             ->weight('bold'),
-                                            
+
                                         Infolists\Components\TextEntry::make('role')
                                             ->badge()
                                             ->color('gray'),
-                                            
+
                                         Infolists\Components\TextEntry::make('pivot.role_in_session')
                                             ->label('Session Role')
                                             ->badge()
                                             ->color('success'),
                                     ]),
-                                    
+
                                 Infolists\Components\TextEntry::make('country')
                                     ->badge()
                                     ->color('warning'),

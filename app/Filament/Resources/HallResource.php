@@ -6,20 +6,21 @@ use App\Filament\Resources\HallResource\Pages;
 use App\Models\Hall;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Infolists;
-use Filament\Infolists\Infolist;
+use FilamentTiptapEditor\TiptapEditor;
 
 class HallResource extends Resource
 {
     protected static ?string $model = Hall::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
-    
+
     protected static ?string $navigationGroup = 'Festival Management';
-    
+
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
@@ -30,13 +31,13 @@ class HallResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->placeholder('Main Hall'),
-                    
+
                 Forms\Components\TextInput::make('capacity')
                     ->numeric()
                     ->minValue(1)
                     ->maxValue(5000)
                     ->placeholder('200'),
-                    
+
                 Forms\Components\Select::make('floor')
                     ->options([
                         'Ground Floor' => 'Ground Floor',
@@ -46,11 +47,13 @@ class HallResource extends Resource
                         'Garden Level' => 'Garden Level',
                     ])
                     ->placeholder('Select floor'),
-                    
-                Forms\Components\Textarea::make('description')
+
+                TiptapEditor::make('description')
                     ->columnSpanFull()
-                    ->rows(3)
-                    ->placeholder('Brief description of the hall and its facilities...'),
+                    ->placeholder('Brief description of the hall and its facilities...')
+                    ->profile('simple')
+                    ->tools(['bold', 'italic', 'bullet-list', 'ordered-list', 'link'])
+                    ->maxContentWidth('5xl'),
             ]);
     }
 
@@ -62,27 +65,27 @@ class HallResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
-                    
+
                 Tables\Columns\TextColumn::make('capacity')
                     ->numeric()
                     ->sortable()
                     ->badge()
                     ->color('primary'),
-                    
+
                 Tables\Columns\TextColumn::make('floor')
                     ->badge()
                     ->color('gray'),
-                    
+
                 Tables\Columns\TextColumn::make('sessions_count')
                     ->counts('sessions')
                     ->label('Sessions')
                     ->badge()
                     ->color('success'),
-                    
+
                 Tables\Columns\TextColumn::make('description')
                     ->limit(50)
                     ->toggleable(),
-                    
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -97,11 +100,11 @@ class HallResource extends Resource
                         'Basement' => 'Basement',
                         'Garden Level' => 'Garden Level',
                     ]),
-                    
+
                 Tables\Filters\Filter::make('has_capacity')
                     ->query(fn ($query) => $query->whereNotNull('capacity'))
                     ->label('Has Capacity Info'),
-                    
+
                 Tables\Filters\Filter::make('large_halls')
                     ->query(fn ($query) => $query->where('capacity', '>=', 100))
                     ->label('Large Halls (100+)'),
@@ -131,31 +134,32 @@ class HallResource extends Resource
                                     ->label('Hall Name')
                                     ->size('lg')
                                     ->weight('bold'),
-                                    
+
                                 Infolists\Components\TextEntry::make('capacity')
                                     ->label('Capacity')
                                     ->badge()
                                     ->color('primary')
                                     ->suffix(' people'),
-                                    
+
                                 Infolists\Components\TextEntry::make('floor')
                                     ->label('Floor')
                                     ->badge()
                                     ->color('gray'),
-                                    
+
                                 Infolists\Components\TextEntry::make('sessions_count')
                                     ->label('Total Sessions')
                                     ->state(fn ($record) => $record->sessions()->count())
                                     ->badge()
                                     ->color('success'),
                             ]),
-                            
+
                         Infolists\Components\TextEntry::make('description')
                             ->label('Description')
                             ->columnSpanFull()
+                            ->html()
                             ->placeholder('No description available'),
                     ]),
-                    
+
                 Infolists\Components\Section::make('Sessions in This Hall')
                     ->schema([
                         Infolists\Components\RepeatableEntry::make('sessions')
@@ -164,12 +168,12 @@ class HallResource extends Resource
                                     ->schema([
                                         Infolists\Components\TextEntry::make('title')
                                             ->weight('bold'),
-                                            
+
                                         Infolists\Components\TextEntry::make('day.name')
                                             ->label('Day')
                                             ->badge()
                                             ->color('warning'),
-                                            
+
                                         Infolists\Components\TextEntry::make('time_range')
                                             ->label('Time')
                                             ->badge()

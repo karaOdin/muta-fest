@@ -24,9 +24,9 @@ class FestivalSeeder extends Seeder
 
         // Create halls
         $halls = [
-            ['name' => 'Teatro Principale', 'capacity' => 500, 'floor' => 1, 'description' => 'Main theater with excellent acoustics'],
-            ['name' => 'Sala Workshop', 'capacity' => 50, 'floor' => 2, 'description' => 'Intimate space for workshops and discussions'],
-            ['name' => 'Auditorium', 'capacity' => 200, 'floor' => 1, 'description' => 'Modern auditorium with multimedia capabilities'],
+            ['name' => 'Teatro Principale', 'capacity' => 500, 'floor' => 1, 'description' => '<p><strong>Main theater</strong> with excellent acoustics and <em>professional lighting</em>.</p><ul><li>500-seat capacity</li><li>Professional sound system</li><li>Wheelchair accessible</li></ul>'],
+            ['name' => 'Sala Workshop', 'capacity' => 50, 'floor' => 2, 'description' => '<p><strong>Intimate space</strong> perfect for workshops and discussions.</p><ul><li>Comfortable seating arrangement</li><li>Interactive whiteboard</li><li>Coffee corner</li></ul>'],
+            ['name' => 'Auditorium', 'capacity' => 200, 'floor' => 1, 'description' => '<p><strong>Modern auditorium</strong> with state-of-the-art multimedia capabilities.</p><ul><li>HD projection system</li><li>Surround sound</li><li>Video conferencing ready</li></ul>'],
         ];
 
         foreach ($halls as $hall) {
@@ -50,21 +50,21 @@ class FestivalSeeder extends Seeder
                 'name' => 'Amina Bouayach',
                 'role' => 'Writer & Human Rights Activist',
                 'country' => 'Morocco',
-                'bio' => 'Renowned author and human rights advocate focusing on Mediterranean cultures and social justice.',
+                'bio' => '<p><strong>Renowned author</strong> and human rights advocate focusing on <em>Mediterranean cultures</em> and social justice.</p><blockquote><p>"Art is the bridge that connects cultures across the Mediterranean."</p></blockquote><p>Key achievements:</p><ul><li>Published 5 award-winning novels</li><li>UNESCO Peace Ambassador</li><li>Founder of Mediterranean Writers Collective</li></ul>',
                 'order' => 1,
             ],
             [
                 'name' => 'Marco Venturi',
                 'role' => 'Musician & Composer',
                 'country' => 'Italy',
-                'bio' => 'Contemporary classical composer inspired by Mediterranean folk traditions.',
+                'bio' => '<p><strong>Contemporary classical composer</strong> inspired by <em>Mediterranean folk traditions</em>.</p><p>Marco combines traditional instruments with modern orchestration, creating unique soundscapes that tell the stories of coastal communities.</p><ul><li>Grammy-nominated composer</li><li>Performed at La Scala</li><li>Cultural heritage advocate</li></ul>',
                 'order' => 2,
             ],
             [
                 'name' => 'Elena Rodriguez',
                 'role' => 'Visual Artist',
                 'country' => 'Spain',
-                'bio' => 'Mixed media artist exploring themes of migration and cultural identity.',
+                'bio' => '<p><strong>Mixed media artist</strong> exploring themes of <em>migration and cultural identity</em> through stunning visual narratives.</p><blockquote><p>"Every artwork tells the story of a journey across waters and borders."</p></blockquote><ul><li>Exhibited in 20+ countries</li><li>Venice Biennale participant</li><li>Migration rights advocate</li></ul>',
                 'order' => 3,
             ],
         ];
@@ -77,7 +77,7 @@ class FestivalSeeder extends Seeder
         $sessions = [
             [
                 'title' => 'Opening Ceremony',
-                'description' => 'Welcome to MutaFest 2025 - Celebrating Mediterranean culture and arts',
+                'description' => '<p><strong>Welcome to MutaFest 2025</strong> - Celebrating <em>Mediterranean culture and arts</em></p><p>Join us for an unforgettable evening featuring:</p><ul><li>Keynote speeches by renowned cultural figures</li><li>Traditional Mediterranean musical performances</li><li>Cultural exchange presentations</li></ul><p>This ceremony marks the beginning of three days of cultural celebration and artistic expression.</p>',
                 'day_id' => Day::where('name', 'Day One')->first()->id,
                 'hall_id' => Hall::where('name', 'Teatro Principale')->first()->id,
                 'start_time' => '18:00',
@@ -86,7 +86,7 @@ class FestivalSeeder extends Seeder
             ],
             [
                 'title' => 'Mediterranean Stories Workshop',
-                'description' => 'Interactive workshop on storytelling traditions across the Mediterranean',
+                'description' => '<p><strong>Interactive workshop</strong> on <em>storytelling traditions</em> across the Mediterranean</p><p>Discover the rich narrative heritage of Mediterranean cultures through:</p><ul><li>Traditional storytelling techniques</li><li>Cultural mythology and folklore</li><li>Interactive group storytelling</li></ul><p>Perfect for writers, educators, and culture enthusiasts.</p>',
                 'day_id' => Day::where('name', 'Day Two')->first()->id,
                 'hall_id' => Hall::where('name', 'Sala Workshop')->first()->id,
                 'start_time' => '14:00',
@@ -95,7 +95,7 @@ class FestivalSeeder extends Seeder
             ],
             [
                 'title' => 'Art & Identity Panel',
-                'description' => 'Discussion on contemporary Mediterranean art and cultural identity',
+                'description' => '<p><strong>Panel discussion</strong> on contemporary <em>Mediterranean art and cultural identity</em></p><p>Leading artists and cultural experts will discuss:</p><ul><li>Art as a vehicle for cultural expression</li><li>Migration and identity in contemporary art</li><li>Preserving heritage through modern mediums</li></ul><p>Q&A session with audience participation included.</p>',
                 'day_id' => Day::where('name', 'Day Three')->first()->id,
                 'hall_id' => Hall::where('name', 'Auditorium')->first()->id,
                 'start_time' => '16:00',
