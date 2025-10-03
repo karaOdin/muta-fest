@@ -42,8 +42,56 @@ class SessionResource extends Resource
 
                         TiptapEditor::make('description')
                             ->placeholder('Brief description of the session...')
-                            ->profile('simple')
-                            ->tools(['bold', 'italic', 'bullet-list', 'ordered-list', 'link'])
+                            ->profile('default')
+                            ->tools([
+                                'heading',
+                                'bold',
+                                'italic',
+                                'underline',
+                                'strike',
+                                'subscript',
+                                'superscript',
+                                'color',
+                                'highlight',
+                                'align-left',
+                                'align-center',
+                                'align-right',
+                                'align-justify',
+                                'bullet-list',
+                                'ordered-list',
+                                'checked-list',
+                                'blockquote',
+                                'code',
+                                'code-block',
+                                'link',
+                                'table',
+                                'horizontal-rule',
+                                'lead',
+                                'small',
+                                'hurdle',
+                                'details',
+                                'media',
+                                'source',
+                                'undo',
+                                'redo',
+                                'fullscreen',
+                            ])
+                            ->extraInputAttributes(['style' => 'min-height: 10rem;'])
+                            ->mergeTags()
+                            ->blocks([
+                                'heading',
+                                'paragraph',
+                                'ordered-list',
+                                'bullet-list',
+                                'checked-list',
+                                'blockquote',
+                                'code-block',
+                                'table',
+                                'horizontal-rule',
+                                'details',
+                                'media',
+                                'hurdle',
+                            ])
                             ->maxContentWidth('5xl')
                             ->columnSpanFull(),
                     ]),
