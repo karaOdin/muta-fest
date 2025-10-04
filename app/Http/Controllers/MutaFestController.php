@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Day;
+use App\Models\Hall;
+use App\Models\Session;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Session as SessionFacade;
 
 class MutaFestController extends Controller
 {
@@ -357,12 +360,19 @@ class MutaFestController extends Controller
 
     public function program()
     {
-        return view('mutafest.program');
+        $days = Day::withCount('sessions')->orderBy('order')->get();
+        
+        return view('mutafest.program', compact('days'));
     }
 
-    public function programDay($day)
+    public function programDay($dayId)
     {
-        return view('mutafest.program-day', compact('day'));
+        $day = Day::with(['sessions.hall', 'sessions.guests'])->findOrFail($dayId);
+        $halls = Hall::withCount(['sessions' => function ($query) use ($dayId) {
+            $query->where('day_id', $dayId);
+        }])->get();
+        
+        return view('mutafest.program-day', compact('day', 'halls'));
     }
 
     public function guests()
@@ -420,5 +430,12 @@ class MutaFestController extends Controller
         $guest = $guests[$id] ?? $guests[1];
         
         return view('mutafest.guest-details', compact('guest'));
+    }
+
+    public function sessionDetail(Session $session)
+    {
+        $session->load(['day', 'hall', 'guests']);
+        
+        return view('mutafest.session-detail', compact('session'));
     }
 }

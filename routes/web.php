@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MutaFestController;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 // MutaFest Routes
@@ -15,9 +16,12 @@ Route::get('/language/{locale}', [MutaFestController::class, 'changeLanguage'])-
 Route::get('/program', [MutaFestController::class, 'program'])->name('mutafest.program');
 Route::get('/program/day/{day}', [MutaFestController::class, 'programDay'])->name('mutafest.program.day');
 
+// Session Routes
+Route::get('/session/{session}', [MutaFestController::class, 'sessionDetail'])->name('mutafest.session.detail');
+
 // Guest Routes
-Route::get('/guests', [MutaFestController::class, 'guests'])->name('mutafest.guests');
-Route::get('/guest/{id}', [MutaFestController::class, 'guestDetails'])->name('mutafest.guest.details');
+Route::get('/guests', [GuestController::class, 'index'])->name('mutafest.guests');
+Route::get('/guest/{guest}', [GuestController::class, 'show'])->name('mutafest.guest.details');
 
 // Download Routes
 Route::get('/mutafest/download/program', [MutaFestController::class, 'downloadProgram'])->name('mutafest.download.program');

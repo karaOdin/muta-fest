@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day {{ $day }} - MutaFest</title>
+    <title>{{ $day->name }} - MutaFest</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
@@ -70,6 +70,103 @@
             display: block;
         }
 
+        /* Halls Filter */
+        .halls-filter-section {
+            margin-bottom: 40px;
+        }
+
+        .filter-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .halls-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .hall-filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hall-filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .hall-filter-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .hall-filter-btn.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hall-filter-icon {
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .hall-filter-btn.active .hall-filter-icon {
+            background: white;
+            color: #ab4e9e;
+        }
+
+        .hall-filter-name {
+            font-weight: 600;
+        }
+
+        .hall-filter-count {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-left: 5px;
+        }
+
+        /* Sessions List */
+        .sessions-container {
+            display: none;
+        }
+
+        .sessions-container.active {
+            display: block;
+        }
+
         .sessions-list {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -77,33 +174,64 @@
             padding: 40px;
         }
 
-        .session {
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        .session-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
         }
 
-        .session:last-child {
+        .session-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .session-card:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
         }
 
         .session-time {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.8;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-time i {
+            font-size: 0.9rem;
         }
 
         .session-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .session-description {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        .session-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .session-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .no-sessions {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            opacity: 0.8;
         }
 
         .content-wrapper {
@@ -182,6 +310,21 @@
 
             .day-title {
                 font-size: 2.5rem;
+            }
+
+            .halls-filter {
+                gap: 10px;
+            }
+
+            .hall-filter-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .hall-filter-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
             }
 
             .day-date {
@@ -285,11 +428,15 @@
 
     <div class="container">
         <div class="day-header">
-            <h1 class="day-title">Day {{ $day }}</h1>
-            <p class="day-date">{{ $day == 1 ? '2 Maggio 2025' : ($day == 2 ? '3 Maggio 2025' : '4 Maggio 2025') }}</p>
+            <h1 class="day-title">{{ $day->name }}</h1>
+            <p class="day-date">{{ $day->date->format('j F Y') }}</p>
         </div>
 
-        <img src="{{ asset('images/mauja.png') }}" alt="Day {{ $day }}" class="header-image">
+        @if($day->image)
+            <img src="{{ Storage::url($day->image) }}" alt="{{ $day->name }}" class="header-image">
+        @else
+            <img src="{{ asset('images/mauja.png') }}" alt="{{ $day->name }}" class="header-image">
+        @endif
         
         <!-- Content with Sidebar -->
         <div class="content-wrapper">
@@ -302,28 +449,28 @@
                         <i class="far fa-calendar-alt"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Data</div>
-                        <div class="info-value">{{ $day == 1 ? '2 Maggio 2025' : ($day == 2 ? '3 Maggio 2025' : '4 Maggio 2025') }}</div>
+                        <div class="info-label">{{ __('Date') }}</div>
+                        <div class="info-value">{{ $day->date->format('j F Y') }}</div>
                     </div>
                 </div>
                 
                 <div class="info-item">
                     <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-building"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Luogo</div>
-                        <div class="info-value">Centro Culturale Milano<br><small>Via Mediterraneo 15</small></div>
+                        <div class="info-label">{{ __('Halls') }}</div>
+                        <div class="info-value">{{ $halls->count() }} {{ __('venues') }}</div>
                     </div>
                 </div>
                 
                 <div class="info-item">
                     <div class="info-icon">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-microphone"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Durata</div>
-                        <div class="info-value">{{ $day == 1 ? '5 ore' : ($day == 2 ? '10 ore' : '12 ore') }}</div>
+                        <div class="info-label">{{ __('Sessions') }}</div>
+                        <div class="info-value">{{ $day->sessions->count() }} {{ __('events') }}</div>
                     </div>
                 </div>
                 
@@ -332,102 +479,115 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Partecipanti</div>
-                        <div class="info-value">Aperto al pubblico<br><small>Prenotazione consigliata</small></div>
+                        <div class="info-label">{{ __('Guests') }}</div>
+                        <div class="info-value">{{ $day->sessions->pluck('guests')->flatten()->unique('id')->count() }} {{ __('speakers') }}</div>
                     </div>
                 </div>
             </div>
 
-            <div class="sessions-list">
-            @if($day == 1)
-                <div class="session">
-                    <div class="session-time">18:00 - 19:00</div>
-                    <h2 class="session-title">Opening Ceremony</h2>
-                    <p class="session-description">
-                        Welcome remarks and inaugural presentation by festival directors. Join us as we open the doors to three days of Mediterranean culture, literature, and arts.
-                    </p>
+            <div>
+                <!-- Halls Filter -->
+                <div class="halls-filter-section">
+                    <p class="filter-label">{{ __('Filter by Hall:') }}</p>
+                    <div class="halls-filter">
+                        <div class="hall-filter-btn" data-hall-id="all">
+                            <div class="hall-filter-icon">
+                                <i class="fas fa-th"></i>
+                            </div>
+                            <span class="hall-filter-name">{{ __('All') }}</span>
+                            <span class="hall-filter-count">({{ $day->sessions->count() }})</span>
+                        </div>
+                        @foreach($halls as $hall)
+                            <div class="hall-filter-btn" data-hall-id="{{ $hall->id }}">
+                                <div class="hall-filter-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <span class="hall-filter-name">{{ $hall->name }}</span>
+                                <span class="hall-filter-count">({{ $hall->sessions_count }})</span>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-                
-                <div class="session">
-                    <div class="session-time">19:30 - 21:00</div>
-                    <h2 class="session-title">Mediterranean Voices</h2>
-                    <p class="session-description">
-                        Reading session featuring contemporary Mediterranean writers. Experience the rich tapestry of stories from across the Mediterranean basin.
-                    </p>
+
+                <!-- All Sessions -->
+                <div class="sessions-container" id="hall-all-sessions">
+                    <div class="sessions-list">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 30px;">{{ __('All Sessions') }}</h2>
+                        @php
+                            $allSessions = $day->sessions->sortBy('start_time');
+                        @endphp
+                        
+                        @forelse($allSessions as $session)
+                            <a href="{{ route('mutafest.session.detail', $session) }}" class="session-card">
+                                <div class="session-time">
+                                    <i class="far fa-clock"></i>
+                                    {{ $session->time_range }}
+                                </div>
+                                <h3 class="session-title">{{ $session->title }}</h3>
+                                
+                                <div class="session-meta">
+                                    <div class="session-meta-item">
+                                        <i class="fas fa-building"></i>
+                                        <span>{{ $session->hall->name }}</span>
+                                    </div>
+                                    @if($session->guests->count() > 0)
+                                        <div class="session-meta-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>{{ $session->guests->count() }} {{ __('speakers') }}</span>
+                                        </div>
+                                    @endif
+                                    <div class="session-meta-item">
+                                        <i class="fas fa-hourglass-half"></i>
+                                        <span>{{ $session->duration }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        @empty
+                            <div class="no-sessions">
+                                <p>{{ __('No sessions scheduled for this day.') }}</p>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
-                
-                <div class="session">
-                    <div class="session-time">21:30 - 23:00</div>
-                    <h2 class="session-title">Musical Journey</h2>
-                    <p class="session-description">
-                        An evening concert featuring traditional and contemporary Mediterranean musicians, celebrating the diverse musical heritage of our shared sea.
-                    </p>
-                </div>
-            @elseif($day == 2)
-                <div class="session">
-                    <div class="session-time">10:00 - 11:30</div>
-                    <h2 class="session-title">Translation Workshop</h2>
-                    <p class="session-description">
-                        Interactive workshop on Mediterranean poetry translation. Learn the art of bridging languages while preserving cultural nuances.
-                    </p>
-                </div>
-                
-                <div class="session">
-                    <div class="session-time">12:00 - 13:30</div>
-                    <h2 class="session-title">Cultural Dialogue</h2>
-                    <p class="session-description">
-                        Panel discussion on Mediterranean identity in contemporary literature. Explore how writers navigate multiple cultures and languages.
-                    </p>
-                </div>
-                
-                <div class="session">
-                    <div class="session-time">16:00 - 17:30</div>
-                    <h2 class="session-title">Visual Stories</h2>
-                    <p class="session-description">
-                        Film screening and discussion exploring Mediterranean narratives through cinema. Discover stories that cross borders and cultures.
-                    </p>
-                </div>
-                
-                <div class="session">
-                    <div class="session-time">20:00 - 22:00</div>
-                    <h2 class="session-title">Mediterranean Feast</h2>
-                    <p class="session-description">
-                        Traditional dinner accompanied by music and storytelling. Share in the culinary traditions that unite the Mediterranean.
-                    </p>
-                </div>
-            @else
-                <div class="session">
-                    <div class="session-time">11:00 - 12:30</div>
-                    <h2 class="session-title">Collaborative Writing</h2>
-                    <p class="session-description">
-                        Multilingual poetry session with all guest writers. Create together across languages and cultures.
-                    </p>
-                </div>
-                
-                <div class="session">
-                    <div class="session-time">14:00 - 15:30</div>
-                    <h2 class="session-title">Photography Exhibition</h2>
-                    <p class="session-description">
-                        Opening of Mediterranean portrait exhibition. Visual stories that capture the essence of Mediterranean life.
-                    </p>
-                </div>
-                
-                <div class="session">
-                    <div class="session-time">18:00 - 20:00</div>
-                    <h2 class="session-title">Final Performance</h2>
-                    <p class="session-description">
-                        Collaborative performance featuring music, poetry, and visual arts. A celebration of all that unites us across the Mediterranean.
-                    </p>
-                </div>
-                
-                <div class="session">
-                    <div class="session-time">20:30 - 23:00</div>
-                    <h2 class="session-title">Closing Celebration</h2>
-                    <p class="session-description">
-                        Farewell party with live music and Mediterranean cuisine. Until we meet again next year!
-                    </p>
-                </div>
-            @endif
+
+                <!-- Sessions by Hall -->
+                @foreach($halls as $hall)
+                    <div class="sessions-container" id="hall-{{ $hall->id }}-sessions">
+                        <div class="sessions-list">
+                            <h2 style="font-size: 1.8rem; margin-bottom: 30px;">{{ $hall->name }}</h2>
+                            @php
+                                $hallSessions = $day->sessions->where('hall_id', $hall->id)->sortBy('start_time');
+                            @endphp
+                            
+                            @forelse($hallSessions as $session)
+                                <a href="{{ route('mutafest.session.detail', $session) }}" class="session-card">
+                                    <div class="session-time">
+                                        <i class="far fa-clock"></i>
+                                        {{ $session->time_range }}
+                                    </div>
+                                    <h3 class="session-title">{{ $session->title }}</h3>
+                                    
+                                    <div class="session-meta">
+                                        @if($session->guests->count() > 0)
+                                            <div class="session-meta-item">
+                                                <i class="fas fa-users"></i>
+                                                <span>{{ $session->guests->count() }} {{ __('speakers') }}</span>
+                                            </div>
+                                        @endif
+                                        <div class="session-meta-item">
+                                            <i class="fas fa-hourglass-half"></i>
+                                            <span>{{ $session->duration }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            @empty
+                                <div class="no-sessions">
+                                    <p>{{ __('No sessions scheduled in this hall.') }}</p>
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -435,5 +595,39 @@
     @include('components.footer')
 
     @include('components.shared-scripts')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.hall-filter-btn');
+            const sessionContainers = document.querySelectorAll('.sessions-container');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const hallId = this.getAttribute('data-hall-id');
+                    
+                    // Remove active class from all buttons and containers
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    sessionContainers.forEach(container => container.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding sessions
+                    this.classList.add('active');
+                    const targetContainer = document.getElementById(`hall-${hallId}-sessions`);
+                    if (targetContainer) {
+                        targetContainer.classList.add('active');
+                        
+                        // Smooth scroll to sessions with a small delay for animation
+                        setTimeout(() => {
+                            targetContainer.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                        }, 200);
+                    }
+                });
+            });
+
+            // Show first hall by default if exists
+            if (filterButtons.length > 0) {
+                filterButtons[0].click();
+            }
+        });
+    </script>
 </body>
 </html>

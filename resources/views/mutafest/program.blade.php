@@ -140,35 +140,30 @@
         <h1 class="page-title">{{ __('mutafest.nav.program') }}</h1>
         
         <div class="days-grid">
-            <div class="day-card">
-                <a href="{{ route('mutafest.program.day', ['day' => 1]) }}">
-                    <img src="{{ asset('images/mauja.png') }}" alt="Day 1" class="day-image">
-                    <div class="day-content">
-                        <h2 class="day-title">Day 1</h2>
-                        <p class="day-subtitle">2 Maggio 2025</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="day-card">
-                <a href="{{ route('mutafest.program.day', ['day' => 2]) }}">
-                    <img src="{{ asset('images/mauja.png') }}" alt="Day 2" class="day-image">
-                    <div class="day-content">
-                        <h2 class="day-title">Day 2</h2>
-                        <p class="day-subtitle">3 Maggio 2025</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="day-card">
-                <a href="{{ route('mutafest.program.day', ['day' => 3]) }}">
-                    <img src="{{ asset('images/mauja.png') }}" alt="Day 3" class="day-image">
-                    <div class="day-content">
-                        <h2 class="day-title">Day 3</h2>
-                        <p class="day-subtitle">4 Maggio 2025</p>
-                    </div>
-                </a>
-            </div>
+            @forelse($days as $day)
+                <div class="day-card">
+                    <a href="{{ route('mutafest.program.day', ['day' => $day->id]) }}">
+                        @if($day->image)
+                            <img src="{{ Storage::url($day->image) }}" alt="{{ $day->name }}" class="day-image">
+                        @else
+                            <img src="{{ asset('images/mauja.png') }}" alt="{{ $day->name }}" class="day-image">
+                        @endif
+                        <div class="day-content">
+                            <h2 class="day-title">{{ $day->name }}</h2>
+                            <p class="day-subtitle">{{ $day->date->format('j F Y') }}</p>
+                            @if($day->sessions_count > 0)
+                                <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.8;">
+                                    <i class="fas fa-microphone"></i> {{ $day->sessions_count }} {{ __('sessions') }}
+                                </p>
+                            @endif
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                    <p style="font-size: 1.2rem; opacity: 0.8;">{{ __('No program days available yet.') }}</p>
+                </div>
+            @endforelse
         </div>
     </div>
 

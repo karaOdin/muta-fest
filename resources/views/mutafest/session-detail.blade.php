@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $session->title }} - MutaFest</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #ab4e9e;
+            color: white;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 40px 20px 120px;
+        }
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 2px solid white;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .session-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .session-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .session-meta-header {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .session-meta-header span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-image {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 0 auto 60px;
+            display: block;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .session-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .session-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .session-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .session-description {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .speakers-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .speakers-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .speaker-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .speaker-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .speaker-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+        }
+
+        .speaker-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .speaker-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+
+            .session-title {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .session-meta-header {
+                font-size: 1.1rem;
+                gap: 20px;
+            }
+
+            .header-image {
+                height: 200px;
+                margin-bottom: 40px;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .session-info {
+                padding: 20px;
+                position: static;
+                margin-bottom: 30px;
+                order: -1;
+            }
+
+            .session-content {
+                padding: 30px 20px;
+            }
+
+            .session-description {
+                font-size: 1.1rem;
+            }
+
+            .speakers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .session-title {
+                font-size: 2rem;
+            }
+
+            .session-meta-header {
+                font-size: 1rem;
+            }
+
+            .session-description {
+                font-size: 1rem;
+            }
+
+            .session-info h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    @include('components.shared-styles')
+</head>
+<body>
+    @include('components.navbar')
+
+    <div class="container">
+        <a href="{{ route('mutafest.program.day', $session->day_id) }}" class="back-link">
+            <i class="fas fa-arrow-left"></i> {{ __('Back to') }} {{ $session->day->name }}
+        </a>
+
+        <div class="session-header">
+            <h1 class="session-title">{{ $session->title }}</h1>
+            <div class="session-meta-header">
+                <span>
+                    <i class="far fa-calendar"></i>
+                    {{ $session->day->date->format('j F Y') }}
+                </span>
+                <span>
+                    <i class="far fa-clock"></i>
+                    {{ $session->time_range }}
+                </span>
+                <span>
+                    <i class="fas fa-building"></i>
+                    {{ $session->hall->name }}
+                </span>
+            </div>
+        </div>
+
+        @if($session->image)
+            <img src="{{ Storage::url($session->image) }}" alt="{{ $session->title }}" class="header-image">
+        @else
+            <img src="{{ asset('images/mauja.png') }}" alt="{{ $session->title }}" class="header-image">
+        @endif
+        
+        <!-- Content with Sidebar -->
+        <div class="content-wrapper">
+            <!-- Sidebar Information -->
+            <div class="session-info">
+                <h3>{{ __('Session Details') }}</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">{{ __('Day') }}</div>
+                        <div class="info-value">{{ $session->day->name }}</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">{{ __('Time') }}</div>
+                        <div class="info-value">{{ $session->time_range }}</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">{{ __('Duration') }}</div>
+                        <div class="info-value">{{ $session->duration }}</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">{{ __('Hall') }}</div>
+                        <div class="info-value">{{ $session->hall->name }}<br>
+                            @if($session->hall->floor)
+                                <small>{{ $session->hall->floor }}</small>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                @if($session->hall->capacity)
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">{{ __('Capacity') }}</div>
+                        <div class="info-value">{{ $session->hall->capacity }} {{ __('seats') }}</div>
+                    </div>
+                </div>
+                @endif
+            </div>
+
+            <div class="session-content">
+                @if($session->description)
+                    <div class="session-description">
+                        {!! $session->description !!}
+                    </div>
+                @endif
+                
+                @if($session->guests->count() > 0)
+                    <div class="speakers-section">
+                        <h3>{{ __('Speakers') }}</h3>
+                        <div class="speakers-grid">
+                            @foreach($session->guests as $guest)
+                                <a href="{{ route('mutafest.guest.details', $guest) }}" class="speaker-card">
+                                    @if($guest->image)
+                                        <img src="{{ Storage::url($guest->image) }}" alt="{{ $guest->name }}" class="speaker-image">
+                                    @else
+                                        <img src="{{ asset('images/book.png') }}" alt="{{ $guest->name }}" class="speaker-image">
+                                    @endif
+                                    <h4 class="speaker-name">{{ $guest->name }}</h4>
+                                    @if($guest->pivot && $guest->pivot->role_in_session)
+                                        <p class="speaker-role">{{ $guest->pivot->role_in_session }}</p>
+                                    @elseif($guest->role)
+                                        <p class="speaker-role">{{ $guest->role }}</p>
+                                    @endif
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    @include('components.footer')
+
+    @include('components.shared-scripts')
+</body>
+</html>

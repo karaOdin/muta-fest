@@ -80,6 +80,25 @@
         .guest-role {
             font-size: 1.1rem;
             opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .guest-sessions {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .guest-sessions i {
+            margin-right: 5px;
+        }
+
+        .no-guests {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.2rem;
+            opacity: 0.8;
         }
 
         .back-link {
@@ -140,28 +159,39 @@
         <h1 class="page-title">{{ __('mutafest.nav.guests') }}</h1>
         
         <div class="guests-grid">
-            @php
-                $guests = [
-                    ['id' => 1, 'name' => 'Amina Bouayach', 'role' => 'Writer & Activist', 'country' => 'Morocco'],
-                    ['id' => 2, 'name' => 'Marco Bellardi', 'role' => 'Poet & Translator', 'country' => 'Italy'],
-                    ['id' => 3, 'name' => 'Leila Othmani', 'role' => 'Filmmaker', 'country' => 'Tunisia'],
-                    ['id' => 4, 'name' => 'Carlos Mendez', 'role' => 'Musician', 'country' => 'Spain'],
-                    ['id' => 5, 'name' => 'Samir Kasemi', 'role' => 'Author', 'country' => 'Albania'],
-                    ['id' => 6, 'name' => 'Ivo Saglietti', 'role' => 'Photographer', 'country' => 'Italy'],
-                ];
-            @endphp
-            
-            @foreach($guests as $guest)
+            @forelse($guests as $guest)
             <div class="guest-card">
-                <a href="{{ route('mutafest.guest.details', ['id' => $guest['id']]) }}">
-                    <img src="{{ asset('images/book.png') }}" alt="{{ $guest['name'] }}" class="guest-image">
+                <a href="{{ route('mutafest.guest.details', $guest) }}">
+                    @if($guest->image)
+                        <img src="{{ Storage::url($guest->image) }}" alt="{{ $guest->name }}" class="guest-image">
+                    @else
+                        <img src="{{ asset('images/book.png') }}" alt="{{ $guest->name }}" class="guest-image">
+                    @endif
                     <div class="guest-content">
-                        <h2 class="guest-name">{{ $guest['name'] }}</h2>
-                        <p class="guest-role">{{ $guest['role'] }} - {{ $guest['country'] }}</p>
+                        <h2 class="guest-name">{{ $guest->name }}</h2>
+                        <p class="guest-role">
+                            @if($guest->role)
+                                {{ $guest->role }}
+                            @endif
+                            @if($guest->role && $guest->country) - @endif
+                            @if($guest->country)
+                                {{ $guest->country_flag }} {{ $guest->country }}
+                            @endif
+                        </p>
+                        @if($guest->sessions_count > 0)
+                            <p class="guest-sessions">
+                                <i class="fas fa-calendar"></i> 
+                                {{ $guest->sessions_count }} {{ $guest->sessions_count === 1 ? 'session' : 'sessions' }}
+                            </p>
+                        @endif
                     </div>
                 </a>
             </div>
-            @endforeach
+            @empty
+            <div class="no-guests">
+                <p>{{ __('No guests available at the moment.') }}</p>
+            </div>
+            @endforelse
         </div>
     </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $guest['name'] }} - MutaFest</title>
+    <title>{{ $guest->name }} - MutaFest</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
@@ -96,6 +96,42 @@
             margin-bottom: 15px;
         }
 
+        .bio-section h3 i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .session-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .session-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .session-details {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .session-role {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: #87CEEB;
+        }
+
+        .session-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
         @media (max-width: 768px) {
 
             .guest-content {
@@ -140,78 +176,63 @@
     @include('components.navbar')
 
     <div class="container">
+        <a href="{{ route('mutafest.guests') }}" class="back-link">
+            <i class="fas fa-arrow-left"></i> {{ __('Back to Guests') }}
+        </a>
+
         <div class="guest-header">
-            <h1 class="guest-name">{{ $guest['name'] }}</h1>
-            <p class="guest-info">{{ $guest['role'] }} - {{ $guest['country'] }}</p>
+            <h1 class="guest-name">{{ $guest->name }}</h1>
+            <p class="guest-info">
+                @if($guest->role)
+                    {{ $guest->role }}
+                @endif
+                @if($guest->role && $guest->country) - @endif
+                @if($guest->country)
+                    {{ $guest->country_flag }} {{ $guest->country }}
+                @endif
+            </p>
         </div>
 
         <div class="guest-content">
-            <img src="{{ asset('images/book.png') }}" alt="{{ $guest['name'] }}" class="guest-image">
+            @if($guest->image)
+                <img src="{{ Storage::url($guest->image) }}" alt="{{ $guest->name }}" class="guest-image">
+            @else
+                <img src="{{ asset('images/book.png') }}" alt="{{ $guest->name }}" class="guest-image">
+            @endif
             
             <div class="guest-bio">
-                <p class="bio-text">
-                    {{ $guest['bio'] }}
-                </p>
+                @if($guest->bio)
+                    <div class="bio-text">
+                        {!! $guest->bio !!}
+                    </div>
+                @endif
                 
-                @if($guest['id'] == 1)
+                @if($guest->sessions->count() > 0)
                     <div class="bio-section">
-                        <h3>Works</h3>
-                        <p>Author of several books on human rights and Mediterranean culture. Her writings explore themes of identity, migration, and social justice across the Mediterranean region.</p>
-                    </div>
-                    
-                    <div class="bio-section">
-                        <h3>At MutaFest</h3>
-                        <p>Amina will participate in reading sessions and panel discussions on Day 1 and Day 2, sharing her insights on contemporary Mediterranean literature and human rights activism.</p>
-                    </div>
-                @elseif($guest['id'] == 2)
-                    <div class="bio-section">
-                        <h3>Works</h3>
-                        <p>Published numerous poetry collections and translations. Specializes in contemporary Arabic poetry and Mediterranean literary exchanges.</p>
-                    </div>
-                    
-                    <div class="bio-section">
-                        <h3>At MutaFest</h3>
-                        <p>Marco will lead the translation workshop on Day 2 and participate in collaborative writing sessions, demonstrating the art of literary translation.</p>
-                    </div>
-                @elseif($guest['id'] == 3)
-                    <div class="bio-section">
-                        <h3>Works</h3>
-                        <p>Director of acclaimed documentaries exploring Mediterranean identities and cross-cultural narratives. Her films have been featured in major international festivals.</p>
-                    </div>
-                    
-                    <div class="bio-section">
-                        <h3>At MutaFest</h3>
-                        <p>Leila will present her latest documentary on Day 2 and participate in discussions about visual storytelling in Mediterranean cultures.</p>
-                    </div>
-                @elseif($guest['id'] == 4)
-                    <div class="bio-section">
-                        <h3>Works</h3>
-                        <p>Renowned for blending traditional Mediterranean music with contemporary compositions. Has performed in major venues across Europe and North Africa.</p>
-                    </div>
-                    
-                    <div class="bio-section">
-                        <h3>At MutaFest</h3>
-                        <p>Carlos will perform in the opening night concert and lead musical sessions throughout the festival, showcasing Mediterranean musical traditions.</p>
-                    </div>
-                @elseif($guest['id'] == 5)
-                    <div class="bio-section">
-                        <h3>Works</h3>
-                        <p>Author of novels and essays examining the intersection of Balkan and Mediterranean cultures. His works have been translated into multiple languages.</p>
-                    </div>
-                    
-                    <div class="bio-section">
-                        <h3>At MutaFest</h3>
-                        <p>Samir will participate in cultural dialogue panels and reading sessions, discussing Mediterranean identity in contemporary literature.</p>
-                    </div>
-                @else
-                    <div class="bio-section">
-                        <h3>Works</h3>
-                        <p>Photographic exhibitions documenting Mediterranean life and cultures. His portraits capture the diversity and unity of Mediterranean peoples.</p>
-                    </div>
-                    
-                    <div class="bio-section">
-                        <h3>At MutaFest</h3>
-                        <p>Ivo will open his Mediterranean portrait exhibition on Day 3 and lead discussions on visual documentation of cultural exchanges.</p>
+                        <h3><i class="fas fa-calendar"></i> Sessions at MutaFest</h3>
+                        @foreach($guest->sessions as $session)
+                            <div class="session-item">
+                                <h4>{{ $session->title }}</h4>
+                                <p class="session-details">
+                                    <strong>{{ $session->day->name }}</strong> 
+                                    ({{ $session->day->date->format('F j, Y') }}) 
+                                    {{ $session->time_range }}
+                                    @if($session->hall)
+                                        - {{ $session->hall->name }}
+                                    @endif
+                                </p>
+                                @if($session->pivot && $session->pivot->role_in_session)
+                                    <p class="session-role">
+                                        <em>Role: {{ $session->pivot->role_in_session }}</em>
+                                    </p>
+                                @endif
+                                @if($session->description)
+                                    <p class="session-description">
+                                        {!! Str::limit(strip_tags($session->description), 150) !!}
+                                    </p>
+                                @endif
+                            </div>
+                        @endforeach
                     </div>
                 @endif
             </div>

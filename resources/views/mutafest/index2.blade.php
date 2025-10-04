@@ -302,6 +302,84 @@
             position: relative;
         }
 
+        /* Social Media Section */
+        .social-media-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.1s both;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Individual social platform colors on hover */
+        .social-icon:nth-child(1):hover { /* Facebook */
+            background: rgba(24, 119, 242, 0.3);
+            border-color: rgba(24, 119, 242, 0.6);
+        }
+
+        .social-icon:nth-child(2):hover { /* Instagram */
+            background: linear-gradient(45deg, rgba(225, 48, 108, 0.3), rgba(253, 142, 68, 0.3));
+            border-color: rgba(225, 48, 108, 0.6);
+        }
+
+        .social-icon:nth-child(3):hover { /* Twitter */
+            background: rgba(29, 161, 242, 0.3);
+            border-color: rgba(29, 161, 242, 0.6);
+        }
+
+        .social-icon:nth-child(4):hover { /* YouTube */
+            background: rgba(255, 0, 0, 0.3);
+            border-color: rgba(255, 0, 0, 0.6);
+        }
+
+        .social-icon:nth-child(5):hover { /* LinkedIn */
+            background: rgba(0, 119, 181, 0.3);
+            border-color: rgba(0, 119, 181, 0.6);
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-icon:hover::before {
+            left: 100%;
+        }
+
+        .social-icon i {
+            z-index: 1;
+        }
+
         .hero-logo {
             height: 140px;
             width: auto;
@@ -1049,7 +1127,7 @@
             .nav-menu {
                 display: none;
             }
-            
+
             .hamburger {
                 display: flex;
             }
@@ -1080,6 +1158,17 @@
             .hero-visual {
                 order: 2;
                 margin-top: 0;
+            }
+
+            .social-media-section {
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
 
             .hero-logo {
@@ -1407,7 +1496,7 @@
                 <li><a href="{{ route('mutafest.program') }}" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
                 <li><a href="{{ route('mutafest.guests') }}" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
             </ul>
-            
+
             <!-- Hamburger Menu -->
             <div class="hamburger" onclick="toggleDrawer()">
                 <span></span>
@@ -1447,10 +1536,32 @@
 
     <div class="hero-container">
         <div class="hero-content">
+            <!-- Social Media Icons -->
+            <div class="social-media-section">
+                <a href="https://facebook.com/mutafest" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/mutafest" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/mutafest" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://youtube.com/mutafest" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://linkedin.com/company/mutafest" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+
             <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="hero-logo">
             <h1 class="hero-title">Festival del<br>Mediterraneo</h1>
            <!-- <p class="hero-subtitle">🌊 Un viaggio attraverso culture, letterature e arti del Mediterraneo 🎭</p>
             <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>-->
+            <h1>Prima edizione 2025</h1>
+            <h2>Antologia dell'acque del Mediterraneo</h2>
+            <h1></h1>
         </div>
 
         <!
@@ -1517,11 +1628,11 @@
         const drawer = document.querySelector('.mobile-drawer');
         const overlay = document.querySelector('.drawer-overlay');
         const hamburger = document.querySelector('.hamburger');
-        
+
         drawer.classList.toggle('open');
         overlay.classList.toggle('open');
         hamburger.classList.toggle('active');
-        
+
         // Prevent body scroll when drawer is open
         if (drawer.classList.contains('open')) {
             document.body.style.overflow = 'hidden';
@@ -1534,7 +1645,7 @@
         const drawer = document.querySelector('.mobile-drawer');
         const overlay = document.querySelector('.drawer-overlay');
         const hamburger = document.querySelector('.hamburger');
-        
+
         drawer.classList.remove('open');
         overlay.classList.remove('open');
         hamburger.classList.remove('active');
