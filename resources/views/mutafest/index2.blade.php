@@ -1161,6 +1161,7 @@
             }
 
             .social-media-section {
+                justify-content: center;
                 gap: 15px;
                 margin-bottom: 30px;
             }
@@ -1559,8 +1560,8 @@
             <h1 class="hero-title">Festival del<br>Mediterraneo</h1>
            <!-- <p class="hero-subtitle">🌊 Un viaggio attraverso culture, letterature e arti del Mediterraneo 🎭</p>
             <div class="hero-date">🎉 2-4 Maggio 2025 • Milano 🎨</div>-->
-            <h1>Prima edizione 2025</h1>
-            <h2>Antologia dell'acque del Mediterraneo</h2>
+            <h1 style="font-size: 42px; font-weight:100">Prima edizione 2025</h1>
+            <h2 style="font-size: 32px; font-weight:100">Antologia dell'acque del Mediterraneo</h2>
             <h1></h1>
         </div>
 

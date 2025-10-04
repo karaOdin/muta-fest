@@ -38,6 +38,7 @@ class HallResource extends Resource
                     ->maxValue(5000)
                     ->placeholder('200'),
 
+                /*
                 Forms\Components\Select::make('floor')
                     ->options([
                         'Ground Floor' => 'Ground Floor',
@@ -47,7 +48,7 @@ class HallResource extends Resource
                         'Garden Level' => 'Garden Level',
                     ])
                     ->placeholder('Select floor'),
-
+                */
                 TiptapEditor::make('description')
                     ->columnSpanFull()
                     ->placeholder('Brief description of the hall and its facilities...')
