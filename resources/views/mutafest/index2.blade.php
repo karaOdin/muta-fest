@@ -310,6 +310,10 @@
             animation: fadeInUp 1s ease-out 0.1s both;
         }
 
+        .social-media-mobile {
+            display: none;
+        }
+
         .social-icon {
             width: 50px;
             height: 50px;
@@ -1161,9 +1165,15 @@
             }
 
             .social-media-section {
+                display: none;
+            }
+
+            .social-media-mobile {
+                display: flex;
                 justify-content: center;
                 gap: 15px;
                 margin-bottom: 30px;
+                animation: fadeInUp 1s ease-out 0.1s both;
             }
 
             .social-icon {
@@ -1567,6 +1577,25 @@
 
         <!
         <div class="hero-visual">
+            <!-- Social Media Icons for Mobile -->
+            <div class="social-media-mobile">
+                <a href="https://facebook.com/mutafest" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/mutafest" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/mutafest" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://youtube.com/mutafest" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://linkedin.com/company/mutafest" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            
             <div class="hero-image-wrapper">
                 <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
                 <!-- <div class="girl-text-overlay">
