@@ -385,9 +385,9 @@
         }
 
         .hero-logo {
-            height: 140px;
+            height: 124px;
             width: auto;
-            margin-bottom: 32px;
+           /* margin-bottom: 32px;*/
             filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.4));
             animation: fadeInUp 1s ease-out;
         }
@@ -398,10 +398,10 @@
         }
 
         .hero-title {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 900;
             line-height: 0.9;
-            margin-bottom: 24px;
+           /* margin-bottom: 24px;*/
             color: white;
            /* text-shadow: 5px 5px 0 #ff8c42, 10px 10px 0 rgba(0,0,0,0.2);*/
             animation: fadeInUp 1s ease-out 0.2s both;
@@ -472,7 +472,7 @@
         }
 
         .hero-girl {
-            width: 200px;
+            width: 250px;
             height: auto;
             filter: drop-shadow(0 15px 35px rgba(0,0,0,0.4)) brightness(1.1) contrast(1.1);
             animation: float 6s ease-in-out infinite;
@@ -1595,7 +1595,7 @@
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-            
+
             <div class="hero-image-wrapper">
                 <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
                 <!-- <div class="girl-text-overlay">
