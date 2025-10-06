@@ -180,6 +180,96 @@
                 font-size: 1.3rem;
             }
         }
+
+        /* Image Modal Styles */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.3) rotate(-10deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-caption {
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            color: white;
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .guest-image {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .guest-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
     </style>
     @include('components.shared-styles')
 </head>
@@ -206,9 +296,9 @@
 
         <div class="guest-content">
             @if($guest->image)
-                <img src="{{ Storage::url($guest->image) }}" alt="{{ $guest->name }}" class="guest-image">
+                <img src="{{ Storage::url($guest->image) }}" alt="{{ $guest->name }}" class="guest-image" onclick="openImageModal(this, '{{ $guest->name }}')">
             @else
-                <img src="{{ asset('images/book.png') }}" alt="{{ $guest->name }}" class="guest-image">
+                <img src="{{ asset('images/book.png') }}" alt="{{ $guest->name }}" class="guest-image" onclick="openImageModal(this, '{{ $guest->name }}')">
             @endif
             
             <div class="guest-bio">
@@ -252,6 +342,46 @@
 
     @include('components.footer')
 
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <button class="modal-close" onclick="closeImageModal()">&times;</button>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img src="" alt="" class="modal-image" id="modalImage">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
     @include('components.shared-scripts')
+
+    <script>
+        function openImageModal(imgElement, guestName) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+
+            modal.classList.add('active');
+            modalImg.src = imgElement.src;
+            modalImg.alt = imgElement.alt;
+            modalCaption.textContent = guestName;
+
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+
+            // Re-enable body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
 </body>
 </html>
