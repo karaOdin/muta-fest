@@ -74,19 +74,19 @@
         }
 
         .guest-name {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
         .guest-role {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             opacity: 0.9;
             margin-bottom: 10px;
         }
 
         .guest-sessions {
-            font-size: 0.95rem;
+            font-size: 1.2rem;
             opacity: 0.8;
             margin-top: 10px;
         }

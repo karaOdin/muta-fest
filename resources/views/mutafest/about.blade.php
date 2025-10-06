@@ -36,7 +36,7 @@
         }
 
         .about-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 40px;
             letter-spacing: -1px;
@@ -61,7 +61,7 @@
             margin-top: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -78,12 +78,12 @@
             }
 
             .about-title {
-                font-size: 2.5rem;
+                font-size: 2.9rem;
                 margin-bottom: 30px;
             }
 
             .about-content {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
                 line-height: 1.8;
             }
 
@@ -99,11 +99,11 @@
             }
 
             .about-title {
-                font-size: 2rem;
+                font-size: 2.4rem;
             }
 
             .about-content {
-                font-size: 1rem;
+                font-size: 1.6rem;
             }
         }
     </style>

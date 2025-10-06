@@ -34,7 +34,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -50,13 +50,13 @@
         }
 
         .day-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
         .day-date {
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             opacity: 0.9;
         }
 
@@ -76,7 +76,7 @@
         }
 
         .filter-label {
-            font-size: 1.2rem;
+            font-size: 2.1rem;
             font-weight: 600;
             margin-bottom: 20px;
             opacity: 0.9;
@@ -99,7 +99,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1rem;
+            font-size: 1.6rem;
             position: relative;
             overflow: hidden;
         }
@@ -140,7 +140,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 1.4rem;
         }
 
         .hall-filter-btn.active .hall-filter-icon {
@@ -153,7 +153,7 @@
         }
 
         .hall-filter-count {
-            font-size: 0.85rem;
+            font-size: 1.15rem;
             opacity: 0.7;
             margin-left: 5px;
         }
@@ -196,7 +196,7 @@
         }
 
         .session-time {
-            font-size: 1rem;
+            font-size: 1.6rem;
             opacity: 0.8;
             margin-bottom: 8px;
             display: flex;
@@ -205,11 +205,11 @@
         }
 
         .session-time i {
-            font-size: 0.9rem;
+            font-size: 2.1rem;
         }
 
         .session-title {
-            font-size: 1.5rem;
+            font-size: 2.1rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -217,7 +217,7 @@
         .session-meta {
             display: flex;
             gap: 20px;
-            font-size: 0.9rem;
+            font-size: 2.1rem;
             opacity: 0.8;
         }
 
@@ -230,7 +230,7 @@
         .no-sessions {
             text-align: center;
             padding: 40px;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             opacity: 0.8;
         }
 
@@ -252,7 +252,7 @@
         }
 
         .day-info h3 {
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 20px;
             text-align: center;
@@ -282,7 +282,7 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             flex-shrink: 0;
         }
 
@@ -291,7 +291,7 @@
         }
 
         .info-label {
-            font-size: 0.8rem;
+            font-size: 1.4rem;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 3px;
             text-transform: uppercase;
@@ -300,7 +300,7 @@
         }
 
         .info-value {
-            font-size: 1rem;
+            font-size: 1.6rem;
             font-weight: 600;
             color: white;
             line-height: 1.3;
@@ -309,7 +309,7 @@
         @media (max-width: 768px) {
 
             .day-title {
-                font-size: 2.5rem;
+                font-size: 2.9rem;
             }
 
             .halls-filter {
@@ -318,17 +318,17 @@
 
             .hall-filter-btn {
                 padding: 10px 20px;
-                font-size: 0.95rem;
+                font-size: 1.25rem;
             }
 
             .hall-filter-icon {
                 width: 20px;
                 height: 20px;
-                font-size: 0.7rem;
+                font-size: 1.0rem;
             }
 
             .day-date {
-                font-size: 1.2rem;
+                font-size: 2.1rem;
             }
 
             .header-image {
@@ -346,11 +346,11 @@
             }
 
             .session-title {
-                font-size: 1.5rem;
+                font-size: 2.1rem;
             }
 
             .session-description {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
             }
 
             .content-wrapper {
@@ -366,7 +366,7 @@
             }
 
             .day-info h3 {
-                font-size: 1.2rem;
+                font-size: 2.1rem;
                 margin-bottom: 15px;
             }
 
@@ -378,22 +378,22 @@
             .info-icon {
                 width: 40px;
                 height: 40px;
-                font-size: 1.1rem;
+                font-size: 1.4rem;
                 margin-right: 12px;
             }
         }
 
         @media (max-width: 480px) {
             .day-title {
-                font-size: 2rem;
+                font-size: 2.4rem;
             }
 
             .session-title {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
             }
 
             .session-description {
-                font-size: 1rem;
+                font-size: 1.6rem;
             }
 
             .day-info {
@@ -401,7 +401,7 @@
             }
 
             .day-info h3 {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
             }
 
             .info-item {
@@ -412,12 +412,12 @@
             .info-icon {
                 width: 35px;
                 height: 35px;
-                font-size: 1rem;
+                font-size: 1.6rem;
                 margin-right: 10px;
             }
 
             .info-value {
-                font-size: 0.9rem;
+                font-size: 2.1rem;
             }
         }
     </style>
@@ -512,7 +512,7 @@
                 <!-- All Sessions -->
                 <div class="sessions-container" id="hall-all-sessions">
                     <div class="sessions-list">
-                        <h2 style="font-size: 1.8rem; margin-bottom: 30px;">{{ __('All Sessions') }}</h2>
+                        <h2 style="font-size: 2.1rem; margin-bottom: 30px;">{{ __('All Sessions') }}</h2>
                         @php
                             $allSessions = $day->sessions->sortBy('start_time');
                         @endphp
@@ -554,7 +554,7 @@
                 @foreach($halls as $hall)
                     <div class="sessions-container" id="hall-{{ $hall->id }}-sessions">
                         <div class="sessions-list">
-                            <h2 style="font-size: 1.8rem; margin-bottom: 30px;">{{ $hall->name }}</h2>
+                            <h2 style="font-size: 2.1rem; margin-bottom: 30px;">{{ $hall->name }}</h2>
                             @php
                                 $hallSessions = $day->sessions->where('hall_id', $hall->id)->sortBy('start_time');
                             @endphp

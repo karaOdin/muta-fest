@@ -553,7 +553,7 @@
 
         .modal-subtitle {
             color: rgba(255, 255, 255, 0.85);
-            font-size: 1.2rem;
+            font-size: 2.1rem;
             font-weight: 300;
             letter-spacing: 0.02em;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -598,7 +598,7 @@
 
         .modal-text {
             color: rgba(255, 255, 255, 0.92);
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             line-height: 1.7;
             margin-bottom: 2rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -684,7 +684,7 @@
             }
 
             .modal-text {
-                font-size: 1rem;
+                font-size: 1.6rem;
                 line-height: 1.6;
                 margin-bottom: 1.8rem;
             }

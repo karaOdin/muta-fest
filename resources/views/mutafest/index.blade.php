@@ -262,7 +262,7 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             padding: 18px 36px;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 400;
             font-style: italic;
             color: white;
@@ -627,7 +627,7 @@
         }
 
         .card-description {
-            font-size: 0.95rem;
+            font-size: 1.25rem;
             font-weight: 400;
             line-height: 1.6;
             color: #4a5568;
@@ -817,7 +817,7 @@
         }
 
         .day-title {
-            font-size: 1.8rem;
+            font-size: 2.1rem;
             font-weight: 500;
             font-style: italic;
             margin-bottom: 0;
@@ -850,7 +850,7 @@
         }
 
         .session-time {
-            font-size: 0.9rem;
+            font-size: 2.1rem;
             color: #ff8c42;
             font-weight: 700;
             margin-bottom: 8px;
@@ -858,7 +858,7 @@
         }
 
         .session-title {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 500;
             font-style: italic;
             margin-bottom: 6px;
@@ -867,7 +867,7 @@
         }
 
         .session-participants {
-            font-size: 0.95rem;
+            font-size: 1.25rem;
             color: #4a5568;
             line-height: 1.5;
         }
@@ -991,13 +991,13 @@
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
                 margin-bottom: 32px;
             }
 
             .hero-date {
                 padding: 14px 28px;
-                font-size: 1rem;
+                font-size: 1.6rem;
             }
 
             .hero-girl {
@@ -1090,12 +1090,12 @@
             }
 
             .card-title {
-                font-size: 1.2rem;
+                font-size: 2.1rem;
                 margin-bottom: 12px;
             }
 
             .card-description {
-                font-size: 0.9rem;
+                font-size: 2.1rem;
                 line-height: 1.5;
                 padding-left: 12px;
             }
@@ -1164,17 +1164,17 @@
             }
 
             .session-time {
-                font-size: 0.85rem;
+                font-size: 1.15rem;
                 margin-bottom: 6px;
             }
 
             .session-title {
-                font-size: 1rem;
+                font-size: 1.6rem;
                 margin-bottom: 4px;
             }
 
             .session-participants {
-                font-size: 0.9rem;
+                font-size: 2.1rem;
             }
 
             .footer {
@@ -1239,13 +1239,13 @@
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.6rem;
                 margin-bottom: 24px;
             }
 
             .hero-date {
                 padding: 12px 24px;
-                font-size: 0.9rem;
+                font-size: 2.1rem;
             }
 
             .hero-girl {
@@ -1261,7 +1261,7 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.4rem;
                 margin-bottom: 32px;
             }
 
@@ -1322,12 +1322,12 @@
             }
 
             .card-title {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
                 margin-bottom: 10px;
             }
 
             .card-description {
-                font-size: 0.85rem;
+                font-size: 1.15rem;
                 padding-left: 10px;
             }
 
@@ -1377,7 +1377,7 @@
             }
 
             .day-title {
-                font-size: 1.2rem;
+                font-size: 2.1rem;
             }
 
             .sessions-container {
@@ -1390,17 +1390,17 @@
             }
 
             .session-time {
-                font-size: 0.8rem;
+                font-size: 1.4rem;
                 margin-bottom: 4px;
             }
 
             .session-title {
-                font-size: 0.95rem;
+                font-size: 1.25rem;
                 margin-bottom: 3px;
             }
 
             .session-participants {
-                font-size: 0.85rem;
+                font-size: 1.15rem;
             }
 
             .footer {

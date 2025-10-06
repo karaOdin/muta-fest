@@ -72,13 +72,13 @@
         }
 
         .day-title {
-            font-size: 2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
         .day-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             opacity: 0.9;
         }
 
@@ -87,7 +87,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;

@@ -37,6 +37,7 @@
         color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
         font-weight: 500;
+        font-size: 1.2rem;
         transition: color 0.3s ease;
     }
 
@@ -179,6 +180,7 @@
     .footer-text {
         color: rgba(255, 255, 255, 0.7);
         margin-bottom: 32px;
+        font-size: 1.2rem;
     }
 
     .social-links {
@@ -227,7 +229,7 @@
         }
 
         .footer-text {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             margin-bottom: 24px;
         }
 
