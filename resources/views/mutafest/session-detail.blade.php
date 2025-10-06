@@ -34,7 +34,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 0.85rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -50,7 +50,7 @@
         }
 
         .session-title {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -61,7 +61,7 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            font-size: 2.1rem;
+            font-size: 0.95rem;
             opacity: 0.9;
         }
 
@@ -99,7 +99,7 @@
         }
 
         .session-info h3 {
-            font-size: 1.6rem;
+            font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 20px;
             text-align: center;
@@ -129,7 +129,7 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            font-size: 1.6rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
         }
 
@@ -138,7 +138,7 @@
         }
 
         .info-label {
-            font-size: 1.4rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 3px;
             text-transform: uppercase;
@@ -147,7 +147,7 @@
         }
 
         .info-value {
-            font-size: 1.6rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: white;
             line-height: 1.3;
@@ -161,7 +161,7 @@
         }
 
         .session-description {
-            font-size: 2.1rem;
+            font-size: 0.95rem;
             line-height: 2;
             margin-bottom: 40px;
         }
@@ -173,7 +173,7 @@
         }
 
         .speakers-section h3 {
-            font-size: 2.1rem;
+            font-size: 0.95rem;
             margin-bottom: 30px;
         }
 
@@ -208,25 +208,25 @@
         }
 
         .speaker-name {
-            font-size: 1.4rem;
+            font-size: 0.85rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .speaker-role {
-            font-size: 2.1rem;
+            font-size: 0.95rem;
             opacity: 0.8;
         }
 
         @media (max-width: 768px) {
 
             .session-title {
-                font-size: 2.9rem;
+                font-size: 2.3rem;
                 margin-bottom: 15px;
             }
 
             .session-meta-header {
-                font-size: 1.4rem;
+                font-size: 0.85rem;
                 gap: 20px;
             }
 
@@ -252,7 +252,7 @@
             }
 
             .session-description {
-                font-size: 1.4rem;
+                font-size: 0.85rem;
             }
 
             .speakers-grid {
@@ -263,19 +263,19 @@
 
         @media (max-width: 480px) {
             .session-title {
-                font-size: 2.4rem;
+                font-size: 1.9rem;
             }
 
             .session-meta-header {
-                font-size: 1.6rem;
+                font-size: 0.95rem;
             }
 
             .session-description {
-                font-size: 1.6rem;
+                font-size: 0.95rem;
             }
 
             .session-info h3 {
-                font-size: 2.1rem;
+                font-size: 0.95rem;
             }
         }
     </style>
