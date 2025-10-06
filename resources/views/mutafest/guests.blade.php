@@ -38,10 +38,8 @@
         }
 
         .guests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            align-items: start;
+            column-count: 3;
+            column-gap: 40px;
         }
 
         .guest-card {
@@ -50,6 +48,10 @@
             border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s ease;
+            break-inside: avoid;
+            margin-bottom: 40px;
+            display: inline-block;
+            width: 100%;
         }
 
         .guest-card:hover {
@@ -116,15 +118,21 @@
             opacity: 0.8;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            .guests-grid {
+                column-count: 2;
+            }
+        }
 
+        @media (max-width: 768px) {
             .page-title {
                 font-size: 2.5rem;
                 margin-bottom: 40px;
             }
 
             .guests-grid {
-                gap: 30px;
+                column-count: 2;
+                column-gap: 30px;
             }
 
             .guest-content {
@@ -139,6 +147,10 @@
         @media (max-width: 480px) {
             .page-title {
                 font-size: 2rem;
+            }
+
+            .guests-grid {
+                column-count: 1;
             }
 
             .guest-name {
