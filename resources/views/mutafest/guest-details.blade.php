@@ -319,7 +319,7 @@
                     <div class="bio-section">
                         <h3><i class="fas fa-calendar"></i> Incontri a MutaFest</h3>
                         @foreach($guest->sessions as $session)
-                            <a href="{{ route('mutafest.session.details', $session) }}" style="text-decoration: none; color: inherit;">
+                            <a href="{{ route('mutafest.session.detail', $session) }}" style="text-decoration: none; color: inherit;">
                                 <div class="session-item">
                                     <h4>{{ $session->title }}</h4>
                                     <p class="session-details">
