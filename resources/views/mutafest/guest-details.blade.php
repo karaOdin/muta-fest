@@ -87,6 +87,17 @@
             margin-bottom: 30px;
         }
 
+        .bio-text * {
+            background-color: transparent !important;
+            background: none !important;
+        }
+
+        .bio-text p,
+        .bio-text div,
+        .bio-text span {
+            color: inherit;
+        }
+
         .bio-section {
             margin-bottom: 30px;
         }
