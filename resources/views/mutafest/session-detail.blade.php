@@ -286,7 +286,7 @@
 
     <div class="container">
         <a href="{{ route('mutafest.program.day', $session->day_id) }}" class="back-link">
-            <i class="fas fa-arrow-left"></i> {{ __('Back to') }} {{ $session->day->name }}
+            <i class="fas fa-arrow-left"></i> Torna a {{ $session->day->name }}
         </a>
 
         <div class="session-header">
@@ -317,14 +317,14 @@
         <div class="content-wrapper">
             <!-- Sidebar Information -->
             <div class="session-info">
-                <h3>{{ __('Session Details') }}</h3>
+                <h3>Dettagli dell'Incontro</h3>
                 
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="far fa-calendar-alt"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Day') }}</div>
+                        <div class="info-label">Giorno</div>
                         <div class="info-value">{{ $session->day->name }}</div>
                     </div>
                 </div>
@@ -334,7 +334,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Time') }}</div>
+                        <div class="info-label">Orario</div>
                         <div class="info-value">{{ $session->time_range }}</div>
                     </div>
                 </div>
@@ -344,7 +344,7 @@
                         <i class="fas fa-hourglass-half"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Duration') }}</div>
+                        <div class="info-label">Durata</div>
                         <div class="info-value">{{ $session->duration }}</div>
                     </div>
                 </div>
@@ -354,7 +354,7 @@
                         <i class="fas fa-building"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Hall') }}</div>
+                        <div class="info-label">Sala</div>
                         <div class="info-value">{{ $session->hall->name }}<br>
                             @if($session->hall->floor)
                                 <small>{{ $session->hall->floor }}</small>
@@ -369,8 +369,8 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Capacity') }}</div>
-                        <div class="info-value">{{ $session->hall->capacity }} {{ __('seats') }}</div>
+                        <div class="info-label">Capienza</div>
+                        <div class="info-value">{{ $session->hall->capacity }} posti</div>
                     </div>
                 </div>
                 @endif
@@ -385,7 +385,7 @@
                 
                 @if($session->guests->count() > 0)
                     <div class="speakers-section">
-                        <h3>{{ __('Speakers') }}</h3>
+                        <h3>Relatori</h3>
                         <div class="speakers-grid">
                             @foreach($session->guests as $guest)
                                 <a href="{{ route('mutafest.guest.details', $guest) }}" class="speaker-card">

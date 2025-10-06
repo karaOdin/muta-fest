@@ -427,6 +427,10 @@
     @include('components.navbar')
 
     <div class="container">
+        <a href="{{ route('mutafest.program') }}" class="back-link">
+            <i class="fas fa-arrow-left"></i> Torna al Programma
+        </a>
+
         <div class="day-header">
             <h1 class="day-title">{{ $day->name }}</h1>
             <p class="day-date">{{ $day->date->format('j F Y') }}</p>
@@ -449,7 +453,7 @@
                         <i class="far fa-calendar-alt"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Date') }}</div>
+                        <div class="info-label">Data</div>
                         <div class="info-value">{{ $day->date->format('j F Y') }}</div>
                     </div>
                 </div>
@@ -459,8 +463,8 @@
                         <i class="fas fa-building"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Halls') }}</div>
-                        <div class="info-value">{{ $halls->count() }} {{ __('venues') }}</div>
+                        <div class="info-label">Sale</div>
+                        <div class="info-value">{{ $halls->count() }} spazi</div>
                     </div>
                 </div>
                 
@@ -469,8 +473,8 @@
                         <i class="fas fa-microphone"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Sessions') }}</div>
-                        <div class="info-value">{{ $day->sessions->count() }} {{ __('events') }}</div>
+                        <div class="info-label">Incontri</div>
+                        <div class="info-value">{{ $day->sessions->count() }} eventi</div>
                     </div>
                 </div>
                 
@@ -479,8 +483,8 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">{{ __('Guests') }}</div>
-                        <div class="info-value">{{ $day->sessions->pluck('guests')->flatten()->unique('id')->count() }} {{ __('speakers') }}</div>
+                        <div class="info-label">Ospiti</div>
+                        <div class="info-value">{{ $day->sessions->pluck('guests')->flatten()->unique('id')->count() }} relatori</div>
                     </div>
                 </div>
             </div>
@@ -488,13 +492,13 @@
             <div>
                 <!-- Halls Filter -->
                 <div class="halls-filter-section">
-                    <p class="filter-label">{{ __('Filter by Hall:') }}</p>
+                    <p class="filter-label">Filtra per Sala:</p>
                     <div class="halls-filter">
                         <div class="hall-filter-btn" data-hall-id="all">
                             <div class="hall-filter-icon">
                                 <i class="fas fa-th"></i>
                             </div>
-                            <span class="hall-filter-name">{{ __('All') }}</span>
+                            <span class="hall-filter-name">Tutti</span>
                             <span class="hall-filter-count">({{ $day->sessions->count() }})</span>
                         </div>
                         @foreach($halls as $hall)
@@ -512,7 +516,7 @@
                 <!-- All Sessions -->
                 <div class="sessions-container" id="hall-all-sessions">
                     <div class="sessions-list">
-                        <h2 style="font-size: 2.1rem; margin-bottom: 30px;">{{ __('All Sessions') }}</h2>
+                        <h2 style="font-size: 2.1rem; margin-bottom: 30px;">Tutti gli Incontri</h2>
                         @php
                             $allSessions = $day->sessions->sortBy('start_time');
                         @endphp
@@ -533,7 +537,7 @@
                                     @if($session->guests->count() > 0)
                                         <div class="session-meta-item">
                                             <i class="fas fa-users"></i>
-                                            <span>{{ $session->guests->count() }} {{ __('speakers') }}</span>
+                                            <span>{{ $session->guests->count() }} relatori</span>
                                         </div>
                                     @endif
                                     <div class="session-meta-item">
@@ -544,7 +548,7 @@
                             </a>
                         @empty
                             <div class="no-sessions">
-                                <p>{{ __('No sessions scheduled for this day.') }}</p>
+                                <p>Nessun incontro programmato per questa giornata.</p>
                             </div>
                         @endforelse
                     </div>
@@ -571,7 +575,7 @@
                                         @if($session->guests->count() > 0)
                                             <div class="session-meta-item">
                                                 <i class="fas fa-users"></i>
-                                                <span>{{ $session->guests->count() }} {{ __('speakers') }}</span>
+                                                <span>{{ $session->guests->count() }} relatori</span>
                                             </div>
                                         @endif
                                         <div class="session-meta-item">
@@ -582,7 +586,7 @@
                                 </a>
                             @empty
                                 <div class="no-sessions">
-                                    <p>{{ __('No sessions scheduled in this hall.') }}</p>
+                                    <p>Nessun incontro programmato in questa sala.</p>
                                 </div>
                             @endforelse
                         </div>

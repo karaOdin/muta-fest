@@ -117,6 +117,13 @@
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .session-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
         }
 
         .session-item h4 {
@@ -278,7 +285,7 @@
 
     <div class="container">
         <a href="{{ route('mutafest.guests') }}" class="back-link">
-            <i class="fas fa-arrow-left"></i> {{ __('Back to Guests') }}
+            <i class="fas fa-arrow-left"></i> Torna agli Ospiti
         </a>
 
         <div class="guest-header">
@@ -310,29 +317,31 @@
                 
                 @if($guest->sessions->count() > 0)
                     <div class="bio-section">
-                        <h3><i class="fas fa-calendar"></i> Sessions at MutaFest</h3>
+                        <h3><i class="fas fa-calendar"></i> Incontri a MutaFest</h3>
                         @foreach($guest->sessions as $session)
-                            <div class="session-item">
-                                <h4>{{ $session->title }}</h4>
-                                <p class="session-details">
-                                    <strong>{{ $session->day->name }}</strong> 
-                                    ({{ $session->day->date->format('F j, Y') }}) 
-                                    {{ $session->time_range }}
-                                    @if($session->hall)
-                                        - {{ $session->hall->name }}
+                            <a href="{{ route('mutafest.session.details', $session) }}" style="text-decoration: none; color: inherit;">
+                                <div class="session-item">
+                                    <h4>{{ $session->title }}</h4>
+                                    <p class="session-details">
+                                        <strong>{{ $session->day->name }}</strong>
+                                        ({{ $session->day->date->format('F j, Y') }})
+                                        {{ $session->time_range }}
+                                        @if($session->hall)
+                                            - {{ $session->hall->name }}
+                                        @endif
+                                    </p>
+                                    @if($session->pivot && $session->pivot->role_in_session)
+                                        <p class="session-role">
+                                            <em>Ruolo: {{ $session->pivot->role_in_session }}</em>
+                                        </p>
                                     @endif
-                                </p>
-                                @if($session->pivot && $session->pivot->role_in_session)
-                                    <p class="session-role">
-                                        <em>Role: {{ $session->pivot->role_in_session }}</em>
-                                    </p>
-                                @endif
-                                @if($session->description)
-                                    <p class="session-description">
-                                        {!! Str::limit(strip_tags($session->description), 150) !!}
-                                    </p>
-                                @endif
-                            </div>
+                                    @if($session->description)
+                                        <p class="session-description">
+                                            {!! Str::limit(strip_tags($session->description), 150) !!}
+                                        </p>
+                                    @endif
+                                </div>
+                            </a>
                         @endforeach
                     </div>
                 @endif
