@@ -44,7 +44,6 @@
         }
 
         .day-card {
-            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             overflow: hidden;
