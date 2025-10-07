@@ -83,7 +83,7 @@
         right: -300px;
         width: 300px;
         height: 100vh;
-        background: rgba(171, 78, 158, 0.98);
+        background: #f0925e;
         backdrop-filter: blur(20px);
         z-index: 1000;
         transition: right 0.3s ease;
@@ -212,7 +212,7 @@
         .nav-menu {
             display: none;
         }
-        
+
         .hamburger {
             display: flex;
         }

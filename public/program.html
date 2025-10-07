@@ -19,7 +19,7 @@
         }
 
         .header {
-            background: rgba(171, 78, 158, 0.95);
+            background: #f0925e;
             padding: 20px 0;
             border-bottom: 3px solid rgba(255, 255, 255, 0.3);
         }
@@ -249,9 +249,9 @@
 
     <div class="container">
         <a href="index2.html" class="back-button">← Back to Home</a>
-        
+
         <h1 class="page-title">Festival Program</h1>
-        
+
         <div class="days-grid">
             <div class="day-card">
                 <div class="day-header">
@@ -356,7 +356,7 @@
         function toggleDay(dayId) {
             const details = document.getElementById(dayId);
             const button = details.previousElementSibling.querySelector('.toggle-button');
-            
+
             if (details.classList.contains('active')) {
                 details.classList.remove('active');
                 button.textContent = 'View Details';
@@ -368,7 +368,7 @@
                 document.querySelectorAll('.toggle-button').forEach(btn => {
                     btn.textContent = 'View Details';
                 });
-                
+
                 // Show current details
                 details.classList.add('active');
                 button.textContent = 'Hide Details';

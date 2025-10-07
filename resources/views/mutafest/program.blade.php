@@ -62,7 +62,7 @@
         }
 
         .day-image {
-            width: auto;
+            width: 100%;
             height: auto;
             object-fit: cover;
         }
@@ -148,7 +148,7 @@
                         @else
                             <img src="{{ asset('images/mauja.png') }}" alt="{{ $day->name }}" class="day-image">
                         @endif
-                        <div class="day-content">
+                        <!--<div class="day-content">
                             <h2 class="day-title">{{ $day->name }}</h2>
                             <p class="day-subtitle">{{ $day->date->format('j F Y') }}</p>
                             @if($day->sessions_count > 0)
@@ -156,7 +156,7 @@
                                     <i class="fas fa-microphone"></i> {{ $day->sessions_count }} {{ __('sessions') }}
                                 </p>
                             @endif
-                        </div>
+                        </div>-->
                     </a>
                 </div>
             @empty

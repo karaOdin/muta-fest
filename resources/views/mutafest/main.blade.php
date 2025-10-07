@@ -720,7 +720,7 @@
     <!-- Social Icons -->
     <div class="social-icons">
         <a href="#" class="social-icon">f</a>
-        <a href="#" class="social-icon">𝕏</a>
+=        <a href="#" class="social-icon">𝕏</a>
         <a href="#" class="social-icon">@</a>
     </div>
 
@@ -739,7 +739,7 @@
 
     <!-- Chi siamo text -->
     <div class="chi-siamo" onclick="openModal()">Cos'è</div>
-    
+
     <!-- Enter Festival Button -->
     <a href="{{ route('mutafest.home') }}" class="enter-festival">
         Entra nel Festival
