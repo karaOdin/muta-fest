@@ -6,7 +6,7 @@
     <title>{{ $day->name }} - MutaFest</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -63,7 +63,7 @@
         .header-image {
             width: 100%;
             max-width: 800px;
-            height: 300px;
+            /*height: 300px;*/
             object-fit: cover;
             border-radius: 20px;
             margin: 0 auto 60px;
@@ -441,13 +441,13 @@
         @else
             <img src="{{ asset('images/mauja.png') }}" alt="{{ $day->name }}" class="header-image">
         @endif
-        
+
         <!-- Content with Sidebar -->
         <div class="content-wrapper">
             <!-- Sidebar Information -->
             <div class="day-info">
                 <h3>Informazioni del Giorno</h3>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="far fa-calendar-alt"></i>
@@ -457,7 +457,7 @@
                         <div class="info-value">{{ $day->date->format('j F Y') }}</div>
                     </div>
                 </div>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-building"></i>
@@ -467,7 +467,7 @@
                         <div class="info-value">{{ $halls->count() }} spazi</div>
                     </div>
                 </div>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-microphone"></i>
@@ -477,7 +477,7 @@
                         <div class="info-value">{{ $day->sessions->count() }} eventi</div>
                     </div>
                 </div>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-users"></i>
@@ -520,7 +520,7 @@
                         @php
                             $allSessions = $day->sessions->sortBy('start_time');
                         @endphp
-                        
+
                         @forelse($allSessions as $session)
                             <a href="{{ route('mutafest.session.detail', $session) }}" class="session-card">
                                 <div class="session-time">
@@ -528,7 +528,7 @@
                                     {{ $session->time_range }}
                                 </div>
                                 <h3 class="session-title">{{ $session->title }}</h3>
-                                
+
                                 <div class="session-meta">
                                     <div class="session-meta-item">
                                         <i class="fas fa-building"></i>
@@ -562,7 +562,7 @@
                             @php
                                 $hallSessions = $day->sessions->where('hall_id', $hall->id)->sortBy('start_time');
                             @endphp
-                            
+
                             @forelse($hallSessions as $session)
                                 <a href="{{ route('mutafest.session.detail', $session) }}" class="session-card">
                                     <div class="session-time">
@@ -570,7 +570,7 @@
                                         {{ $session->time_range }}
                                     </div>
                                     <h3 class="session-title">{{ $session->title }}</h3>
-                                    
+
                                     <div class="session-meta">
                                         @if($session->guests->count() > 0)
                                             <div class="session-meta-item">
@@ -608,17 +608,17 @@
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const hallId = this.getAttribute('data-hall-id');
-                    
+
                     // Remove active class from all buttons and containers
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     sessionContainers.forEach(container => container.classList.remove('active'));
-                    
+
                     // Add active class to clicked button and corresponding sessions
                     this.classList.add('active');
                     const targetContainer = document.getElementById(`hall-${hallId}-sessions`);
                     if (targetContainer) {
                         targetContainer.classList.add('active');
-                        
+
                         // Smooth scroll to sessions with a small delay for animation
                         setTimeout(() => {
                             targetContainer.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
