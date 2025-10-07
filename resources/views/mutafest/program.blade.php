@@ -136,7 +136,7 @@
     @include('components.navbar')
 
     <div class="container">
-        <h1 class="page-title">{{ __('mutafest.nav.program') }}</h1>
+       <!-- <h1 class="page-title">{{ __('mutafest.nav.program') }}</h1>-->
 
         <div class="days-grid">
             @forelse($days as $day)
