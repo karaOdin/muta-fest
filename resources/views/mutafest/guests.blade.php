@@ -6,7 +6,7 @@
     <title>Ospiti - MutaFest</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -43,7 +43,7 @@
         }
 
         .guest-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: #316995;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             overflow: hidden;
@@ -169,7 +169,7 @@
 
     <div class="container">
         <h1 class="page-title">{{ __('mutafest.nav.guests') }}</h1>
-        
+
         <div class="guests-grid">
             @forelse($guests as $guest)
             <div class="guest-card">
@@ -184,10 +184,6 @@
                         <p class="guest-role">
                             @if($guest->role)
                                 {{ $guest->role }}
-                            @endif
-                            @if($guest->role && $guest->country) - @endif
-                            @if($guest->country)
-                                {{ $guest->country_flag }} {{ $guest->country }}
                             @endif
                         </p>
                         @if($guest->sessions_count > 0)

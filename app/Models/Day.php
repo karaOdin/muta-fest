@@ -13,6 +13,7 @@ class Day extends Model
     protected $fillable = [
         'name',
         'date',
+        'image',
         'order',
     ];
 
@@ -25,7 +26,7 @@ class Day extends Model
     {
         return $this->hasMany(Session::class);
     }
-    
+
     public function getSessionCountAttribute(): int
     {
         return $this->sessions()->count();

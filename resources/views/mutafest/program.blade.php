@@ -6,7 +6,7 @@
     <title>Programma - MutaFest</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -62,8 +62,8 @@
         }
 
         .day-image {
-            width: 100%;
-            height: 200px;
+            width: auto;
+            height: auto;
             object-fit: cover;
         }
 
@@ -138,7 +138,7 @@
 
     <div class="container">
         <h1 class="page-title">{{ __('mutafest.nav.program') }}</h1>
-        
+
         <div class="days-grid">
             @forelse($days as $day)
                 <div class="day-card">
