@@ -6,7 +6,7 @@
     <title>{{ $session->title }} - MutaFest</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -291,7 +291,7 @@
 
         <div class="session-header">
             <h1 class="session-title">{{ $session->title }}</h1>
-            <div class="session-meta-header">
+            <!--<div class="session-meta-header">
                 <span>
                     <i class="far fa-calendar"></i>
                     {{ $session->day->date->format('j F Y') }}
@@ -304,21 +304,20 @@
                     <i class="fas fa-building"></i>
                     {{ $session->hall->name }}
                 </span>
-            </div>
+            </div>-->
         </div>
 
         @if($session->image)
             <img src="{{ Storage::url($session->image) }}" alt="{{ $session->title }}" class="header-image">
-        @else
-            <img src="{{ asset('images/mauja.png') }}" alt="{{ $session->title }}" class="header-image">
+
         @endif
-        
+
         <!-- Contenuto con Barra Laterale -->
         <div class="content-wrapper">
             <!-- Informazioni Laterali -->
             <div class="session-info">
                 <h3>Dettagli dell'Incontro</h3>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="far fa-calendar-alt"></i>
@@ -328,7 +327,7 @@
                         <div class="info-value">{{ $session->day->name }}</div>
                     </div>
                 </div>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-clock"></i>
@@ -338,7 +337,7 @@
                         <div class="info-value">{{ $session->time_range }}</div>
                     </div>
                 </div>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-hourglass-half"></i>
@@ -348,7 +347,7 @@
                         <div class="info-value">{{ $session->duration }}</div>
                     </div>
                 </div>
-                
+
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-building"></i>
@@ -382,7 +381,7 @@
                         {!! $session->description !!}
                     </div>
                 @endif
-                
+
                 @if($session->guests->count() > 0)
                     <div class="speakers-section">
                         <h3>Relatori</h3>
