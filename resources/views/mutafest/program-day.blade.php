@@ -261,7 +261,7 @@
         }
 
         .session-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -453,7 +453,7 @@
             }
 
             .session-title {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .session-description {
