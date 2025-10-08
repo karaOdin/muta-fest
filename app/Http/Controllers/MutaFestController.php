@@ -436,7 +436,20 @@ class MutaFestController extends Controller
     public function sessionDetail(Session $session)
     {
         $session->load(['day', 'hall', 'guests']);
-        
-        return view('mutafest.session-detail', compact('session'));
+
+        // Get other sessions from the same day
+        $otherSessions = Session::where('day_id', $session->day_id)
+            ->where('id', '!=', $session->id)
+            ->with(['hall', 'guests'])
+            ->orderBy('start_time')
+            ->get();
+
+        // Get halls with session counts for the same day
+        $halls = Hall::withCount(['sessions' => function ($query) use ($session) {
+            $query->where('day_id', $session->day_id)
+                ->where('id', '!=', $session->id);
+        }])->get();
+
+        return view('mutafest.session-detail', compact('session', 'otherSessions', 'halls'));
     }
 }

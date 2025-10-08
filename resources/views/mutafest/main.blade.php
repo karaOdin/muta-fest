@@ -608,7 +608,6 @@
         }
 
         .modal-text:first-child {
-            font-weight: 500;
             color: rgba(255, 255, 255, 0.98);
             font-size: 1.15rem;
             margin-bottom: 2.5rem;
@@ -825,7 +824,7 @@
             </div>
 
             <div class="modal-body">
-                <p class="modal-text">
+                <p style="font-size: 1.8rem" class="modal-text">
                     MutaFest è un festival culturale annuale che si svolge a Milano, dedicato alle culture, alle letterature e alle arti nate sulle sponde del Mar Mediterraneo.
                 </p>
 

@@ -278,6 +278,207 @@
                 font-size: 1.3rem;
             }
         }
+
+        /* Altri Incontri Section */
+        .other-sessions-section {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .other-sessions-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Filtro Sale */
+        .halls-filter-section {
+            margin-bottom: 40px;
+        }
+
+        .filter-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .halls-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hall-filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hall-filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .hall-filter-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .hall-filter-btn.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hall-filter-icon {
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .hall-filter-btn.active .hall-filter-icon {
+            background: white;
+            color: #ab4e9e;
+        }
+
+        .hall-filter-name {
+            font-weight: 600;
+        }
+
+        .hall-filter-count {
+            font-size: 1.3rem;
+            opacity: 0.7;
+            margin-left: 5px;
+        }
+
+        /* Sessions Container */
+        .sessions-container {
+            display: none;
+        }
+
+        .sessions-container.active {
+            display: block;
+        }
+
+        .sessions-list {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .other-session-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .other-session-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .other-session-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .other-session-time {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .other-session-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .other-session-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 1.3rem;
+            opacity: 0.8;
+            flex-wrap: wrap;
+        }
+
+        .other-session-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .no-sessions {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.3rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .halls-filter {
+                gap: 10px;
+            }
+
+            .hall-filter-btn {
+                padding: 10px 20px;
+                font-size: 1.3rem;
+            }
+
+            .hall-filter-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 1.0rem;
+            }
+
+            .other-sessions-title {
+                font-size: 2rem;
+            }
+
+            .sessions-list {
+                padding: 25px;
+            }
+        }
     </style>
     @include('components.shared-styles')
 </head>
@@ -406,10 +607,123 @@
                 @endif
             </div>
         </div>
+
+        @if($otherSessions->count() > 0)
+        <!-- Altri Incontri dello Stesso Giorno -->
+        <div class="other-sessions-section">
+            <h2 class="other-sessions-title">Altri Incontri - {{ $session->day->name }}</h2>
+
+            <!-- Filtro Sale -->
+            <div class="halls-filter-section">
+                <p class="filter-label">Filtra per Sala:</p>
+                <div class="halls-filter">
+                    <div class="hall-filter-btn active" data-hall-id="all">
+                        <div class="hall-filter-icon">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <span class="hall-filter-name">Tutti</span>
+                        <span class="hall-filter-count">({{ $otherSessions->count() }})</span>
+                    </div>
+                    @foreach($halls as $hall)
+                        @if($hall->sessions_count > 0)
+                            <div class="hall-filter-btn" data-hall-id="{{ $hall->id }}">
+                                <div class="hall-filter-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <span class="hall-filter-name">{{ $hall->name }}</span>
+                                <span class="hall-filter-count">({{ $hall->sessions_count }})</span>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Tutti gli Incontri -->
+            <div class="sessions-container active" id="hall-all-sessions">
+                <div class="sessions-list">
+                    @foreach($otherSessions as $otherSession)
+                        <a href="{{ route('mutafest.session.detail', $otherSession) }}" class="other-session-card">
+                            <div class="other-session-time">
+                                <i class="far fa-clock"></i>
+                                {{ $otherSession->time_range }}
+                            </div>
+                            <h3 class="other-session-title">{{ $otherSession->title }}</h3>
+                            <div class="other-session-meta">
+                                <span class="other-session-meta-item">
+                                    <i class="fas fa-building"></i>
+                                    {{ $otherSession->hall->name }}
+                                </span>
+                                @if($otherSession->guests->count() > 0)
+                                    <span class="other-session-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        {{ $otherSession->guests->pluck('name')->join(', ') }}
+                                    </span>
+                                @endif
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Incontri per Sala -->
+            @foreach($halls as $hall)
+                @if($hall->sessions_count > 0)
+                    <div class="sessions-container" id="hall-{{ $hall->id }}-sessions">
+                        <div class="sessions-list">
+                            @foreach($otherSessions->where('hall_id', $hall->id) as $otherSession)
+                                <a href="{{ route('mutafest.session.detail', $otherSession) }}" class="other-session-card">
+                                    <div class="other-session-time">
+                                        <i class="far fa-clock"></i>
+                                        {{ $otherSession->time_range }}
+                                    </div>
+                                    <h3 class="other-session-title">{{ $otherSession->title }}</h3>
+                                    <div class="other-session-meta">
+                                        @if($otherSession->guests->count() > 0)
+                                            <span class="other-session-meta-item">
+                                                <i class="fas fa-users"></i>
+                                                {{ $otherSession->guests->pluck('name')->join(', ') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        @endif
     </div>
 
     @include('components.footer')
 
     @include('components.shared-scripts')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.hall-filter-btn');
+            const sessionContainers = document.querySelectorAll('.sessions-container');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const hallId = this.getAttribute('data-hall-id');
+
+                    // Rimuovi la classe active da tutti i pulsanti e contenitori
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    sessionContainers.forEach(container => container.classList.remove('active'));
+
+                    // Aggiungi la classe active al pulsante cliccato e agli incontri corrispondenti
+                    this.classList.add('active');
+                    const targetContainer = document.getElementById(`hall-${hallId}-sessions`);
+                    if (targetContainer) {
+                        targetContainer.classList.add('active');
+                    }
+
+                    // Scroll smooth alla sezione incontri
+                    targetContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
