@@ -539,8 +539,8 @@
                         <i class="fas fa-building"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Sale</div>
-                        <div class="info-value">{{ $halls->count() }} spazi</div>
+                        <div class="info-label">spazi</div>
+                        <div class="info-value">{{ $halls->count() }} </div>
                     </div>
                 </div>
 
@@ -549,8 +549,8 @@
                         <i class="fas fa-microphone"></i>
                     </div>
                     <div class="info-content">
-                        <div class="info-label">Incontri</div>
-                        <div class="info-value">{{ $day->sessions->count() }} eventi</div>
+                        <div class="info-label">eventi</div>
+                        <div class="info-value">{{ $day->sessions->count() }} </div>
                     </div>
                 </div>
 
@@ -560,7 +560,7 @@
                     </div>
                     <div class="info-content">
                         <div class="info-label">Ospiti</div>
-                        <div class="info-value">{{ $day->sessions->pluck('guests')->flatten()->unique('id')->count() }} relatori</div>
+                        <div class="info-value">{{ $day->sessions->pluck('guests')->flatten()->unique('id')->count() }} </div>
                     </div>
                 </div>
             </div>
