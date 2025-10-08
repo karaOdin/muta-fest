@@ -594,7 +594,7 @@
                 <!-- Tutti gli Incontri -->
                 <div class="sessions-container" id="hall-all-sessions">
                     <div class="sessions-list">
-                        <h2 style="font-size: 0.95rem; margin-bottom: 30px;">Tutti gli Incontri</h2>
+                        <h2 style="font-size: 1.2rem; margin-bottom: 30px;">Tutti gli Incontri</h2>
                         @php
                             $allSessions = $day->sessions->sortBy('start_time');
                         @endphp
