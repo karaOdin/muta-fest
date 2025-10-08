@@ -1613,7 +1613,7 @@
             </div>
 
             <div class="hero-image-wrapper">
-                <a href="{{route('mutafest.home')}}">
+                <a href="/home2">
                     <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
                 </a>
                 <!-- <div class="girl-text-overlay">
