@@ -355,7 +355,7 @@
             font-size: 0.95rem;
             font-weight: 600;
             color: white;
-            line-height: 1.3;
+          /*  line-height: 1.3;*/
         }
 
         @media (max-width: 768px) {
