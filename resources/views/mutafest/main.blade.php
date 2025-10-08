@@ -747,7 +747,8 @@
     <!-- Social Icons -->
     <div class="social-icons">
         <a href="#" class="social-icon">f</a>
-=        <a href="#" class="social-icon">𝕏</a>
+        <a href="#" class="social-icon">in</a>
+        <a href="#" class="social-icon">𝕏</a>
         <a href="#" class="social-icon">@</a>
     </div>
 
