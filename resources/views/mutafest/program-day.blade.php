@@ -570,7 +570,7 @@
                     </div>
                     <div class="info-content">
                         <div class="info-label">Luogo</div>
-                        <div class="info-value"><a href="https://www.google.com/maps/place/PARCO+Center/@45.4416547,9.154777,490m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4786c3002fe63b77:0x711c4ef477b464b6!8m2!3d45.4416547!4d9.154777!16s%2Fg%2F11vzfb_cm7?entry=tts&g_ep=EgoyMDI1MTAwNC4wIPu8ASoASAFQAw%3D%3D&skid=b2412b0d-b684-4204-88a0-d584bda19169" target="_blank">Parco cente</a> </div>
+                        <div class="info-value"><a href="https://www.google.com/maps/place/PARCO+Center/@45.4416547,9.154777,490m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4786c3002fe63b77:0x711c4ef477b464b6!8m2!3d45.4416547!4d9.154777!16s%2Fg%2F11vzfb_cm7?entry=tts&g_ep=EgoyMDI1MTAwNC4wIPu8ASoASAFQAw%3D%3D&skid=b2412b0d-b684-4204-88a0-d584bda19169" target="_blank" style="color: inherit; text-decoration: none;">Parco cente</a> </div>
                     </div>
                 </div>
             </div>
