@@ -768,11 +768,6 @@
     <!-- Chi siamo text -->
     <div class="chi-siamo" onclick="openModal()">Cos'è</div>
 
-    <!-- Enter Festival Button -->
-    <a href="{{ route('mutafest.home') }}" class="enter-festival">
-        Prima edizione 2025
-        <i class="fas fa-arrow-right"></i>
-    </a>
 
     <!-- Character Image with floating animation -->
     <div class="character">
@@ -780,7 +775,7 @@
             <img src="{{asset('images/girl.png')}}"
                  alt="MutaFest Character"
                  class="character-img">
-        </a>
+
         <!-- Replace this with your actual character image -->
 
 
@@ -788,6 +783,7 @@
         <div class="character-text-overlay">
             Prima<br>edizione<br>2025
         </div>
+        </a>
     </div>
 
     <!-- Image-based Ocean Waves with 3 Rows -->
