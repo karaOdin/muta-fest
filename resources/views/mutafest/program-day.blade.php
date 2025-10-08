@@ -578,7 +578,7 @@
                             <span class="hall-filter-count">({{ $day->sessions->count() }})</span>
                         </div>
                         @foreach($halls as $hall)
-                            @if($day->sessions->count() !== 0)
+                            @if($day->sessions_count !== 0)
                                 <div class="hall-filter-btn" data-hall-id="{{ $hall->id }}">
                                     <div class="hall-filter-icon">
                                         <i class="fas fa-building"></i>
