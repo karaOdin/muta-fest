@@ -772,10 +772,13 @@
 
     <!-- Character Image with floating animation -->
     <div class="character">
+        <a href="{{ route('mutafest.home') }}" >
+            <img src="{{asset('images/girl.png')}}"
+                 alt="MutaFest Character"
+                 class="character-img">
+        </a>
         <!-- Replace this with your actual character image -->
-        <img src="{{asset('images/girl.png')}}"
-             alt="MutaFest Character"
-             class="character-img">
+
 
         <!-- Text overlay on character -->
         <div class="character-text-overlay">
