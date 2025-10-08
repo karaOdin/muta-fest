@@ -20,7 +20,7 @@
             font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
             background: linear-gradient(135deg, #2a5d7a 0%, #316995 50%, #3e7fb8 100%);
             color: white;
-            line-height: 1.7;
+            line-height: 1.4;
             overflow-x: hidden;
             font-optical-sizing: auto;
             font-variation-settings: "wght" 400;
@@ -629,7 +629,7 @@
         .card-description {
             font-size: 1.25rem;
             font-weight: 400;
-            line-height: 1.6;
+            line-height: 1.4;
             color: #4a5568;
             font-variation-settings: "wght" 400, "opsz" 12;
             position: relative;

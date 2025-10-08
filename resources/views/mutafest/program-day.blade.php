@@ -18,7 +18,7 @@
             font-family: 'EB Garamond', serif;
             background: #ab4e9e;
             color: white;
-            line-height: 1.8;
+            line-height: 1.4;
             min-height: 100vh;
             padding: 40px 20px 120px;
         }
@@ -505,12 +505,12 @@
     <div class="container">
        <!-- <a href="{{ route('mutafest.program') }}" class="back-link">
             <i class="fas fa-arrow-left"></i> Torna al Programma
-        </a>-->
+        </a>
 
         <div class="day-header">
             <h1 class="day-title">{{ $day->name }}</h1>
             <p class="day-date">{{ $day->date->format('j F Y') }}</p>
-        </div>
+        </div>-->
 
         @if($day->image)
             <img src="{{ Storage::url($day->image) }}" alt="{{ $day->name }}" class="header-image">

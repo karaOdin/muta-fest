@@ -18,7 +18,7 @@
             font-family: 'EB Garamond', serif;
             background: #ab4e9e;
             color: white;
-            line-height: 1.8;
+            line-height: 1.4;
             min-height: 100vh;
             padding: 40px 20px 120px;
         }

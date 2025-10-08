@@ -599,7 +599,7 @@
         .modal-text {
             color: rgba(255, 255, 255, 0.92);
             font-size: 1.4rem;
-            line-height: 1.7;
+            line-height: 1.4;
             margin-bottom: 2rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
@@ -712,7 +712,7 @@
 
             .modal-text {
                 font-size: 1.6rem;
-                line-height: 1.6;
+                line-height: 1.4;
                 margin-bottom: 1.8rem;
             }
 

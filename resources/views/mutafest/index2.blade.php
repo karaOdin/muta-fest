@@ -20,7 +20,7 @@
             font-family: 'EB Garamond', serif;
             background: #ab4e9e;
             color: white;
-            line-height: 1.6;
+            line-height: 1.4;
             overflow-x: hidden;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="%23ff8c42" opacity="0.8"/></svg>') 16 16, auto;
         }
@@ -920,7 +920,7 @@
 
         .card-description {
             font-size: 1.1rem;
-            line-height: 1.7;
+            line-height: 1.4;
             color: #4a5568;
         }
 
@@ -1321,7 +1321,7 @@
 
             .card-description {
                 font-size: 1rem;
-                line-height: 1.6;
+                line-height: 1.4;
             }
 
             /* Program section mobile */
