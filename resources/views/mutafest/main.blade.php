@@ -769,7 +769,10 @@
     <div class="chi-siamo" onclick="openModal()">Cos'è</div>
 
     <!-- Enter Festival Button -->
-
+    <a href="{{ route('mutafest.home') }}" class="enter-festival">
+        Prima edizione 2025
+        <i class="fas fa-arrow-right"></i>
+    </a>
 
     <!-- Character Image with floating animation -->
     <div class="character">
