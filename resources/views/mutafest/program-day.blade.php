@@ -76,7 +76,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(171, 78, 158, 0.95);
+            background: #ab4e9e;
             backdrop-filter: blur(20px);
             z-index: 999;
             padding: 15px 0;
@@ -114,7 +114,7 @@
 
         .day-nav-item.active {
             background: white;
-            color: #ab4e9e;
+            color: black;
             border-color: white;
         }
 

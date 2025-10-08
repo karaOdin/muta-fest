@@ -32,7 +32,7 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(171, 78, 158, 0.95);
+            background: #f0925e;
             backdrop-filter: blur(20px);
             border-top: 3px dashed rgba(255, 255, 255, 0.3);
             transform: rotate(0deg);
@@ -64,11 +64,20 @@
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
         }
 
         .nav-link:hover {
             color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: black;
+            background: white;
+            font-weight: 700;
         }
 
         /* Hamburger Menu */
@@ -109,7 +118,7 @@
             right: -300px;
             width: 300px;
             height: 100vh;
-            background: rgba(171, 78, 158, 0.98);
+            background: #f0925e;
             backdrop-filter: blur(20px);
             z-index: 1000;
             transition: right 0.3s ease;
@@ -145,7 +154,14 @@
         }
 
         .mobile-drawer .nav-link:hover {
-            color: #ff8c42;
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .mobile-drawer .nav-link.active {
+            color: black;
+            font-weight: 700;
+            border-bottom: 2px solid black;
             transform: translateX(10px);
         }
 
@@ -1597,7 +1613,9 @@
             </div>
 
             <div class="hero-image-wrapper">
-                <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
+                <a href="{{route('mutafest.home')}}">
+                    <img src="{{asset('images/girl.png')}}" alt="MutaFest Character" class="hero-girl">
+                </a>
                 <!-- <div class="girl-text-overlay">
                      Prima<br>edizione<br>2025
                  </div>
@@ -1623,7 +1641,7 @@
                 <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
             </div>
 
-            <p class="footer-text">&copy; 2025 MutaFest. Tutti i diritti riservati.</p>
+            <p class="footer-text">&copy; 2025 Almutawassit Books.</p>
         </div>
     </div>
 </footer>

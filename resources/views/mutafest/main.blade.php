@@ -563,7 +563,7 @@
             padding: 40px 40px 50px;
             position: relative;
             z-index: 10;
-            max-height: 58vh;
+            max-height: 65vh;
             overflow-y: auto;
             background: linear-gradient(180deg,
                 rgba(255, 255, 255, 0.02) 0%,
@@ -617,6 +617,33 @@
 
         .modal-text:last-child {
             margin-bottom: 0;
+        }
+
+        .modal-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 14px 28px;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.1));
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-link:hover {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0.2));
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .modal-close {
@@ -741,10 +768,7 @@
     <div class="chi-siamo" onclick="openModal()">Cos'è</div>
 
     <!-- Enter Festival Button -->
-    <a href="{{ route('mutafest.home') }}" class="enter-festival">
-        Entra nel Festival
-        <i class="fas fa-arrow-right"></i>
-    </a>
+
 
     <!-- Character Image with floating animation -->
     <div class="character">
@@ -817,6 +841,12 @@
                 <p class="modal-text">
                     Dietro MutaFest c'è Almutawassit, casa editrice e laboratorio culturale guidato da Khaled Soliman Al Nassiry, che dal 2015 porta avanti un progetto che vede nelle lingue del Mediterraneo delle case provvisorie, su una costa condivisa.
                 </p>
+
+                <div style="text-align: center; padding-top: 20px;">
+                    <a href="{{ route('mutafest.home') }}" class="modal-link">
+                        Prima edizione 2025 →
+                    </a>
+                </div>
             </div>
 
         </div>

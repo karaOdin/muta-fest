@@ -12,7 +12,7 @@
                 <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
             </div>
 
-            <p class="footer-text">&copy; 2025 MutaFest. Tutti i diritti riservati.</p>
+            <p class="footer-text">&copy; 2025 Almutawassit Books.</p>
         </div>
     </div>
 </footer>

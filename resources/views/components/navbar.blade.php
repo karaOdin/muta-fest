@@ -2,9 +2,9 @@
 <div class="drawer-overlay" onclick="closeDrawer()"></div>
 <div class="mobile-drawer">
     <ul class="nav-menu">
-        <li><a href="{{ route('mutafest.about') }}" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.about') }}</a></li>
-        <li><a href="{{ route('mutafest.program') }}" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.program') }}</a></li>
-        <li><a href="{{ route('mutafest.guests') }}" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.guests') }}</a></li>
+        <li><a href="{{ route('mutafest.about') }}" class="nav-link {{ request()->routeIs('mutafest.about') ? 'active' : '' }}" onclick="closeDrawer()">{{ __('mutafest.nav.about') }}</a></li>
+        <li><a href="{{ route('mutafest.program') }}" class="nav-link {{ request()->routeIs('mutafest.program*') ? 'active' : '' }}" onclick="closeDrawer()">{{ __('mutafest.nav.program') }}</a></li>
+        <li><a href="{{ route('mutafest.guests') }}" class="nav-link {{ request()->routeIs('mutafest.guest*') ? 'active' : '' }}" onclick="closeDrawer()">{{ __('mutafest.nav.guests') }}</a></li>
     </ul>
 </div>
 
@@ -15,11 +15,11 @@
 
         <nav>
             <ul class="nav-menu">
-                <li><a href="{{ route('mutafest.about') }}" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
-                <li><a href="{{ route('mutafest.program') }}" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
-                <li><a href="{{ route('mutafest.guests') }}" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
+                <li><a href="{{ route('mutafest.about') }}" class="nav-link {{ request()->routeIs('mutafest.about') ? 'active' : '' }}">{{ __('mutafest.nav.about') }}</a></li>
+                <li><a href="{{ route('mutafest.program') }}" class="nav-link {{ request()->routeIs('mutafest.program*') ? 'active' : '' }}">{{ __('mutafest.nav.program') }}</a></li>
+                <li><a href="{{ route('mutafest.guests') }}" class="nav-link {{ request()->routeIs('mutafest.guest*') ? 'active' : '' }}">{{ __('mutafest.nav.guests') }}</a></li>
             </ul>
-            
+
             <!-- Hamburger Menu -->
             <div class="hamburger" onclick="toggleDrawer()">
                 <span></span>

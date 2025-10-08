@@ -6,7 +6,7 @@
         left: 0;
         right: 0;
         z-index: 100;
-        background: rgba(171, 78, 158, 0.95);
+        background: #f0925e;
         backdrop-filter: blur(20px);
         border-top: 3px dashed rgba(255, 255, 255, 0.3);
     }
@@ -38,11 +38,20 @@
         text-decoration: none;
         font-weight: 500;
         font-size: 1.2rem;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        padding: 8px 16px;
+        border-radius: 20px;
     }
 
     .nav-link:hover {
         color: white;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+        color: black;
+        background: white;
+        font-weight: 700;
     }
 
     /* Hamburger Menu */
@@ -119,7 +128,14 @@
     }
 
     .mobile-drawer .nav-link:hover {
-        color: #ff8c42;
+        color: white;
+        transform: translateX(10px);
+    }
+
+    .mobile-drawer .nav-link.active {
+        color: black;
+        font-weight: 700;
+        border-bottom: 2px solid black;
         transform: translateX(10px);
     }
 

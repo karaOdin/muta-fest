@@ -1035,7 +1035,7 @@
 
             .card {
                 border-width: 3px;
-                box-shadow: 
+                box-shadow:
                     6px 6px 0 #ff8c42,
                     12px 12px 0 rgba(49, 105, 149, 0.15);
                 transform: rotate(0deg);
@@ -1043,33 +1043,33 @@
 
             .card:nth-child(2n) {
                 transform: rotate(0deg);
-                box-shadow: 
+                box-shadow:
                     -6px 6px 0 #316995,
                     -12px 12px 0 rgba(255, 140, 66, 0.15);
             }
 
             .card:nth-child(3n) {
                 transform: rotate(0deg);
-                box-shadow: 
+                box-shadow:
                     6px -6px 0 #ff8c42,
                     12px -12px 0 rgba(74, 144, 164, 0.15);
             }
 
             .card:hover {
                 transform: rotate(0deg) scale(1.01);
-                box-shadow: 
+                box-shadow:
                     8px 8px 0 #ff8c42,
                     16px 16px 0 rgba(49, 105, 149, 0.1);
             }
 
             .card:nth-child(2n):hover {
-                box-shadow: 
+                box-shadow:
                     -8px 8px 0 #316995,
                     -16px 16px 0 rgba(255, 140, 66, 0.1);
             }
 
             .card:nth-child(3n):hover {
-                box-shadow: 
+                box-shadow:
                     8px -8px 0 #ff8c42,
                     16px -16px 0 rgba(74, 144, 164, 0.1);
             }
@@ -1107,7 +1107,7 @@
 
             .program-day {
                 border-width: 3px;
-                box-shadow: 
+                box-shadow:
                     4px 4px 0 #ff8c42,
                     8px 8px 0 rgba(49, 105, 149, 0.15);
                 transform: rotate(0deg);
@@ -1115,33 +1115,33 @@
 
             .program-day:nth-child(2n) {
                 transform: rotate(0deg);
-                box-shadow: 
+                box-shadow:
                     -4px 4px 0 #316995,
                     -8px 8px 0 rgba(255, 140, 66, 0.15);
             }
 
             .program-day:nth-child(3n) {
                 transform: rotate(0deg);
-                box-shadow: 
+                box-shadow:
                     4px -4px 0 #ff8c42,
                     8px -8px 0 rgba(74, 144, 164, 0.15);
             }
 
             .program-day:hover {
                 transform: rotate(0deg) scale(1.005);
-                box-shadow: 
+                box-shadow:
                     6px 6px 0 #ff8c42,
                     12px 12px 0 rgba(49, 105, 149, 0.1);
             }
 
             .program-day:nth-child(2n):hover {
-                box-shadow: 
+                box-shadow:
                     -6px 6px 0 #316995,
                     -12px 12px 0 rgba(255, 140, 66, 0.1);
             }
 
             .program-day:nth-child(3n):hover {
-                box-shadow: 
+                box-shadow:
                     6px -6px 0 #ff8c42,
                     12px -12px 0 rgba(74, 144, 164, 0.1);
             }
@@ -1271,37 +1271,37 @@
 
             .card {
                 border-width: 2px;
-                box-shadow: 
+                box-shadow:
                     4px 4px 0 #ff8c42,
                     8px 8px 0 rgba(49, 105, 149, 0.1);
             }
 
             .card:nth-child(2n) {
-                box-shadow: 
+                box-shadow:
                     -4px 4px 0 #316995,
                     -8px 8px 0 rgba(255, 140, 66, 0.1);
             }
 
             .card:nth-child(3n) {
-                box-shadow: 
+                box-shadow:
                     4px -4px 0 #ff8c42,
                     8px -8px 0 rgba(74, 144, 164, 0.1);
             }
 
             .card:hover {
-                box-shadow: 
+                box-shadow:
                     6px 6px 0 #ff8c42,
                     12px 12px 0 rgba(49, 105, 149, 0.08);
             }
 
             .card:nth-child(2n):hover {
-                box-shadow: 
+                box-shadow:
                     -6px 6px 0 #316995,
                     -12px 12px 0 rgba(255, 140, 66, 0.08);
             }
 
             .card:nth-child(3n):hover {
-                box-shadow: 
+                box-shadow:
                     6px -6px 0 #ff8c42,
                     12px -12px 0 rgba(74, 144, 164, 0.08);
             }
@@ -1337,37 +1337,37 @@
 
             .program-day {
                 border-width: 2px;
-                box-shadow: 
+                box-shadow:
                     3px 3px 0 #ff8c42,
                     6px 6px 0 rgba(49, 105, 149, 0.1);
             }
 
             .program-day:nth-child(2n) {
-                box-shadow: 
+                box-shadow:
                     -3px 3px 0 #316995,
                     -6px 6px 0 rgba(255, 140, 66, 0.1);
             }
 
             .program-day:nth-child(3n) {
-                box-shadow: 
+                box-shadow:
                     3px -3px 0 #ff8c42,
                     6px -6px 0 rgba(74, 144, 164, 0.1);
             }
 
             .program-day:hover {
-                box-shadow: 
+                box-shadow:
                     4px 4px 0 #ff8c42,
                     8px 8px 0 rgba(49, 105, 149, 0.08);
             }
 
             .program-day:nth-child(2n):hover {
-                box-shadow: 
+                box-shadow:
                     -4px 4px 0 #316995,
                     -8px 8px 0 rgba(255, 140, 66, 0.08);
             }
 
             .program-day:nth-child(3n):hover {
-                box-shadow: 
+                box-shadow:
                     4px -4px 0 #ff8c42,
                     8px -8px 0 rgba(74, 144, 164, 0.08);
             }
@@ -1615,7 +1615,7 @@
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                 </div>
 
-                <p class="footer-text">&copy; 2025 MutaFest. Tutti i diritti riservati.</p>
+                <p class="footer-text">&copy; 2025 Almutawassit Books.</p>
             </div>
         </div>
     </footer>
