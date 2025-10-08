@@ -188,7 +188,7 @@
             }
         }
 
-        /* Image Modal Styles */
+        /* Stili Modale Immagine */
         .image-modal {
             position: fixed;
             top: 0;
@@ -351,7 +351,7 @@
 
     @include('components.footer')
 
-    <!-- Image Modal -->
+    <!-- Modale Immagine -->
     <div class="image-modal" id="imageModal" onclick="closeImageModal()">
         <button class="modal-close" onclick="closeImageModal()">&times;</button>
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -373,7 +373,7 @@
             modalImg.alt = imgElement.alt;
             modalCaption.textContent = guestName;
 
-            // Prevent body scroll when modal is open
+            // Previene lo scroll del body quando la modale è aperta
             document.body.style.overflow = 'hidden';
         }
 
@@ -381,11 +381,11 @@
             const modal = document.getElementById('imageModal');
             modal.classList.remove('active');
 
-            // Re-enable body scroll
+            // Riabilita lo scroll del body
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal on Escape key
+        // Chiudi la modale con il tasto Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeImageModal();

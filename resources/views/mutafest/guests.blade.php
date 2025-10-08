@@ -168,7 +168,7 @@
     @include('components.navbar')
 
     <div class="container">
-        <h1 class="page-title">{{ __('mutafest.nav.guests') }}</h1>
+       <!-- <h1 class="page-title">{{ __('mutafest.nav.guests') }}</h1>-->
 
         <div class="guests-grid">
             @forelse($guests as $guest)

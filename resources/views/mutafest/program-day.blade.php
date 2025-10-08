@@ -70,7 +70,59 @@
             display: block;
         }
 
-        /* Halls Filter */
+        /* Navigazione Giorni Fissa */
+        .days-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(171, 78, 158, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .days-nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .day-nav-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .day-nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .day-nav-item.active {
+            background: white;
+            color: #ab4e9e;
+            border-color: white;
+        }
+
+        .container {
+            padding-top: 80px;
+        }
+
+        /* Filtro Sale */
         .halls-filter-section {
             margin-bottom: 40px;
         }
@@ -158,7 +210,7 @@
             margin-left: 5px;
         }
 
-        /* Sessions List */
+        /* Lista Incontri */
         .sessions-container {
             display: none;
         }
@@ -307,6 +359,18 @@
         }
 
         @media (max-width: 768px) {
+            .days-nav {
+                padding: 10px 0;
+            }
+
+            .days-nav-container {
+                gap: 8px;
+            }
+
+            .day-nav-item {
+                padding: 6px 15px;
+                font-size: 0.85rem;
+            }
 
             .day-title {
                 font-size: 2.3rem;
@@ -426,10 +490,22 @@
 <body>
     @include('components.navbar')
 
+    <!-- Navigazione Giorni Fissa -->
+    <div class="days-nav">
+        <div class="days-nav-container">
+            @foreach($days as $dayItem)
+                <a href="{{ route('mutafest.program.day', $dayItem->id) }}"
+                   class="day-nav-item {{ $dayItem->id === $day->id ? 'active' : '' }}">
+                    {{ $dayItem->name }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+
     <div class="container">
-        <a href="{{ route('mutafest.program') }}" class="back-link">
+       <!-- <a href="{{ route('mutafest.program') }}" class="back-link">
             <i class="fas fa-arrow-left"></i> Torna al Programma
-        </a>
+        </a>-->
 
         <div class="day-header">
             <h1 class="day-title">{{ $day->name }}</h1>
@@ -442,9 +518,9 @@
             <img src="{{ asset('images/mauja.png') }}" alt="{{ $day->name }}" class="header-image">
         @endif
 
-        <!-- Content with Sidebar -->
+        <!-- Contenuto con Barra Laterale -->
         <div class="content-wrapper">
-            <!-- Sidebar Information -->
+            <!-- Informazioni Laterali -->
             <div class="day-info">
                 <h3>Informazioni del Giorno</h3>
 
@@ -490,7 +566,7 @@
             </div>
 
             <div>
-                <!-- Halls Filter -->
+                <!-- Filtro Sale -->
                 <div class="halls-filter-section">
                     <p class="filter-label">Filtra per Sala:</p>
                     <div class="halls-filter">
@@ -513,7 +589,7 @@
                     </div>
                 </div>
 
-                <!-- All Sessions -->
+                <!-- Tutti gli Incontri -->
                 <div class="sessions-container" id="hall-all-sessions">
                     <div class="sessions-list">
                         <h2 style="font-size: 0.95rem; margin-bottom: 30px;">Tutti gli Incontri</h2>
@@ -554,7 +630,7 @@
                     </div>
                 </div>
 
-                <!-- Sessions by Hall -->
+                <!-- Incontri per Sala -->
                 @foreach($halls as $hall)
                     <div class="sessions-container" id="hall-{{ $hall->id }}-sessions">
                         <div class="sessions-list">
@@ -609,17 +685,17 @@
                 button.addEventListener('click', function() {
                     const hallId = this.getAttribute('data-hall-id');
 
-                    // Remove active class from all buttons and containers
+                    // Rimuovi la classe active da tutti i pulsanti e contenitori
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     sessionContainers.forEach(container => container.classList.remove('active'));
 
-                    // Add active class to clicked button and corresponding sessions
+                    // Aggiungi la classe active al pulsante cliccato e agli incontri corrispondenti
                     this.classList.add('active');
                     const targetContainer = document.getElementById(`hall-${hallId}-sessions`);
                     if (targetContainer) {
                         targetContainer.classList.add('active');
 
-                        // Smooth scroll to sessions with a small delay for animation
+                        // Scroll fluido agli incontri con un piccolo ritardo per l'animazione
                         setTimeout(() => {
                             targetContainer.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
                         }, 200);
@@ -627,7 +703,7 @@
                 });
             });
 
-            // Show first hall by default if exists
+            // Mostra la prima sala di default se esiste
             if (filterButtons.length > 0) {
                 filterButtons[0].click();
             }

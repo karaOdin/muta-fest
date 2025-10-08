@@ -368,11 +368,12 @@ class MutaFestController extends Controller
     public function programDay($dayId)
     {
         $day = Day::with(['sessions.hall', 'sessions.guests'])->findOrFail($dayId);
+        $days = Day::orderBy('order')->get();
         $halls = Hall::withCount(['sessions' => function ($query) use ($dayId) {
             $query->where('day_id', $dayId);
         }])->get();
-        
-        return view('mutafest.program-day', compact('day', 'halls'));
+
+        return view('mutafest.program-day', compact('day', 'days', 'halls'));
     }
 
     public function guests()

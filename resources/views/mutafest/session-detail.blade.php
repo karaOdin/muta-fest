@@ -313,9 +313,9 @@
             <img src="{{ asset('images/mauja.png') }}" alt="{{ $session->title }}" class="header-image">
         @endif
         
-        <!-- Content with Sidebar -->
+        <!-- Contenuto con Barra Laterale -->
         <div class="content-wrapper">
-            <!-- Sidebar Information -->
+            <!-- Informazioni Laterali -->
             <div class="session-info">
                 <h3>Dettagli dell'Incontro</h3>
                 
