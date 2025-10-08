@@ -1460,24 +1460,12 @@
             }
         }
     </style>
+
+    @include('components.shared-styles')
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="logo">
 
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#about" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
-                    <li><a href="#program" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
-                    <li><a href="#guests" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
-                </ul>
-            </nav>
-
-            <a href="{{ route('mutafest.booking') }}" class="cta-button">{{ __('mutafest.nav.book_invitation') }}</a>
-        </div>
-    </header>
+@include('components.navbar')
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1601,49 +1589,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180" alt="MutaFest" class="footer-logo">
-                <p class="footer-text">MutaFest - Festival del Mediterraneo a Milano</p>
+@include('components.footer')
 
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                </div>
+@include('components.shared-scripts')
 
-                <p class="footer-text">&copy; 2025 Almutawassit Books.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(49, 105, 149, 0.98)';
-            } else {
-                header.style.background = 'rgba(49, 105, 149, 0.95)';
-            }
-        });
-    </script>
 </body>
 </html>

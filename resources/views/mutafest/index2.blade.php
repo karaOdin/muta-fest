@@ -1493,8 +1493,12 @@
             }
         }
     </style>
+
+    @include('components.shared-styles')
 </head>
 <body>
+
+@include('components.navbar')
 <!-- Mediterranean Floating Elements -->
 <div class="mediterranean-elements">
     <!--<img src="{{ asset('images/orange.png') }}" alt="Orange" class="floating-element floating-orange">-->
@@ -1510,40 +1514,6 @@
     <img src="{{ asset('images/fish.png') }}" alt="Fish" class="swimming-fish fish-1">
     <img src="{{ asset('images/fish.png') }}" alt="Fish" class="swimming-fish fish-2">
     <img src="{{ asset('images/fishs.png') }}" alt="Fish School" class="fish-school">
-</div>
-
-<!-- Header -->
-<header class="header">
-    <div class="nav-container">
-        <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="logo">
-
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="{{ route('mutafest.about') }}" class="nav-link">{{ __('mutafest.nav.about') }}</a></li>
-                <li><a href="{{ route('mutafest.program') }}" class="nav-link">{{ __('mutafest.nav.program') }}</a></li>
-                <li><a href="{{ route('mutafest.guests') }}" class="nav-link">{{ __('mutafest.nav.guests') }}</a></li>
-            </ul>
-
-            <!-- Hamburger Menu -->
-            <div class="hamburger" onclick="toggleDrawer()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-
-       <!-- <a href="{{ route('mutafest.booking') }}" class="cta-button">{{ __('mutafest.nav.book_invitation') }}</a>-->
-    </div>
-</header>
-
-<!-- Mobile Drawer -->
-<div class="drawer-overlay" onclick="closeDrawer()"></div>
-<div class="mobile-drawer">
-    <ul class="nav-menu">
-        <li><a href="{{ route('mutafest.about') }}" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.about') }}</a></li>
-        <li><a href="{{ route('mutafest.program') }}" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.program') }}</a></li>
-        <li><a href="{{ route('mutafest.guests') }}" class="nav-link" onclick="closeDrawer()">{{ __('mutafest.nav.guests') }}</a></li>
-    </ul>
 </div>
 
 <!-- Hero Section -->
@@ -1627,78 +1597,9 @@
 </section>
 
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="footer-logo">
-            <p class="footer-text">MutaFest - Festival del Mediterraneo a Milano</p>
+@include('components.footer')
 
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-            </div>
+@include('components.shared-scripts')
 
-            <p class="footer-text">&copy; 2025 Almutawassit Books.</p>
-        </div>
-    </div>
-</footer>
-
-<script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Header background on scroll
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.style.background = '#f0925e';
-        } else {
-            header.style.background = '#f0925e';
-        }
-    });
-
-    // Mobile drawer functions
-    function toggleDrawer() {
-        const drawer = document.querySelector('.mobile-drawer');
-        const overlay = document.querySelector('.drawer-overlay');
-        const hamburger = document.querySelector('.hamburger');
-
-        drawer.classList.toggle('open');
-        overlay.classList.toggle('open');
-        hamburger.classList.toggle('active');
-
-        // Prevent body scroll when drawer is open
-        if (drawer.classList.contains('open')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }
-
-    function closeDrawer() {
-        const drawer = document.querySelector('.mobile-drawer');
-        const overlay = document.querySelector('.drawer-overlay');
-        const hamburger = document.querySelector('.hamburger');
-
-        drawer.classList.remove('open');
-        overlay.classList.remove('open');
-        hamburger.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-</script>
 </body>
 </html>

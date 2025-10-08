@@ -5,9 +5,8 @@ use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 // MutaFest Routes
-Route::get('/', [MutaFestController::class, 'index'])->name('mutafest.index');
-Route::get('/home2', [MutaFestController::class, 'home2'])->name('mutafest.home');
-Route::get('/main', [MutaFestController::class, 'main'])->name('mutafest.main');
+Route::get('/home', [MutaFestController::class, 'home2'])->name('mutafest.home');
+Route::get('/', [MutaFestController::class, 'main'])->name('mutafest.main');
 Route::get('/about', [MutaFestController::class, 'about'])->name('mutafest.about');
 Route::get('/booking', [MutaFestController::class, 'booking'])->name('mutafest.booking');
 Route::get('/language/{locale}', [MutaFestController::class, 'changeLanguage'])->name('mutafest.language');
