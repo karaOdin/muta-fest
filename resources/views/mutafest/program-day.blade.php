@@ -578,13 +578,15 @@
                             <span class="hall-filter-count">({{ $day->sessions->count() }})</span>
                         </div>
                         @foreach($halls as $hall)
-                            <div class="hall-filter-btn" data-hall-id="{{ $hall->id }}">
-                                <div class="hall-filter-icon">
-                                    <i class="fas fa-building"></i>
+                            @if($day->sessions->count() !== 0)
+                                <div class="hall-filter-btn" data-hall-id="{{ $hall->id }}">
+                                    <div class="hall-filter-icon">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <span class="hall-filter-name">{{ $hall->name }}</span>
+                                    <span class="hall-filter-count">({{ $hall->sessions_count }})</span>
                                 </div>
-                                <span class="hall-filter-name">{{ $hall->name }}</span>
-                                <span class="hall-filter-count">({{ $hall->sessions_count }})</span>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
