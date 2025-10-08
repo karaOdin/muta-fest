@@ -34,7 +34,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -82,7 +82,7 @@
         }
 
         .bio-text {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
             line-height: 1.5;
             margin-bottom: 30px;
         }
@@ -133,19 +133,19 @@
         }
 
         .session-details {
-            font-size: 1.3rem;
+            font-size: 1.7rem;
             margin-bottom: 8px;
             opacity: 0.9;
         }
 
         .session-role {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
             color: #87CEEB;
         }
 
         .session-description {
-            font-size: 1.3rem;
+            font-size: 1.7rem;
             line-height: 1.4;
             opacity: 0.8;
         }
@@ -162,7 +162,7 @@
             }
 
             .guest-info {
-                font-size: 1.2rem;
+                font-size: 1.6rem;
             }
 
             .guest-bio {
@@ -170,7 +170,7 @@
             }
 
             .bio-text {
-                font-size: 1.1rem;
+                font-size: 1.9rem;
             }
         }
 
@@ -180,11 +180,11 @@
             }
 
             .bio-text {
-                font-size: 1rem;
+                font-size: 1.4rem;
             }
 
             .bio-section h3 {
-                font-size: 1.3rem;
+                font-size: 1.7rem;
             }
         }
 

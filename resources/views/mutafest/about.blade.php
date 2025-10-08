@@ -43,7 +43,7 @@
         }
 
         .about-content {
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             line-height: 1.5;
             text-align: left;
         }
@@ -61,7 +61,7 @@
             margin-top: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -83,7 +83,7 @@
             }
 
             .about-content {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
                 line-height: 1.4;
             }
 

@@ -34,7 +34,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 1.2rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -61,7 +61,7 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             opacity: 0.9;
         }
 
@@ -99,7 +99,7 @@
         }
 
         .session-info h3 {
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 20px;
             text-align: center;
@@ -129,7 +129,7 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             flex-shrink: 0;
         }
 
@@ -138,7 +138,7 @@
         }
 
         .info-label {
-            font-size: 0.85rem;
+            font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 3px;
             text-transform: uppercase;
@@ -147,7 +147,7 @@
         }
 
         .info-value {
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: white;
             line-height: 1.3;
@@ -161,7 +161,7 @@
         }
 
         .session-description {
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             line-height: 1.5;
             margin-bottom: 40px;
         }
@@ -173,7 +173,7 @@
         }
 
         .speakers-section h3 {
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
         }
 
@@ -208,13 +208,13 @@
         }
 
         .speaker-name {
-            font-size: 0.85rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .speaker-role {
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             opacity: 0.8;
         }
 
@@ -226,7 +226,7 @@
             }
 
             .session-meta-header {
-                font-size: 0.85rem;
+                font-size: 1.2rem;
                 gap: 20px;
             }
 
@@ -252,7 +252,7 @@
             }
 
             .session-description {
-                font-size: 0.85rem;
+                font-size: 1.2rem;
             }
 
             .speakers-grid {
@@ -267,15 +267,15 @@
             }
 
             .session-meta-header {
-                font-size: 0.95rem;
+                font-size: 1.3rem;
             }
 
             .session-description {
-                font-size: 0.95rem;
+                font-size: 1.3rem;
             }
 
             .session-info h3 {
-                font-size: 0.95rem;
+                font-size: 1.3rem;
             }
         }
     </style>

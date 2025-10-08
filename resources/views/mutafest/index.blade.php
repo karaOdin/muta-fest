@@ -247,7 +247,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 400;
             font-style: normal;
             color: rgba(255, 255, 255, 0.9);
@@ -262,7 +262,7 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             padding: 18px 36px;
             border-radius: 8px;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 400;
             font-style: italic;
             color: white;
@@ -555,7 +555,7 @@
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 700;
             font-style: normal;
             margin-bottom: 16px;
@@ -627,7 +627,7 @@
         }
 
         .card-description {
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             font-weight: 400;
             line-height: 1.4;
             color: #4a5568;
@@ -858,7 +858,7 @@
         }
 
         .session-title {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 500;
             font-style: italic;
             margin-bottom: 6px;
@@ -867,7 +867,7 @@
         }
 
         .session-participants {
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             color: #4a5568;
             line-height: 1.5;
         }
@@ -991,7 +991,7 @@
             }
 
             .hero-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
                 margin-bottom: 32px;
             }
 
@@ -1151,7 +1151,7 @@
             }
 
             .day-title {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
 
             .sessions-container {
@@ -1322,7 +1322,7 @@
             }
 
             .card-title {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
                 margin-bottom: 10px;
             }
 
@@ -1390,12 +1390,12 @@
             }
 
             .session-time {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
                 margin-bottom: 4px;
             }
 
             .session-title {
-                font-size: 1.25rem;
+                font-size: 1.6rem;
                 margin-bottom: 3px;
             }
 

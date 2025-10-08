@@ -80,13 +80,13 @@
         }
 
         .guest-role {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             opacity: 0.9;
             margin-bottom: 10px;
         }
 
         .guest-sessions {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             opacity: 0.8;
             margin-top: 10px;
         }
@@ -99,7 +99,7 @@
             grid-column: 1 / -1;
             text-align: center;
             padding: 60px 20px;
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             opacity: 0.8;
         }
 
@@ -108,7 +108,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.9rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -140,7 +140,7 @@
             }
 
             .guest-name {
-                font-size: 1.5rem;
+                font-size: 1.9rem;
             }
         }
 
@@ -154,11 +154,11 @@
             }
 
             .guest-name {
-                font-size: 1.3rem;
+                font-size: 1.7rem;
             }
 
             .guest-role {
-                font-size: 1rem;
+                font-size: 1.4rem;
             }
         }
     </style>

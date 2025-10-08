@@ -77,7 +77,7 @@
         }
 
         .day-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             opacity: 0.9;
         }
 
@@ -86,7 +86,7 @@
             margin-bottom: 40px;
             color: white;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             border-bottom: 2px solid white;
             padding-bottom: 2px;
             transition: all 0.3s ease;
@@ -122,11 +122,11 @@
             }
 
             .day-title {
-                font-size: 1.5rem;
+                font-size: 1.9rem;
             }
 
             .day-subtitle {
-                font-size: 1rem;
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -151,7 +151,7 @@
                             <h2 class="day-title">{{ $day->name }}</h2>
                             <p class="day-subtitle">{{ $day->date->format('j F Y') }}</p>
                             @if($day->sessions_count > 0)
-                                <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.8;">
+                                <p style="margin-top: 10px; font-size: 1.3rem; opacity: 0.8;">
                                     <i class="fas fa-microphone"></i> {{ $day->sessions_count }} {{ __('sessions') }}
                                 </p>
                             @endif
@@ -160,7 +160,7 @@
                 </div>
             @empty
                 <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-                    <p style="font-size: 1.2rem; opacity: 0.8;">{{ __('No program days available yet.') }}</p>
+                    <p style="font-size: 1.6rem; opacity: 0.8;">{{ __('No program days available yet.') }}</p>
                 </div>
             @endforelse
         </div>

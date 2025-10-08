@@ -233,7 +233,7 @@
 
         @media (max-width: 768px) {
             .booking-container {
-                margin: 1rem;
+                margin: 1.4rem;
                 border-radius: 20px;
             }
             

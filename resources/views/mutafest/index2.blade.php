@@ -144,7 +144,7 @@
 
         .mobile-drawer .nav-link {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             padding: 15px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
@@ -342,7 +342,7 @@
             justify-content: center;
             text-decoration: none;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -426,7 +426,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 48px;
@@ -438,7 +438,7 @@
             background: linear-gradient(45deg, #ff8c42, #ffb366);
             padding: 20px 40px;
             border-radius: 50px;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: white;
             border: 4px solid white;
@@ -919,7 +919,7 @@
         }
 
         .card-description {
-            font-size: 1.1rem;
+            font-size: 1.9rem;
             line-height: 1.4;
             color: #4a5568;
         }
@@ -1042,7 +1042,7 @@
         }
 
         .session-time {
-            font-size: 0.9rem;
+            font-size: 1.3rem;
             color: #ff8c42;
             font-weight: 700;
             margin-bottom: 8px;
@@ -1050,14 +1050,14 @@
         }
 
         .session-title {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             font-weight: 600;
             margin-bottom: 6px;
             color: #2c3e50;
         }
 
         .session-participants {
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             color: #4a5568;
             line-height: 1.5;
         }
@@ -1154,7 +1154,7 @@
 
             .cta-button {
                 padding: 8px 16px;
-                font-size: 0.9rem;
+                font-size: 1.3rem;
                 font-weight: 600;
             }
 
@@ -1195,7 +1195,7 @@
             .social-icon {
                 width: 45px;
                 height: 45px;
-                font-size: 1.1rem;
+                font-size: 1.9rem;
             }
 
             .hero-logo {
@@ -1210,13 +1210,13 @@
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.4rem;
                 margin-bottom: 32px;
                 padding: 0 20px;
             }
 
             .hero-date {
-                font-size: 1.1rem;
+                font-size: 1.9rem;
                 padding: 16px 28px;
                 border-radius: 40px;
                 transform: rotate(-2deg);
@@ -1315,12 +1315,12 @@
             }
 
             .card-title {
-                font-size: 1.5rem;
+                font-size: 1.9rem;
                 margin-bottom: 12px;
             }
 
             .card-description {
-                font-size: 1rem;
+                font-size: 1.4rem;
                 line-height: 1.4;
             }
 
@@ -1366,17 +1366,17 @@
             }
 
             .session-time {
-                font-size: 0.85rem;
+                font-size: 1.2rem;
                 margin-bottom: 6px;
             }
 
             .session-title {
-                font-size: 1.1rem;
+                font-size: 1.9rem;
                 margin-bottom: 4px;
             }
 
             .session-participants {
-                font-size: 0.9rem;
+                font-size: 1.3rem;
             }
 
             /* Footer mobile */
@@ -1391,7 +1391,7 @@
             }
 
             .footer-text {
-                font-size: 0.9rem;
+                font-size: 1.3rem;
                 margin-bottom: 24px;
             }
 
@@ -1414,12 +1414,12 @@
             }
 
             .hero-subtitle {
-                font-size: 0.95rem;
+                font-size: 1.3rem;
                 padding: 0 10px;
             }
 
             .hero-date {
-                font-size: 1rem;
+                font-size: 1.4rem;
                 padding: 14px 24px;
             }
 
@@ -1439,28 +1439,28 @@
             }
 
             .card-title {
-                font-size: 1.3rem;
+                font-size: 1.7rem;
             }
 
             .card-description {
-                font-size: 0.95rem;
+                font-size: 1.3rem;
             }
 
             .day-title {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
 
             .session-title {
-                font-size: 1rem;
+                font-size: 1.4rem;
             }
 
             .session-participants {
-                font-size: 0.85rem;
+                font-size: 1.2rem;
             }
 
             .cta-button {
                 padding: 8px 14px;
-                font-size: 0.85rem;
+                font-size: 1.2rem;
             }
         }
 
