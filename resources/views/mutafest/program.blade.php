@@ -144,9 +144,7 @@
             border-color: white;
         }
 
-        .container {
-            padding-top: 80px;
-        }
+
 
         @media (max-width: 768px) {
             .days-nav {

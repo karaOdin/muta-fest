@@ -522,7 +522,7 @@
         <div class="content-wrapper">
             <!-- Informazioni Laterali -->
             <div class="day-info">
-                <h3>Informazioni del Giorno</h3>
+                <h3>Sintesi della giornata</h3>
 
                 <div class="info-item">
                     <div class="info-icon">
@@ -534,16 +534,16 @@
                     </div>
                 </div>
 
-                <div class="info-item">
+                <!--<div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-building"></i>
                     </div>
-                    <!--
+
                     <div class="info-content">
                         <div class="info-label">spazi</div>
                         <div class="info-value">{{ $halls->count() }} </div>
-                    </div>-->
-                </div>
+                    </div>
+                </div>-->
 
                 <div class="info-item">
                     <div class="info-icon">

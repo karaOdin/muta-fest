@@ -303,7 +303,7 @@
                     <div class="partner-logo-container">
                         <img src="{{ asset('images/partners/parco.png') }}" alt="Parco Center" class="partner-logo">
                     </div>
-                    <h3 class="partner-name">Parco Center</h3>
+                    <h3 class="partner-name">Parco</h3>
                     <p class="partner-description">
                         Parco center, centro per la ricerca e l'innovazione sociale con sede a Milano, che ospita parte delle attività del festival.
                     </p>
