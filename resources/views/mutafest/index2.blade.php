@@ -1542,14 +1542,9 @@
                     <i class="fab fa-instagram"></i>
                 </a>
                 <a href="https://twitter.com/mutafest" target="_blank" class="social-icon" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-x"></i>
                 </a>
-                <a href="https://youtube.com/mutafest" target="_blank" class="social-icon" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://linkedin.com/company/mutafest" target="_blank" class="social-icon" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+
             </div>
 
             <img src="{{ asset('images/mutafest logo.png') }}" alt="MutaFest" class="hero-logo">
