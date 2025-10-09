@@ -323,7 +323,7 @@
                 <!-- Ilà -->
                 <div class="partner-card">
                     <div class="partner-logo-container">
-                        <img src="{{ asset('images/partners/ila.png') }}" alt="Ilà" class="partner-logo">
+                        <img src="{{ asset('images/partners/Ila.png') }}" alt="Ilà" class="partner-logo">
                     </div>
                     <h3 class="partner-name">Ilà</h3>
                     <p class="partner-description">
