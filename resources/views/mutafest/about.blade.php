@@ -156,7 +156,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 20px;
         }
