@@ -176,6 +176,10 @@
             .day-title {
                 font-size: 1.7rem;
             }
+
+            .container{
+                max-width: 1200px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -189,6 +193,10 @@
 
             .day-subtitle {
                 font-size: 1.4rem;
+            }
+
+            .container{
+                max-width: 1200px;
             }
         }
     </style>
