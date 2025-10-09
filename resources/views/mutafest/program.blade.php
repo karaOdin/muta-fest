@@ -96,7 +96,71 @@
             opacity: 0.8;
         }
 
+        /* Navigazione Giorni Fissa */
+        .days-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ab4e9e;
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .days-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .day-nav-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .day-nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .day-nav-item.active {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        .container {
+            padding-top: 80px;
+        }
+
         @media (max-width: 768px) {
+            .days-nav {
+                padding: 10px 0;
+            }
+
+            .days-nav-container {
+                gap: 8px;
+            }
+
+            .day-nav-item {
+                padding: 6px 15px;
+                font-size: 1.2rem;
+            }
 
             .page-title {
                 font-size: 2.5rem;
@@ -134,6 +198,8 @@
 </head>
 <body>
     @include('components.navbar')
+
+
 
     <div class="container">
        <!-- <h1 class="page-title">{{ __('mutafest.nav.program') }}</h1>-->

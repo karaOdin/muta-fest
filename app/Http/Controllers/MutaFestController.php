@@ -450,6 +450,9 @@ class MutaFestController extends Controller
                 ->where('id', '!=', $session->id);
         }])->get();
 
-        return view('mutafest.session-detail', compact('session', 'otherSessions', 'halls'));
+        // Get all days for navigation
+        $days = Day::orderBy('order')->get();
+
+        return view('mutafest.session-detail', compact('session', 'otherSessions', 'halls', 'days'));
     }
 }
