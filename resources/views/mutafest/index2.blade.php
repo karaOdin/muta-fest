@@ -1572,7 +1572,7 @@
                     <i class="fab fa-instagram"></i>
                 </a>
                 <a href="https://twitter.com/mutafest" target="_blank" class="social-icon" aria-label="Twitter">
-                    <i class="fab fa-x-twitter"></i>
+                    <i class="fab fa-x"></i>
                 </a>
             </div>
 
