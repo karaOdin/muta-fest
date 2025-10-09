@@ -745,9 +745,9 @@
 <div class="container">
     <!-- Social Icons -->
     <div class="social-icons">
-        <a href="https://www.facebook.com/share/14NQcHysyic/?mibextid=wwXIfr" class="social-icon">f</a>
-        <a href="https://www.instagram.com/mutafest?igsh=amEwMDEyZHdrZzJu" class="social-icon">in</a>
-        <a href="https://x.com/mutafest?s=21&t=8UXfwtMyGKNuUxOo_VwG1A" class="social-icon">𝕏</a>
+        <a href="https://www.facebook.com/share/14NQcHysyic/?mibextid=wwXIfr" target="_blank" class="social-icon">f</a>
+        <a href="https://www.instagram.com/mutafest?igsh=amEwMDEyZHdrZzJu" target="_blank" class="social-icon">in</a>
+        <a href="https://x.com/mutafest?s=21&t=8UXfwtMyGKNuUxOo_VwG1A" target="_blank" class="social-icon">𝕏</a>
     </div>
 
     <!-- Logo (hidden since we're using it as main title) -->
