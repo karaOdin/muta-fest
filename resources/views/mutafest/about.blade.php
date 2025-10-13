@@ -330,7 +330,20 @@
                         Ilà, ente dedicato alla diffusione e all'insegnamento della lingua araba come lingua viva e plurale, attraverso programmi formativi e certificazioni riconosciute in Italia.
                     </p>
                 </div>
+
+                <!-- Ilà -->
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <img src="{{ asset('images/partners/unponteper.png') }}" alt="Ilà" class="partner-logo">
+                    </div>
+                    <h3 class="partner-name">Un Pontu per</h3>
+                    <p class="partner-description">
+                        Un Pontu per, Un Pontu per è un ponte tra sponde diverse del Mediterraneo, dove parole, memorie e culture migranti si incontrano e si raccontano.
+                    </p>
+                </div>
             </div>
+
+            <img src="{{asset('images/partners/eu.png')}}" alt="Unione Europea" style="margin-top: 50px; max-width: 200px;">
         </div>
     </div>
 
