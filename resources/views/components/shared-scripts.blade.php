@@ -4,11 +4,11 @@
         const drawer = document.querySelector('.mobile-drawer');
         const overlay = document.querySelector('.drawer-overlay');
         const hamburger = document.querySelector('.hamburger');
-        
+
         drawer.classList.toggle('open');
         overlay.classList.toggle('open');
         hamburger.classList.toggle('active');
-        
+
         // Prevent body scroll when drawer is open
         if (drawer.classList.contains('open')) {
             document.body.style.overflow = 'hidden';
@@ -21,10 +21,30 @@
         const drawer = document.querySelector('.mobile-drawer');
         const overlay = document.querySelector('.drawer-overlay');
         const hamburger = document.querySelector('.hamburger');
-        
+
         drawer.classList.remove('open');
         overlay.classList.remove('open');
         hamburger.classList.remove('active');
         document.body.style.overflow = '';
     }
+
+    // Location modal functions
+    function openLocationModal() {
+        const modal = document.getElementById('locationModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLocationModal() {
+        const modal = document.getElementById('locationModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLocationModal();
+        }
+    });
 </script>
