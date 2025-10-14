@@ -1378,7 +1378,7 @@
         <div class="hero-content">
             <!-- Social Media Icons -->
             <div class="social-media-section">
-                <a href="https://facebook.com/mutafest" target="_blank" class="social-icon" aria-label="Facebook">
+                <a href="https://www.facebook.com/share/14NQcHysyic/?mibextid=wwXIfr" target="_blank" class="social-icon" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <a href="https://instagram.com/mutafest" target="_blank" class="social-icon" aria-label="Instagram">
