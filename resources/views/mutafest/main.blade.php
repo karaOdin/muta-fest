@@ -815,7 +815,7 @@
             </button>
 
             <div class="modal-header">
-                <h2 class="modal-title">  <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180"
+                <h2 class="modal-title">  <img src="https://mutafest.com/images/mutafest%20logo.png"
                                                alt="MutaFest"
                                                class="main-logo"></h2>
                 <p class="modal-subtitle">MutaFest - Festival del Mediterraneo</p>
