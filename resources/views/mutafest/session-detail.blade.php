@@ -612,20 +612,20 @@
                         <div class="info-value">{{ $session->time_range }}</div>
                     </div>
                 </div>
-
+                <!--
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-hourglass-half"></i>
                     </div>
-                    <!--
+
                     <div class="info-content">
                         <div class="info-label">Durata</div>
                         <div class="info-label">Durata</div>
                         <div class="info-value">{{ $session->duration }}</div>
                     </div>
-                    -->
-                </div>
 
+                </div>
+                -->
                 <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-building"></i>
