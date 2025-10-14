@@ -757,8 +757,7 @@
 
     <!-- Main Title -->
     <div class="main-title">
-        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mutafest.com/media/mutafest.com/onewebmedia/logo.png?etag=null&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=518%2B180"
-             alt="MutaFest"
+        <img src="https://mutafest.com/images/mutafest logo.png" alt="MutaFest"
              class="main-logo">
         <div class="subtitle">Festival del<br>Mediterraneo<br>a Milano</div>
     </div>
